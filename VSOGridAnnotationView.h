@@ -21,8 +21,8 @@
 @end
 
 @interface VSOGridAnnotationView : MKAnnotationView <VSOGridPlayGame> {
-	MKMapView *map;
-	VSOGameProgress *gameProgress;
+	__weak MKMapView *map;
+	__weak VSOGameProgress *gameProgress;
 	
 	VSOCurLocationView *curUserLocationView;
 	
@@ -34,8 +34,8 @@
 	NSUInteger xStart, yStart;
 }
 @property(readonly) CGFloat totalArea;
-@property(nonatomic, assign) MKMapView *map;
-@property(nonatomic, assign) VSOGameProgress *gameProgress;
+@property(nonatomic, weak) MKMapView *map;
+@property(nonatomic, weak) VSOGameProgress *gameProgress;
 - (CGRect)rectFromGridPixelAtX:(NSUInteger)x andY:(NSUInteger)y;
 
 @end

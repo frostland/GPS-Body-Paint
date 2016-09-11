@@ -61,14 +61,14 @@
 	
 	BOOL userMovedMap, mapFirstCenterDone;
 	BOOL mapLocked, mapMoving, warnForMapLoadingErrors;
-	id <VSOPlayViewControllerDelegate> delegate;
+	__weak id <VSOPlayViewControllerDelegate> delegate;
 #ifdef SIMULATOR_CODE
 	NSTimer *t;
 	CLLocation *currentLocation;
 #endif
 }
 @property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property(nonatomic, assign) id <VSOPlayViewControllerDelegate> delegate;
+@property(nonatomic, weak) id <VSOPlayViewControllerDelegate> delegate;
 @property(nonatomic, retain) VSOGameProgress *gameProgress;
 - (IBAction)centerMapToCurrentUserLocation:(id)sender;
 

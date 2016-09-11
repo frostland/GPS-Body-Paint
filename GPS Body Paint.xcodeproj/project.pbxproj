@@ -3,34 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F062651101897AC004DAB6E /* Red Arrow Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F062650101897AC004DAB6E /* Red Arrow Up.png */; };
-		0F062656101899DB004DAB6E /* Red Arrow Down.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F062653101899DB004DAB6E /* Red Arrow Down.png */; };
-		0F062657101899DB004DAB6E /* Red Arrow Left.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F062654101899DB004DAB6E /* Red Arrow Left.png */; };
-		0F062658101899DB004DAB6E /* Red Arrow Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F062655101899DB004DAB6E /* Red Arrow Right.png */; };
-		0F62E5CD103EC86F00D62CB2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F62E5CB103EC86F00D62CB2 /* Default.png */; };
 		0F7BBE94101EEC5A00F4EF59 /* VSOMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */; };
 		0F7E117610185013000D35AF /* VSOShapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7E117510185013000D35AF /* VSOShapeView.m */; };
-		0F802BE4101D9CC300824E9B /* center_to_cur_ul.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F802BE3101D9CC300824E9B /* center_to_cur_ul.png */; };
 		0F9495621014716E00717D5A /* VSOGameShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9495611014716E00717D5A /* VSOGameShape.m */; };
 		0FC06FB5100E33F700B0D157 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC06FB4100E33F700B0D157 /* QuartzCore.framework */; };
 		0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF47581019E2D0005E5F41 /* Settings.bundle */; };
-		0FCF480F1019FA84005E5F41 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF480E1019FA84005E5F41 /* icon.png */; };
-		0FCF48181019FE79005E5F41 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF48171019FE79005E5F41 /* Icon-Small.png */; };
-		0FCF481B1019FEB1005E5F41 /* Icon-Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF481A1019FEB1005E5F41 /* Icon-Settings.png */; };
 		0FCF4828101A016C005E5F41 /* VSOSendScoresViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF4826101A016C005E5F41 /* VSOSendScoresViewCtrl.m */; };
 		0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD076D6101F19C900D9AF11 /* Localizable.strings */; };
-		0FD07702101F1F5F00D9AF11 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD07701101F1F5F00D9AF11 /* MainWindow.xib */; };
-		0FD07704101F1F5F00D9AF11 /* VSOChallengeShapeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD07703101F1F5F00D9AF11 /* VSOChallengeShapeView.xib */; };
-		0FD07706101F1F5F00D9AF11 /* VSOLevelDifficultyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD07705101F1F5F00D9AF11 /* VSOLevelDifficultyView.xib */; };
-		0FD07708101F1F5F00D9AF11 /* VSOLevelSizeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD07707101F1F5F00D9AF11 /* VSOLevelSizeView.xib */; };
-		0FD0770A101F1F5F00D9AF11 /* VSOPlayingModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD07709101F1F5F00D9AF11 /* VSOPlayingModeView.xib */; };
 		0FD0770C101F1F5F00D9AF11 /* VSOPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD0770B101F1F5F00D9AF11 /* VSOPlayView.xib */; };
 		0FD0770E101F1F5F00D9AF11 /* VSOSendScoresView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD0770D101F1F5F00D9AF11 /* VSOSendScoresView.xib */; };
-		0FD07710101F1F5F00D9AF11 /* VSOSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD0770F101F1F5F00D9AF11 /* VSOSettingsView.xib */; };
 		0FD1BB0E100F2C7900000185 /* VSOSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BB0D100F2C7900000185 /* VSOSettings.m */; };
 		0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BB32100F31FB00000185 /* VSOGameProgress.m */; };
 		0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BBCF100F374800000185 /* VSOUtils.c */; };
@@ -42,57 +27,40 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
-		289233A60DB2D0840083E9F9 /* VSOSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A30DB2D0840083E9F9 /* VSOSettingsView.m */; };
 		289233A70DB2D0840083E9F9 /* VSOPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* VSOPlayView.m */; };
 		289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */; };
+		7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */; };
+		7B395E5E1D856A4500941445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E601D856A4500941445 /* Main.storyboard */; };
+		7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */; };
+		7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0EA611D856B110057BFA2 /* Assets.xcassets */; };
+		7BB0EA651D858CAC0057BFA2 /* VSOLevelSizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */; };
+		7BB0EA681D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA671D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m */; };
+		7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */; };
+		7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F062650101897AC004DAB6E /* Red Arrow Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red Arrow Up.png"; path = "Gfx/Red Arrow Up.png"; sourceTree = "<group>"; };
-		0F062653101899DB004DAB6E /* Red Arrow Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red Arrow Down.png"; path = "Gfx/Red Arrow Down.png"; sourceTree = "<group>"; };
-		0F062654101899DB004DAB6E /* Red Arrow Left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red Arrow Left.png"; path = "Gfx/Red Arrow Left.png"; sourceTree = "<group>"; };
-		0F062655101899DB004DAB6E /* Red Arrow Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red Arrow Right.png"; path = "Gfx/Red Arrow Right.png"; sourceTree = "<group>"; };
 		0F577F8710207B7C00067838 /* Geocade.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Geocade.pdf; sourceTree = "<group>"; };
-		0F62E5CC103EC86F00D62CB2 /* English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = English; path = English.lproj/Default.png; sourceTree = "<group>"; };
-		0F62E5CE103EC87600D62CB2 /* French */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = French; path = French.lproj/Default.png; sourceTree = "<group>"; };
-		0F73F0F71010A3FE0004C707 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/VSOChallengeShapeView.xib; sourceTree = "<group>"; };
-		0F73F2BD1010B12F0004C707 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/VSOLevelDifficultyView.xib; sourceTree = "<group>"; };
-		0F73F3381010B7410004C707 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/VSOLevelSizeView.xib; sourceTree = "<group>"; };
-		0F73F3431010B7EC0004C707 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/VSOPlayingModeView.xib; sourceTree = "<group>"; };
 		0F73F3F71010C4290004C707 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0F7BBE92101EEC5A00F4EF59 /* VSOMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOMapView.h; sourceTree = "<group>"; };
 		0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOMapView.m; sourceTree = "<group>"; };
 		0F7E117410185013000D35AF /* VSOShapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOShapeView.h; sourceTree = "<group>"; };
 		0F7E117510185013000D35AF /* VSOShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOShapeView.m; sourceTree = "<group>"; };
-		0F802BE3101D9CC300824E9B /* center_to_cur_ul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = center_to_cur_ul.png; path = Gfx/center_to_cur_ul.png; sourceTree = "<group>"; };
 		0F9495601014716E00717D5A /* VSOGameShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOGameShape.h; sourceTree = "<group>"; };
 		0F9495611014716E00717D5A /* VSOGameShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGameShape.m; sourceTree = "<group>"; };
 		0FC06FB4100E33F700B0D157 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0FCDE41110160CD7001D5E65 /* Ideas.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Ideas.rtf; sourceTree = "<group>"; };
+		0FCDE41110160CD7001D5E65 /* Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Notes.rtf; sourceTree = "<group>"; };
 		0FCF47581019E2D0005E5F41 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		0FCF480E1019FA84005E5F41 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Gfx/icon/icon.png; sourceTree = "<group>"; };
-		0FCF48171019FE79005E5F41 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Gfx/icon/Icon-Small.png"; sourceTree = "<group>"; };
-		0FCF481A1019FEB1005E5F41 /* Icon-Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Settings.png"; path = "Gfx/icon/Icon-Settings.png"; sourceTree = "<group>"; };
 		0FCF4825101A016C005E5F41 /* VSOSendScoresViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOSendScoresViewCtrl.h; sourceTree = "<group>"; };
 		0FCF4826101A016C005E5F41 /* VSOSendScoresViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOSendScoresViewCtrl.m; sourceTree = "<group>"; };
-		0FCF4827101A016C005E5F41 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/VSOSendScoresView.xib; sourceTree = "<group>"; };
-		0FD076D8101F19EB00D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0FD07711101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		0FD07712101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/VSOChallengeShapeView.xib; sourceTree = "<group>"; };
-		0FD07713101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/VSOLevelDifficultyView.xib; sourceTree = "<group>"; };
-		0FD07714101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/VSOLevelSizeView.xib; sourceTree = "<group>"; };
-		0FD07715101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/VSOPlayingModeView.xib; sourceTree = "<group>"; };
-		0FD07716101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/VSOPlayView.xib; sourceTree = "<group>"; };
-		0FD07717101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/VSOSendScoresView.xib; sourceTree = "<group>"; };
-		0FD07718101F1F7700D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = French; path = French.lproj/VSOSettingsView.xib; sourceTree = "<group>"; };
+		0FD076D8101F19EB00D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD1BB0C100F2C7900000185 /* VSOSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOSettings.h; sourceTree = "<group>"; };
 		0FD1BB0D100F2C7900000185 /* VSOSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOSettings.m; sourceTree = "<group>"; };
 		0FD1BB31100F31FB00000185 /* VSOGameProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOGameProgress.h; sourceTree = "<group>"; };
 		0FD1BB32100F31FB00000185 /* VSOGameProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGameProgress.m; sourceTree = "<group>"; };
 		0FD1BBCE100F374800000185 /* VSOUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOUtils.h; sourceTree = "<group>"; };
 		0FD1BBCF100F374800000185 /* VSOUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = VSOUtils.c; sourceTree = "<group>"; };
-		0FD1BC79100F47D200000185 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0FD8DB93100DCCC800C076DB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0FD8DBD7100DD06E00C076DB /* VSOGridAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOGridAnnotationView.h; sourceTree = "<group>"; };
 		0FD8DBD8100DD06E00C076DB /* VSOGridAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGridAnnotationView.m; sourceTree = "<group>"; };
@@ -102,12 +70,7 @@
 		1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSBodyPaintAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* GPS Body Paint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS Body Paint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		280E754A0DD40C5E005A515E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/VSOSettingsView.xib; sourceTree = "<group>"; };
-		280E754B0DD40C5E005A515E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/VSOPlayView.xib; sourceTree = "<group>"; };
-		280E754C0DD40C5E005A515E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		289233A20DB2D0840083E9F9 /* VSOSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSOSettingsView.h; path = Classes/VSOSettingsView.h; sourceTree = "<group>"; };
-		289233A30DB2D0840083E9F9 /* VSOSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSOSettingsView.m; path = Classes/VSOSettingsView.m; sourceTree = "<group>"; };
 		289233A40DB2D0840083E9F9 /* VSOPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSOPlayView.h; path = Classes/VSOPlayView.h; sourceTree = "<group>"; };
 		289233A50DB2D0840083E9F9 /* VSOPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSOPlayView.m; path = Classes/VSOPlayView.m; sourceTree = "<group>"; };
 		289233A80DB2D0DB0083E9F9 /* VSOPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSOPlayViewController.h; path = Classes/VSOPlayViewController.h; sourceTree = "<group>"; };
@@ -116,6 +79,26 @@
 		289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSOSettingsViewController.m; path = Classes/VSOSettingsViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS_Body_Paint_Prefix.pch; sourceTree = "<group>"; };
+		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B395E5F1D856A4500941445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B3ECD2A1D84DBA500DFEB0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VSOSendScoresView.xib; sourceTree = "<group>"; };
+		7B3ECD301D84DBA600DFEB0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VSOPlayView.xib; sourceTree = "<group>"; };
+		7B3ECD351D84DC6D00DFEB0D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VSOPlayView.strings; sourceTree = "<group>"; };
+		7B3ECD371D84DC8700DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VSOPlayView.strings; sourceTree = "<group>"; };
+		7B3ECD471D84DD0700DFEB0D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VSOSendScoresView.strings; sourceTree = "<group>"; };
+		7B3ECD491D84DD0F00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VSOSendScoresView.strings; sourceTree = "<group>"; };
+		7B3ECD4D1D84DFAB00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7B3ECD4F1D84DFAC00DFEB0D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7BB0EA611D856B110057BFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOLevelSizeViewController.h; sourceTree = "<group>"; };
+		7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOLevelSizeViewController.m; sourceTree = "<group>"; };
+		7BB0EA661D8590AA0057BFA2 /* VSOLevelDifficultyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOLevelDifficultyViewController.h; sourceTree = "<group>"; };
+		7BB0EA671D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOLevelDifficultyViewController.m; sourceTree = "<group>"; };
+		7BB0EA691D8593E80057BFA2 /* VSOChallengeShapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOChallengeShapeViewController.h; sourceTree = "<group>"; };
+		7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOChallengeShapeViewController.m; sourceTree = "<group>"; };
+		7BB0EA6C1D8596190057BFA2 /* VSOPlayingModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOPlayingModeViewController.h; sourceTree = "<group>"; };
+		7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOPlayingModeViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GPS_Body_Paint-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GPS_Body_Paint-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,8 +144,14 @@
 				0F7E117510185013000D35AF /* VSOShapeView.m */,
 				0FD1BB0C100F2C7900000185 /* VSOSettings.h */,
 				0FD1BB0D100F2C7900000185 /* VSOSettings.m */,
-				289233A20DB2D0840083E9F9 /* VSOSettingsView.h */,
-				289233A30DB2D0840083E9F9 /* VSOSettingsView.m */,
+				7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */,
+				7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */,
+				7BB0EA661D8590AA0057BFA2 /* VSOLevelDifficultyViewController.h */,
+				7BB0EA671D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m */,
+				7BB0EA691D8593E80057BFA2 /* VSOChallengeShapeViewController.h */,
+				7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */,
+				7BB0EA6C1D8596190057BFA2 /* VSOPlayingModeViewController.h */,
+				7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */,
 				289233AC0DB2D0DB0083E9F9 /* VSOSettingsViewController.h */,
 				289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */,
 			);
@@ -193,7 +182,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				0FCDE41110160CD7001D5E65 /* Ideas.rtf */,
+				0FCDE41110160CD7001D5E65 /* Notes.rtf */,
 				0F577F8710207B7C00067838 /* Geocade.pdf */,
 				0FCF47581019E2D0005E5F41 /* Settings.bundle */,
 				289233A00DB2D0730083E9F9 /* Play View */,
@@ -222,25 +211,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0F62E5CB103EC86F00D62CB2 /* Default.png */,
-				0F802BE3101D9CC300824E9B /* center_to_cur_ul.png */,
-				0FD0770D101F1F5F00D9AF11 /* VSOSendScoresView.xib */,
-				0FCF481A1019FEB1005E5F41 /* Icon-Settings.png */,
-				0FCF48171019FE79005E5F41 /* Icon-Small.png */,
-				0FCF480E1019FA84005E5F41 /* icon.png */,
-				0F062653101899DB004DAB6E /* Red Arrow Down.png */,
-				0F062654101899DB004DAB6E /* Red Arrow Left.png */,
-				0F062655101899DB004DAB6E /* Red Arrow Right.png */,
-				0F062650101897AC004DAB6E /* Red Arrow Up.png */,
-				0FD07709101F1F5F00D9AF11 /* VSOPlayingModeView.xib */,
-				0FD07707101F1F5F00D9AF11 /* VSOLevelSizeView.xib */,
-				0FD07705101F1F5F00D9AF11 /* VSOLevelDifficultyView.xib */,
-				0FD07703101F1F5F00D9AF11 /* VSOChallengeShapeView.xib */,
-				0FD076D6101F19C900D9AF11 /* Localizable.strings */,
-				0FD0770F101F1F5F00D9AF11 /* VSOSettingsView.xib */,
-				0FD0770B101F1F5F00D9AF11 /* VSOPlayView.xib */,
-				0FD07701101F1F5F00D9AF11 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* GPS_Body_Paint-Info.plist */,
+				7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */,
+				0FD076D6101F19C900D9AF11 /* Localizable.strings */,
+				7BB0EA611D856B110057BFA2 /* Assets.xcassets */,
+				7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */,
+				7B395E601D856A4500941445 /* Main.storyboard */,
+				0FD0770D101F1F5F00D9AF11 /* VSOSendScoresView.xib */,
+				0FD0770B101F1F5F00D9AF11 /* VSOPlayView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -283,15 +261,24 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Frost Land";
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = DVL8GW97S8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GPS Body Paint" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				Base,
 				en,
+				fr,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -307,25 +294,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD07710101F1F5F00D9AF11 /* VSOSettingsView.xib in Resources */,
+				7B395E5E1D856A4500941445 /* Main.storyboard in Resources */,
+				7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */,
 				0FD0770C101F1F5F00D9AF11 /* VSOPlayView.xib in Resources */,
-				0FD07702101F1F5F00D9AF11 /* MainWindow.xib in Resources */,
 				0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */,
-				0FD07704101F1F5F00D9AF11 /* VSOChallengeShapeView.xib in Resources */,
-				0FD07706101F1F5F00D9AF11 /* VSOLevelDifficultyView.xib in Resources */,
-				0FD07708101F1F5F00D9AF11 /* VSOLevelSizeView.xib in Resources */,
-				0FD0770A101F1F5F00D9AF11 /* VSOPlayingModeView.xib in Resources */,
-				0F062651101897AC004DAB6E /* Red Arrow Up.png in Resources */,
-				0F062656101899DB004DAB6E /* Red Arrow Down.png in Resources */,
-				0F062657101899DB004DAB6E /* Red Arrow Left.png in Resources */,
-				0F062658101899DB004DAB6E /* Red Arrow Right.png in Resources */,
+				7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */,
 				0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */,
-				0FCF480F1019FA84005E5F41 /* icon.png in Resources */,
-				0FCF48181019FE79005E5F41 /* Icon-Small.png in Resources */,
-				0FCF481B1019FEB1005E5F41 /* Icon-Settings.png in Resources */,
+				7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */,
 				0FD0770E101F1F5F00D9AF11 /* VSOSendScoresView.xib in Resources */,
-				0F802BE4101D9CC300824E9B /* center_to_cur_ul.png in Resources */,
-				0F62E5CD103EC86F00D62CB2 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,15 +314,18 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* GPSBodyPaintAppDelegate.m in Sources */,
-				289233A60DB2D0840083E9F9 /* VSOSettingsView.m in Sources */,
 				289233A70DB2D0840083E9F9 /* VSOPlayView.m in Sources */,
+				7BB0EA651D858CAC0057BFA2 /* VSOLevelSizeViewController.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */,
+				7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */,
 				0FD8DBD9100DD06E00C076DB /* VSOGridAnnotationView.m in Sources */,
 				0FD1BB0E100F2C7900000185 /* VSOSettings.m in Sources */,
 				0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */,
 				0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */,
+				7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */,
 				0F9495621014716E00717D5A /* VSOGameShape.m in Sources */,
+				7BB0EA681D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m in Sources */,
 				0F7E117610185013000D35AF /* VSOShapeView.m in Sources */,
 				0FCF4828101A016C005E5F41 /* VSOSendScoresViewCtrl.m in Sources */,
 				0F7BBE94101EEC5A00F4EF59 /* VSOMapView.m in Sources */,
@@ -356,74 +335,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0F62E5CB103EC86F00D62CB2 /* Default.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F62E5CC103EC86F00D62CB2 /* English */,
-				0F62E5CE103EC87600D62CB2 /* French */,
-			);
-			name = Default.png;
-			sourceTree = "<group>";
-		};
 		0FD076D6101F19C900D9AF11 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0FD1BC79100F47D200000185 /* English */,
 				0FD076D8101F19EB00D9AF11 /* French */,
+				7B8F8FFC1D84DA1200B03DC1 /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		0FD07701101F1F5F00D9AF11 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				280E754C0DD40C5E005A515E /* English */,
-				0FD07711101F1F7700D9AF11 /* French */,
-			);
-			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		0FD07703101F1F5F00D9AF11 /* VSOChallengeShapeView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F73F0F71010A3FE0004C707 /* English */,
-				0FD07712101F1F7700D9AF11 /* French */,
-			);
-			name = VSOChallengeShapeView.xib;
-			sourceTree = "<group>";
-		};
-		0FD07705101F1F5F00D9AF11 /* VSOLevelDifficultyView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F73F2BD1010B12F0004C707 /* English */,
-				0FD07713101F1F7700D9AF11 /* French */,
-			);
-			name = VSOLevelDifficultyView.xib;
-			sourceTree = "<group>";
-		};
-		0FD07707101F1F5F00D9AF11 /* VSOLevelSizeView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F73F3381010B7410004C707 /* English */,
-				0FD07714101F1F7700D9AF11 /* French */,
-			);
-			name = VSOLevelSizeView.xib;
-			sourceTree = "<group>";
-		};
-		0FD07709101F1F5F00D9AF11 /* VSOPlayingModeView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F73F3431010B7EC0004C707 /* English */,
-				0FD07715101F1F7700D9AF11 /* French */,
-			);
-			name = VSOPlayingModeView.xib;
 			sourceTree = "<group>";
 		};
 		0FD0770B101F1F5F00D9AF11 /* VSOPlayView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				280E754B0DD40C5E005A515E /* English */,
-				0FD07716101F1F7700D9AF11 /* French */,
+				7B3ECD301D84DBA600DFEB0D /* Base */,
+				7B3ECD351D84DC6D00DFEB0D /* fr */,
+				7B3ECD371D84DC8700DFEB0D /* en */,
 			);
 			name = VSOPlayView.xib;
 			sourceTree = "<group>";
@@ -431,19 +357,28 @@
 		0FD0770D101F1F5F00D9AF11 /* VSOSendScoresView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0FCF4827101A016C005E5F41 /* English */,
-				0FD07717101F1F7700D9AF11 /* French */,
+				7B3ECD2A1D84DBA500DFEB0D /* Base */,
+				7B3ECD471D84DD0700DFEB0D /* fr */,
+				7B3ECD491D84DD0F00DFEB0D /* en */,
 			);
 			name = VSOSendScoresView.xib;
 			sourceTree = "<group>";
 		};
-		0FD0770F101F1F5F00D9AF11 /* VSOSettingsView.xib */ = {
+		7B395E601D856A4500941445 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				280E754A0DD40C5E005A515E /* English */,
-				0FD07718101F1F7700D9AF11 /* French */,
+				7B395E5F1D856A4500941445 /* Base */,
 			);
-			name = VSOSettingsView.xib;
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B3ECD4D1D84DFAB00DFEB0D /* en */,
+				7B3ECD4F1D84DFAC00DFEB0D /* fr */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -452,20 +387,37 @@
 		0FD076BF101F162000D9AF11 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: VSO-SOFTWARE";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					DISTRIBUTION,
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5D15C29A-125C-49BB-ABF5-1BF9A2CD0A67";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Distribution;
 		};
@@ -473,10 +425,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = DVL8GW97S8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GPS_Body_Paint_Prefix.pch;
 				INFOPLIST_FILE = "GPS_Body_Paint-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.vso-software.GPSBodyPaint";
 				PRODUCT_NAME = "GPS Body Paint";
 			};
 			name = Distribution;
@@ -485,12 +442,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = DVL8GW97S8;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GPS_Body_Paint_Prefix.pch;
 				INFOPLIST_FILE = "GPS_Body_Paint-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.vso-software.GPSBodyPaint";
 				PRODUCT_NAME = "GPS Body Paint";
 			};
 			name = Debug;
@@ -499,10 +461,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = DVL8GW97S8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GPS_Body_Paint_Prefix.pch;
 				INFOPLIST_FILE = "GPS_Body_Paint-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.vso-software.GPSBodyPaint";
 				PRODUCT_NAME = "GPS Body Paint";
 			};
 			name = Release;
@@ -510,30 +477,66 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

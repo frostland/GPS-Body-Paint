@@ -41,6 +41,11 @@
 	return self;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+	return YES;
+}
+
 - (CLLocationCoordinate2D)coordinate
 {
 	if (mapLocked) return [mapView region].center;
@@ -52,7 +57,6 @@
 	MKCoordinateRegion r = [mapView region];
 	CLLocation *l = [[CLLocation alloc] initWithLatitude:r.center.latitude longitude:r.center.longitude];
 	CLLocation *l2 = [[CLLocation alloc] initWithLatitude:r.center.latitude+r.span.latitudeDelta longitude:r.center.longitude];
-	[l autorelease]; [l2 autorelease];
 	
 	return [l getDistanceFrom:l2];
 }
@@ -61,8 +65,7 @@
 {
 	if ([annotation isKindOfClass:[self class]]) {
 		// Try to dequeue an existing grid view first.
-		[gridAnnotationView release];
-		gridAnnotationView = (VSOGridAnnotationView *)[[mpV dequeueReusableAnnotationViewWithIdentifier:@"GridAnnotation"] retain];
+		gridAnnotationView = (VSOGridAnnotationView *)[mpV dequeueReusableAnnotationViewWithIdentifier:@"GridAnnotation"];
 		
 		if (!gridAnnotationView) gridAnnotationView = [[VSOGridAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"GridAnnotation"];
 		else                     gridAnnotationView.annotation = annotation;
@@ -85,7 +88,6 @@
 - (void)showViewLoadingMap:(NSTimer *)t
 {
 	[timerShowLoadingMap invalidate];
-	[timerShowLoadingMap release];
 	timerShowLoadingMap = nil;
 	
 	[UIView beginAnimations:nil context:NULL];
@@ -99,14 +101,13 @@
 	NSDLog(@"mapViewWillStartLoadingMap:");
 	buttonLockMap.enabled = NO;
 	if (timerShowLoadingMap != nil) return;
-	timerShowLoadingMap = [[NSTimer scheduledTimerWithTimeInterval:3. target:self selector:@selector(showViewLoadingMap:) userInfo:NULL repeats:NO] retain];
+	timerShowLoadingMap = [NSTimer scheduledTimerWithTimeInterval:3. target:self selector:@selector(showViewLoadingMap:) userInfo:NULL repeats:NO];
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mpV
 {
 	NSDLog(@"mapViewDidFinishLoadingMap:");
 	[timerShowLoadingMap invalidate];
-	[timerShowLoadingMap release];
 	timerShowLoadingMap = nil;
 	
 	[UIView beginAnimations:nil context:NULL];
@@ -132,10 +133,9 @@
 	
 	warnForMapLoadingErrors = NO;
 	[timerShowLoadingMap invalidate];
-	[timerShowLoadingMap release];
 	timerShowLoadingMap = nil;
 	
-	[[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"cannot get map", nil) message:NSLocalizedString(@"cannot get map, please check network", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"stop playing", nil) otherButtonTitles:NSLocalizedString(@"play anyway", nil), nil] autorelease] show];
+	[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"cannot get map", nil) message:NSLocalizedString(@"cannot get map, please check network", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"stop playing", nil) otherButtonTitles:NSLocalizedString(@"play anyway", nil), nil] show];
 }
 
 - (void)showViewGettingLocation
@@ -222,12 +222,11 @@
 	if (signbit([newLocation horizontalAccuracy])) return;
 /*	if ([newLocation horizontalAccuracy] > gameProgress.settings.playgroundSize) return;*/
 	
-	[lastGPSRefresh release];
-	lastGPSRefresh = [[NSDate dateWithTimeIntervalSinceNow:0.] retain];
+	lastGPSRefresh = [NSDate dateWithTimeIntervalSinceNow:0.];
 	[labelGPSAccuracy setText:[NSString stringWithFormat:NSLocalizedString(@"n m format", @"Format for \"10 m\""), (NSUInteger)([newLocation horizontalAccuracy] + 0.5)]];
 	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:VSO_UDK_FIRST_LAUNCH]) {
-		[[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"play info", nil) message:NSLocalizedString(@"lock map when ready msg", nil) delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", nil), nil] autorelease] show];
+		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"play info", nil) message:NSLocalizedString(@"lock map when ready msg", nil) delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", nil), nil] show];
 		
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:VSO_UDK_FIRST_LAUNCH];
 	}
@@ -249,7 +248,7 @@
 		
 		/* Showing arrows if user outside of map */
 		MKCoordinateRegion r = [mapView region];
-		[UIView beginAnimations:nil context:viewGettingLocation];
+		[UIView beginAnimations:nil context:(__bridge void * _Nullable)(viewGettingLocation)];
 		[UIView setAnimationDuration:VSO_ANIM_TIME_SHOW_ARROWS];
 		if (lastCoordinate.latitude < r.center.latitude-r.span.latitudeDelta/2.) imageArrowDown.alpha = 1.;
 		else                                                                     imageArrowDown.alpha = 0.;
@@ -266,7 +265,7 @@
 - (void)locationManager:(CLLocationManager *)manager
 		 didFailWithError:(NSError *)error
 {
-	[[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"cannot get location", nil) message:NSLocalizedString(@"cannot get location. aborting play", nil) delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", nil), nil] autorelease] show];
+	[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"cannot get location", nil) message:NSLocalizedString(@"cannot get location. aborting play", nil) delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", nil), nil] show];
 	[self stopPlaying:self];
 }
 
@@ -340,6 +339,7 @@
 	[labelPlayingTimeTitle setText:playingOrRemainingTitle];
 	
 #ifndef SIMULATOR_CODE
+	[locationManager requestWhenInUseAuthorization];
 	[locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 	[locationManager startUpdatingLocation];
 	[locationManager startUpdatingHeading];
@@ -354,7 +354,7 @@
 	viewShapePreview.gameShape = gameProgress.settings.gameShape;
 	
 	[self refreshTimes:nil];
-	timerRefreshTimes = [[NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(refreshTimes:) userInfo:nil repeats:YES] retain];
+	timerRefreshTimes = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(refreshTimes:) userInfo:nil repeats:YES];
 }
 
 - (void)lockMap:(id)lockButton
@@ -395,14 +395,12 @@
 	[t release];
 	t = nil;
 #endif
-	[locationManager stopUpdatingHeading];
 	[locationManager stopUpdatingLocation];
+	[locationManager stopUpdatingHeading];
 	[timerRefreshTimes invalidate];
-	[timerRefreshTimes release];
 	timerRefreshTimes = nil;
 	
 	[timerShowLoadingMap invalidate];
-	[timerShowLoadingMap release];
 	timerShowLoadingMap = nil;
 }
 
@@ -459,8 +457,6 @@
 	
 	[self presentModalViewController:scoreSender animated:YES];
 	
-	[scoreSender release];
-	
 	[sender removeFromSuperview];
 }
 
@@ -482,26 +478,9 @@
 	[super viewDidUnload];
 }
 
-
 - (void)dealloc
 {
 	NSDLog(@"Deallocing a VSOPlayViewController");
-	
-#ifdef SIMULATOR_CODE
-	[currentLocation release];
-#endif
-	[locationManager release];
-	[lastGPSRefresh release];
-	
-	[viewGettingLocation release];
-	[labelPercentFilled release];
-	[labelPlayingTime release];
-	[mapView release];
-	
-	[gridAnnotationView release];
-	[gameProgress release];
-	
-	[super dealloc];
 }
 
 @end

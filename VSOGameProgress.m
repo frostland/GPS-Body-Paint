@@ -47,9 +47,9 @@
 			progress[i][j] = 0;
 	
 	doneArea = 0.;
-	startDate = [[NSDate dateWithTimeIntervalSinceNow:0] retain];
+	startDate = [NSDate dateWithTimeIntervalSinceNow:0];
 	if (settings.playingMode == VSOPlayingModeTimeLimit)
-		timeLimitTimer = [[NSTimer scheduledTimerWithTimeInterval:settings.playingTime + 1. target:self selector:@selector(finishGame:) userInfo:NULL repeats:NO] retain];
+		timeLimitTimer = [NSTimer scheduledTimerWithTimeInterval:settings.playingTime + 1. target:self selector:@selector(finishGame:) userInfo:NULL repeats:NO];
 	
 	lastPoint = p;
 	[self playerMovedTo:p diameter:d];
@@ -58,7 +58,6 @@
 - (void)gameDidFinish
 {
 	[timeLimitTimer invalidate];
-	[timeLimitTimer release];
 	timeLimitTimer = nil;
 }
 
@@ -127,14 +126,7 @@
 	progress = NULL;
 	
 	[timeLimitTimer invalidate];
-	[timeLimitTimer release];
 	timeLimitTimer = nil;
-	
-	[settings release];
-	[startDate release];
-	[gridPlayGame release];
-	
-	[super dealloc];
 }
 
 @end

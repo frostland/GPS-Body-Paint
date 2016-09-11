@@ -22,8 +22,6 @@
 - (void)dealloc
 {
 	NSDLog(@"Deallocing a VSOMapView");
-	
-	[super dealloc];
 }
 
 @end

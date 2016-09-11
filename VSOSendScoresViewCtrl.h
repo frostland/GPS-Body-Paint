@@ -14,9 +14,9 @@
 @interface VSOSendScoresViewCtrl : UIViewController <UIWebViewDelegate> {
 	IBOutlet UIWebView *webView;
 	
-	id <VSOSendScoresViewCtrlDelegate> delegate;
+	__weak id <VSOSendScoresViewCtrlDelegate> delegate;
 }
-@property(nonatomic, assign) id <VSOSendScoresViewCtrlDelegate> delegate;
+@property(nonatomic, weak) id <VSOSendScoresViewCtrlDelegate> delegate;
 - (IBAction)done:(id)sender;
 
 @end

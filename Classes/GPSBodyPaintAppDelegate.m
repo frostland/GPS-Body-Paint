@@ -35,22 +35,17 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	VSOSettingsViewController *aController = [[VSOSettingsViewController alloc] initWithNibName:@"VSOSettingsView" bundle:nil];
+/*	VSOSettingsViewController *aController = [[VSOSettingsViewController alloc] initWithNibName:@"VSOSettingsView" bundle:nil];
 	aController.title = NSLocalizedString(@"GPS Body Paint", @"Application title");
 	aController.settings = [[VSOSettings new] autorelease];
 	navigationController = [[UINavigationController alloc] initWithRootViewController:aController];
 	navigationController.delegate = aController;
 	
-	[window addSubview:[navigationController view]];
+	window.rootViewController = navigationController;
 	[window makeKeyAndVisible];
 	
-	[aController release];
-}
-
-- (void)dealloc {
-	[navigationController release];
-	[window release];
-	[super dealloc];
+	[aController release];*/
+	[window makeKeyAndVisible];
 }
 
 @end

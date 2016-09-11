@@ -7,13 +7,13 @@
  *
  */
 
-typedef enum VSOGameShapeType {
+typedef enum VSOGameShapeType: NSUInteger {
 	VSOGameShapeTypeSquare = 0,
 	VSOGameShapeTypeHexagon,
 	VSOGameShapeTypeTriangle
 } VSOGameShapeType;
 
-typedef enum VSOPlayingMode {
+typedef enum VSOPlayingMode: NSUInteger {
 	VSOPlayingModeFillIn = 0,
 	VSOPlayingModeTimeLimit,
 } VSOPlayingMode;

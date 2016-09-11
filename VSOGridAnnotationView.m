@@ -393,16 +393,12 @@
 	[UIView setAnimationDuration:0.5];
 	[v setAlpha:0.7];
 	[UIView commitAnimations];
-	[v release];
 }
 
 - (void)dealloc
 {
 	NSDLog(@"Deallocing a VSOGridAnnotationView");
 	if (gridDescription != NULL) free3DTable((void***)gridDescription, xSize, ySize);
-	[curUserLocationView release];
-	
-	[super dealloc];
 }
 
 @end

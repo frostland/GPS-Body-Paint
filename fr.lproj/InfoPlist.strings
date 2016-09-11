@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  GPS Body Paint
+
+  Created by François Lamboley on 9/11/16.
+
+*/
+
+NSLocationWhenInUseUsageDescription = "Votre position est requise pour jouer à ce jeu.";

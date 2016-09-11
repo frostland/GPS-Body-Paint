@@ -34,7 +34,7 @@
 @interface VSOGameProgress : NSObject {
 	VSOSettings *settings;
 	id <VSOGridPlayGame> gridPlayGame;
-	id <VSOGameProgressDelegate> delegate;
+	__weak id <VSOGameProgressDelegate> delegate;
 	NSTimer *timeLimitTimer;
 	
 	BOOL gameOver;
@@ -48,7 +48,7 @@
 @property(nonatomic, retain) id <VSOGridPlayGame> gridPlayGame;
 @property(nonatomic, retain) VSOSettings *settings;
 @property(nonatomic, readonly) CGFloat **progress;
-@property(nonatomic, assign) id <VSOGameProgressDelegate> delegate;
+@property(nonatomic, weak) id <VSOGameProgressDelegate> delegate;
 - (id)initWithSettings:(VSOSettings *)s;
 
 - (void)gameDidStartWithLocation:(CGPoint)p diameter:(CGFloat)d;

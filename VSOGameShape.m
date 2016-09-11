@@ -16,7 +16,7 @@
 
 + (VSOGameShape *)gameShapeWithType:(VSOGameShapeType)t
 {
-	return [[[self alloc] initWithType:t] autorelease];
+	return [(VSOGameShape *)[self alloc] initWithType:t];
 }
 
 - (id)init
@@ -160,8 +160,6 @@
 	if (polygon) free(polygon);
 	shapeCGPath = NULL;
 	polygon = NULL;
-	
-	[super dealloc];
 }
 
 @end

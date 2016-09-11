@@ -29,14 +29,13 @@
 	return self;
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
 	webView.delegate = self,
 	[webView loadHTMLString:[NSString stringWithFormat:@"<center><h1>%@&hellip;</h1></center>", NSLocalizedString(@"submitting score", nil)]
 						 baseURL:nil];
 	
-	NSString *uid = [[UIDevice currentDevice] uniqueIdentifier];
+	NSString *uid = @"UNAVAILABLE";//[[UIDevice currentDevice] uniqueIdentifier];
 	NSUInteger score = [self.delegate score];
 	CGFloat lat = [self.delegate scoreCoords].latitude;
 	CGFloat lng = [self.delegate scoreCoords].longitude;
@@ -88,13 +87,5 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
-
-- (void)dealloc
-{
-	[webView release];
-	[super dealloc];
-}
-
 
 @end
