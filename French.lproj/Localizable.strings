@@ -1,0 +1,78 @@
+﻿/* No comment provided by engineer. */
+"play info" = "Instruction de jeu";
+
+/* No comment provided by engineer. */
+"lock map when ready msg" = "Bougez la carte pour choisir le terrain de jeu. Lorsque vous êtes satisfait, appuyez sur le bouton \"Commencer à jouer\". Le but est de remplir en bleu la zone rouge !";
+
+"cannot get location" = "Impossible d'obtenir votre position";
+"cannot get location. aborting play" = "Je ne peux pas vous localiser. Assurez-vous d'être à l'extérieur, et que vous avez autorisé GPS Body Paint à savoir où vous êtes. Vous ne pourrez pas jouer à ce jeu si vous n'autorisez pas le service de géolocalisation.";
+"cannot get map" = "Impossible de charger la carte";
+"cannot get map, please check network" = "La carte de peut être chargée. Veuillez vérifier votre connection Internet. Vous pouvez jouer sans carte en appuyant sur le bouton \"Jouer quand même\".";
+
+"play anyway" = "Jouer quand même";
+
+/* Here, there is only a %d with the percent sign (%% for %) following */
+"percent complete format" = "%d %%";
+
+/* Here, there is only a %.0f with the percent sign (%% for %) following */
+"percent complete format from float" = "%.0f %%";
+
+/* Format for "10 square meters" */
+"n square meters format" = "%d mètre carré";
+
+/* Format for "10 m" */
+"n m format" = "%d m";
+
+/* Format for "10 meters" */
+"n meters format" = "%d mètres";
+
+/* Playing time label title in the game view */
+"playing time" = "Temps de jeu:";
+
+/* Remaining time label title in the game view */
+"remaining time" = "Temps restant:";
+
+/* Stop playing button title */
+"stop playing" = "Arrêter de jouer";
+
+/* Label on top of the game settings */
+"game settings" = "Préférences";
+
+/* challenge shape setting title */
+"challenge shape" = "Forme du challenge";
+
+/* Painting size setting title */
+"painting size" = "Taille du pinceau";
+
+/* Level size setting title */
+"level size" = "Terrain de jeu";
+
+/* Playing mode setting title */
+"playing mode" = "Mode de jeu";
+
+/* Fill in play mode setting label */
+"fill in" = "Remplissage";
+
+/* Time limit play mode setting label */
+"time limit" = "Temps limité";
+
+/* Application title */
+"GPS Body Paint" = "GPS Body Paint";
+
+/* Not applicable */
+"NA" = "N/A";
+
+"ok" = "OK";
+
+/* Shapes */
+"square" = "Carré";
+"hexagon" = "Hexagone";
+"triangle" = "Triangle";
+
+/* Level difficulties */
+"big" = "Gros";
+"medium" = "Moyen";
+"small" = "Petit";
+
+"submitting score" = "Soumission des scores";
+"cannot contact high score server" = "Impossible de contacter le serveur de soumission de scores.";
