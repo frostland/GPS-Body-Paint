@@ -1,18 +1,18 @@
-//
-//  VSOGameShape.m
-//  GPS Body Paint
-//
-//  Created by François Lamboley on 7/20/09.
-//  Copyright 2009 VSO-Software. All rights reserved.
-//
+/*
+ * VSOGameShape.m
+ * GPS Body Paint
+ *
+ * Created by François Lamboley on 7/20/09.
+ * Copyright 2009 VSO-Software. All rights reserved.
+ */
 
 #import "VSOGameShape.h"
 
 #import "VSOUtils.h"
 
-@implementation VSOGameShape
 
-@synthesize shapeType;
+
+@implementation VSOGameShape
 
 + (VSOGameShape *)gameShapeWithType:(VSOGameShapeType)t
 {
@@ -21,18 +21,18 @@
 
 - (id)init
 {
-	NSDLog(@"Initing a VSOGameShape");
-	nPoints = 0;
-	polygon = NULL;
-	
-	shapeCGPath = NULL;
-	
-	return [super init];
+	return [self initWithType:VSOGameShapeTypeSquare];
 }
 
 - (id)initWithType:(VSOGameShapeType)t
 {
-	if ((self = [self init]) != nil) {
+	NSDLog(@"Initing a VSOGameShape");
+	if ((self = [super init]) != nil) {
+		nPoints = 0;
+		polygon = NULL;
+		
+		shapeCGPath = NULL;
+		
 		self.shapeType = t;
 	}
 	
@@ -41,11 +41,11 @@
 
 - (void)setShapeType:(VSOGameShapeType)t
 {
-	shapeType = t;
+	_shapeType = t;
 	CGPathRelease(shapeCGPath);
 	shapeCGPath = NULL;
 	
-	switch (shapeType) {
+	switch (self.shapeType) {
 		case VSOGameShapeTypeSquare:
 			nPoints = 4;
 			polygon = mallocTable(nPoints, sizeof(CGPoint));
@@ -54,6 +54,7 @@
 			polygon[2] = CGPointMake(1., 1.);
 			polygon[3] = CGPointMake(1., 0.);
 			break;
+			
 		case VSOGameShapeTypeHexagon:
 			nPoints = 6;
 			polygon = mallocTable(nPoints, sizeof(CGPoint));
@@ -65,6 +66,7 @@
 			polygon[4] = CGPointApplyAffineTransform(polygon[3], t);
 			polygon[5] = CGPointApplyAffineTransform(polygon[4], t);
 			break;
+			
 		case VSOGameShapeTypeTriangle:
 			nPoints = 3;
 			polygon = mallocTable(nPoints, sizeof(CGPoint));
@@ -72,20 +74,21 @@
 			polygon[1] = CGPointMake(0.5, 0.);
 			polygon[2] = CGPointMake(0., 1.);
 			break;
-		default: [NSException raise:@"Unknown challenge shape" format:@"The shape with id %d is not a valid shape", shapeType];
+			
+		default: [NSException raise:@"Unknown challenge shape" format:@"The shape with id %lu is not a valid shape", (unsigned long)self.shapeType];
 	}
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-	[aCoder encodeValueOfObjCType:@encode(VSOGameShapeType) at:&shapeType];
+	[aCoder encodeValueOfObjCType:@encode(VSOGameShapeType) at:&_shapeType];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	if ((self = [self init]) != nil) {
-		[aDecoder decodeValueOfObjCType:@encode(VSOGameShapeType) at:&shapeType];
-		self.shapeType = shapeType; /* This will create the polygon! */
+		[aDecoder decodeValueOfObjCType:@encode(VSOGameShapeType) at:&_shapeType];
+		self.shapeType = _shapeType; /* This will create the polygon! */
 	}
 	
 	return self;
@@ -93,11 +96,10 @@
 
 - (CGRect)gameRectFromRect:(CGRect)rect
 {
-	CGRect drawingRect;
+	CGRect drawingRect = rect;
 	CGFloat *minSide, *otherSide;
 	CGFloat *minOrigin, *otherOrigin;
 	
-	drawingRect = rect;
 	if (drawingRect.size.width < drawingRect.size.height) {
 		minSide   = &drawingRect.size.width; otherSide   = &drawingRect.size.height;
 		minOrigin = &drawingRect.origin.x;   otherOrigin = &drawingRect.origin.y;
@@ -143,8 +145,8 @@
 	
 	CGContextSetLineWidth(c, 0.5);
 	
-	CGContextSetStrokeColorWithColor(c, [[UIColor redColor] CGColor]);
-	CGContextSetFillColorWithColor(c, [[[UIColor redColor] colorWithAlphaComponent:0.15] CGColor]);
+	CGContextSetStrokeColorWithColor(c, UIColor.redColor.CGColor);
+	CGContextSetFillColorWithColor(c, [UIColor.redColor colorWithAlphaComponent:0.15].CGColor);
 	
 	CGContextAddPath(c, [self shapeCGPathForDrawRect:rect]);
 	CGContextDrawPath(c, kCGPathFillStroke);
@@ -156,10 +158,14 @@
 {
 	NSDLog(@"Deallocing a VSOGameShape");
 	
-	if (shapeCGPath) CGPathRelease(shapeCGPath);
-	if (polygon) free(polygon);
-	shapeCGPath = NULL;
-	polygon = NULL;
+	if (shapeCGPath != NULL) {
+		CGPathRelease(shapeCGPath);
+		shapeCGPath = NULL;
+	}
+	if (polygon != NULL) {
+		free(polygon);
+		polygon = NULL;
+	}
 }
 
 @end

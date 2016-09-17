@@ -1,34 +1,30 @@
-//
-//  VSOGridAnnotationView.m
-//  GPS Body Paint
-//
-//  Created by François Lamboley on 7/15/09.
-//  Copyright 2009 VSO-Software. All rights reserved.
-//
-
-#import <QuartzCore/CALayer.h>
+/*
+ * VSOGridAnnotationView.m
+ * GPS Body Paint
+ *
+ * Created by François Lamboley on 7/15/09.
+ * Copyright 2009 VSO-Software. All rights reserved.
+ */
 
 #import "VSOGridAnnotationView.h"
 
 #import "VSOUtils.h"
 
-#define USER_LOCATION_VIEW_CENTER_DOT_SIZE 5.
 
-@interface VSOFilledSquareView : UIView {
-	CGPathRef clippingPath;
-}
+
+@interface VSOFilledSquareView : UIView
+
 @property(nonatomic, assign) CGPathRef clippingPath;
 
 @end
 
-@implementation VSOFilledSquareView
 
-@synthesize clippingPath;
+@implementation VSOFilledSquareView
 
 - (id)initWithFrame:(CGRect)f
 {
 	if ((self = [super initWithFrame:f]) != nil) {
-		self.backgroundColor = [UIColor clearColor];
+		self.backgroundColor = UIColor.clearColor;
 	}
 	
 	return self;
@@ -41,110 +37,32 @@
 	
 	CGRect r = [self convertRect:self.bounds toView:[self superview]];
 	CGContextConcatCTM(c, CGAffineTransformMakeTranslation(+(self.bounds.origin.x - r.origin.x), +(self.bounds.origin.y - r.origin.y)));
-	CGContextSetFillColorWithColor(c, [[UIColor colorWithRed:0.7 green:0.8 blue:1. alpha:1.] CGColor]);
-	CGContextAddPath(c, clippingPath);
+	CGContextSetFillColorWithColor(c, [UIColor colorWithRed:0.7 green:0.8 blue:1. alpha:1.].CGColor);
+	CGContextAddPath(c, self.clippingPath);
 	CGContextFillPath(c);
 }
 
 @end
 
-@implementation VSOCurLocationView
 
-@synthesize precision, heading;
 
-- (id)initWithFrame:(CGRect)frame
-{
-	if (self = [super initWithFrame:frame]) {
-		self.opaque = NO;
-		self.contentMode = UIViewContentModeRedraw;
-		self.backgroundColor = [UIColor clearColor];
-		
-		self.heading = -1.;
-		self.precision = 0.;
-	}
-	
-	return self;
-}
+#pragma mark -
+@interface VSOGridAnnotationView ()
 
-- (void)setFrame:(CGRect)f
-{
-	CGFloat s = MAX(USER_LOCATION_VIEW_CENTER_DOT_SIZE, precision + 3.);
-	
-	f.origin.x += (f.size.width -s)/2.;
-	f.origin.y += (f.size.height-s)/2.;
-	f.size.width = f.size.height = s;
-	
-	[super setFrame:f];
-}
-
-- (void)setPrecision:(CGFloat)p
-{
-	precision = p;
-	[self setFrame:self.frame];
-}
-
-- (void)setHeading:(CGFloat)h
-{
-	heading = h;
-	[self setNeedsDisplay];
-}
-
-- (void)drawRect:(CGRect)rect
-{
-	NSDLog(@"Drawing a VSOCurLocationView with rect: %@", NSStringFromCGRect(rect));
-	
-	CGPoint center = CGPointMake(rect.origin.x + rect.size.width/2., rect.origin.y + rect.size.height/2.);
-	
-	CGContextRef c = UIGraphicsGetCurrentContext();
-	
-	if (heading >= 0.) {
-		CGContextConcatCTM(c, CGAffineTransformMakeTranslation(center.x, center.y));
-		CGContextConcatCTM(c, CGAffineTransformMakeRotation(-2.*M_PI*(heading/360)));
-		CGContextConcatCTM(c, CGAffineTransformMakeTranslation(-center.x, -center.y));
-	}
-	
-	CGRect precisionRect = CGRectMake(center.x-precision/2., center.y-precision/2., precision, precision);
-	UIColor *color = [UIColor colorWithRed:0.34901961 green:0.20392157 blue:0.08627451 alpha:1.];
-	CGContextSetFillColorWithColor(c, [[color colorWithAlphaComponent:0.3] CGColor]);
-	CGContextSetStrokeColorWithColor(c, [color CGColor]);
-	CGContextSetLineWidth(c, 1.);
-	
-	CGContextFillEllipseInRect(c, precisionRect);
-	CGContextStrokeEllipseInRect(c, precisionRect);
-	
-	if (heading >= 0.) {
-		/* Heading is defined. Drawing the arrow. */
-		CGFloat r = precision/2.;
-		CGContextMoveToPoint(c, center.x, center.y-r);
-		CGContextAddLineToPoint(c, center.x + cos(   M_PI/3.)*r, center.y + sin(   M_PI/3.)*r);
-		CGContextAddLineToPoint(c, center.x + cos(2.*M_PI/3.)*r, center.y + sin(2.*M_PI/3.)*r);
-		CGContextAddLineToPoint(c, center.x, center.y - r);
-		
-		CGContextSetFillColorWithColor(c, [[UIColor colorWithWhite:0.7 alpha:0.8] CGColor]);
-		CGContextDrawPath(c, kCGPathFillStroke);
-	} else {
-		CGContextSetFillColorWithColor(c, [color CGColor]);
-		CGContextFillEllipseInRect(c, CGRectMake(center.x-USER_LOCATION_VIEW_CENTER_DOT_SIZE/2., center.y-USER_LOCATION_VIEW_CENTER_DOT_SIZE/2., USER_LOCATION_VIEW_CENTER_DOT_SIZE, USER_LOCATION_VIEW_CENTER_DOT_SIZE));
-	}
-}
+@property(nonatomic, assign) CGFloat totalArea;
 
 @end
 
 
 @implementation VSOGridAnnotationView
 
-@synthesize map;
-@synthesize totalArea;
-@synthesize gameProgress;
-
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {
-	if (self = [super initWithFrame:frame]) {
+	if ((self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) != nil) {
 		self.opaque = NO;
 		self.userInteractionEnabled = NO;
-		self.backgroundColor = [UIColor clearColor];
-		self.clearsContextBeforeDrawing = YES;
-		curUserLocationView = [[VSOCurLocationView alloc] initWithFrame:CGRectMake(0., 0., 0., 0.)];
+		curUserLocationView = [[VSOCurLocationView alloc] initWithFrame:CGRectZero];
+		curUserLocationView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
 		[self addSubview:curUserLocationView];
 		[curUserLocationView.layer setZPosition:1000000.];
 		
@@ -171,7 +89,7 @@
 {
 	gridDescription = (CGPoint***)malloc3DTable(xSize, ySize, 4, sizeof(CGPoint));
 	
-	CGPathRef shapePath = [gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds];
+	CGPathRef shapePath = [self.gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds];
 	for (NSUInteger x = 0; x<xSize; x++) {
 		for (NSUInteger y = 0; y<ySize; y++) {
 			CGRect curRect = CGRectStandardize([self rectFromGridPixelAtX:x andY:y]);
@@ -220,7 +138,7 @@
 			gridDescription[x][y][1].x -= curRect.origin.x; gridDescription[x][y][1].y -= curRect.origin.y;
 			gridDescription[x][y][2].x -= curRect.origin.x; gridDescription[x][y][2].y -= curRect.origin.y;
 			gridDescription[x][y][3].x -= curRect.origin.x; gridDescription[x][y][3].y -= curRect.origin.y;
-			totalArea += [self areaAtGridX:x gridY:y];
+			self.totalArea += [self areaAtGridX:x gridY:y];
 		}
 	}
 }
@@ -232,8 +150,8 @@
 	NSDLog(@"Computing metadata");
 	metedataComputed = YES;
 	
-	gameRect = [gameProgress.settings.gameShape gameRectFromRect:self.bounds];
-	baseRect = [map convertRegion:MKCoordinateRegionMakeWithDistance([self.annotation coordinate], gameProgress.settings.gridSize, gameProgress.settings.gridSize) toRectToView:self];
+	gameRect = [self.gameProgress.settings.gameShape gameRectFromRect:self.bounds];
+	baseRect = [self.map convertRegion:MKCoordinateRegionMakeWithDistance([self.annotation coordinate], self.gameProgress.settings.gridSize, self.gameProgress.settings.gridSize) toRectToView:self];
 	
 	xSize = (int)(gameRect.size.width /baseRect.size.width) + 1;
 	ySize = (int)(gameRect.size.height/baseRect.size.height) + 1;
@@ -252,7 +170,7 @@
 	
 	CGContextSaveGState(c);
 	
-	CGContextAddPath(c, [gameProgress.settings.gameShape shapeCGPathForDrawRect:r]);
+	CGContextAddPath(c, [self.gameProgress.settings.gameShape shapeCGPathForDrawRect:r]);
 	CGContextClip(c);
 	
 	CGContextSetStrokeColorWithColor(c, [[[UIColor blackColor] colorWithAlphaComponent:0.5] CGColor]);
@@ -268,7 +186,7 @@
 	
 	CGContextRestoreGState(c);
 	
-	[gameProgress.settings.gameShape drawInRect:self.bounds withContext:c];
+	[self.gameProgress.settings.gameShape drawInRect:self.bounds withContext:c];
 }
 
 - (void)setCurHeading:(CGFloat)h
@@ -278,11 +196,10 @@
 
 - (void)setCurUserLocation:(CGPoint)p withPrecision:(CGFloat)precision
 {
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.5];
-	curUserLocationView.precision = precision;
-	curUserLocationView.center = p;
-	[UIView commitAnimations];
+	[UIView animateWithDuration:.5 animations:^{
+		curUserLocationView.precision = precision;
+		curUserLocationView.center = p;
+	}];
 }
 
 - (NSUInteger)numberOfHorizontalPixels
@@ -310,10 +227,10 @@
 	[self computeMetadata];
 	
 	*n = 0;
-	if (CGPathContainsPoint([gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds], NULL, p, NO)) {
+	if (CGPathContainsPoint([self.gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds], NULL, p, NO)) {
 		NSUInteger xP = (int)(p.x + (self.bounds.origin.x-gameRect.origin.x))/baseRect.size.width;
 		NSUInteger yP = (int)(p.y + (self.bounds.origin.y-gameRect.origin.y))/baseRect.size.height;
-		hits[(*n)++] = CGPointMake(xP, yP);;
+		hits[(*n)++] = CGPointMake(xP, yP);
 	}
 	
 	CGMutablePathRef pathToCheck = CGPathCreateMutable();
@@ -338,7 +255,7 @@
 					if (*n >= curHitsNumber) {
 						curHitsNumber += 9;
 						hits = realloc(hits, curHitsNumber*sizeof(CGPoint));
-						if (!hits) [NSException raise:@"Memory full" format:@"Cannot allocated %d bytes", curHitsNumber*sizeof(CGPoint)];
+						if (!hits) [NSException raise:@"Memory full" format:@"Cannot allocate %lu bytes", curHitsNumber*sizeof(CGPoint)];
 					}
 					foundHit = YES;
 				}
@@ -347,7 +264,7 @@
 	}
 	CGPathRelease(pathToCheck);
 	
-	NSDLog(@"Hits #: %d", *n);
+	NSDLog(@"Hits #: %lu", (unsigned long)*n);
 	
 	return hits;
 }
@@ -383,16 +300,15 @@
 
 - (void)addSquareVisitedAtGridX:(NSUInteger)x gridY:(NSUInteger)y
 {
-	if (gameProgress.progress[x][y] > 1) return;
+	if (self.gameProgress.progress[x][y] > 1) return;
 	
 	VSOFilledSquareView *v = [[VSOFilledSquareView alloc] initWithFrame:[self rectFromGridPixelAtX:x andY:y]];
-	[v setClippingPath:[gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds]];
-	[v setAlpha:0.];
+	v.clippingPath = [self.gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds];
+	v.alpha = 0.;
 	[self addSubview:v];
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.5];
-	[v setAlpha:0.7];
-	[UIView commitAnimations];
+	[UIView animateWithDuration:.5 animations:^{
+		v.alpha = .7;
+	}];
 }
 
 - (void)dealloc

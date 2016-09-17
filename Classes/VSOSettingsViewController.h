@@ -13,15 +13,13 @@
 
 
 
-@interface VSOSettingsViewController : UITableViewController <VSOPlayViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate> {
-	VSOSettings *settings;
-}
+@interface VSOSettingsViewController : UITableViewController <VSOPlayViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
+
+@property(nonatomic, retain) VSOSettings *settings;
 
 @property(nonatomic, retain) IBOutlet UILabel *labelLevelSize;
 @property(nonatomic, retain) IBOutlet UILabel *labelLevelDifficulty;
 @property(nonatomic, retain) IBOutlet UILabel *labelChallengeShape;
 @property(nonatomic, retain) IBOutlet UILabel *labelPlayingMode;
-
-- (IBAction)play:(id)sender;
 
 @end

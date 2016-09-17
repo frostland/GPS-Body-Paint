@@ -36,40 +36,40 @@
 	[self refreshUI];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	[super prepareForSegue:segue sender:sender];
+	
+	if ([segue.identifier isEqualToString:@"Play"]) {
+		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+		VSOPlayViewController *controller = segue.destinationViewController;
+		
+		self.settings.gameShape = [NSKeyedUnarchiver unarchiveObjectWithData:[ud valueForKey:VSO_UDK_GAME_SHAPE]];
+		self.settings.playgroundSize = [ud integerForKey:VSO_UDK_LEVEL_SIZE];
+		self.settings.gridSize = 3.;
+		self.settings.playingMode = [ud integerForKey:VSO_UDK_PLAYING_MODE];
+		self.settings.playingTime = [ud doubleForKey:VSO_UDK_PLAYING_TIME];
+		self.settings.playingFillPercentToDo = [ud integerForKey:VSO_UDK_PLAYING_FILL_PERCENTAGE];
+		self.settings.userLocationDiameter = 10. - [ud integerForKey:VSO_UDK_LEVEL_PAINTING_SIZE]*1.9;
+		
+		controller.gameProgress = [[VSOGameProgress alloc] initWithSettings:self.settings];
+		controller.delegate = self;
+	}
+}
+
 /* Ugly, isn't it? */
 - (void)doDismissModalViewControllerAnimated
 {
 	NSDLog(@"doDismissModalViewControllerAnimated called");
 	
-	if (![self modalViewController]) return;
-	[self dismissModalViewControllerAnimated:YES];
+	if ([self presentedViewController] == nil) return;
+	[self dismissViewControllerAnimated:YES completion:NULL];
 	[self performSelector:@selector(doDismissModalViewControllerAnimated) withObject:nil afterDelay:0.15];
 }
 
 - (void)playViewControllerDidFinish:(VSOPlayViewController *)controller
 {
-	[[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
 	[self doDismissModalViewControllerAnimated];
-}
-
-- (IBAction)play:(id)sender
-{
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-	VSOPlayViewController *controller = [[VSOPlayViewController alloc] initWithNibName:@"VSOPlayView" bundle:nil];
-	
-	settings.gameShape = [NSKeyedUnarchiver unarchiveObjectWithData:[ud valueForKey:VSO_UDK_GAME_SHAPE]];
-	settings.playgroundSize = [ud integerForKey:VSO_UDK_LEVEL_SIZE];
-	settings.gridSize = 3.;
-	settings.playingMode = [ud integerForKey:VSO_UDK_PLAYING_MODE];
-	settings.playingTime = [ud doubleForKey:VSO_UDK_PLAYING_TIME];
-	settings.playingFillPercentToDo = [ud integerForKey:VSO_UDK_PLAYING_FILL_PERCENTAGE];
-	settings.userLocationDiameter = 10. - [ud integerForKey:VSO_UDK_LEVEL_PAINTING_SIZE]*1.9;
-	
-	controller.gameProgress = [[VSOGameProgress alloc] initWithSettings:settings];
-	controller.delegate = self;
-	
-	controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[self presentViewController:controller animated:YES completion:NULL];
 }
 
 #pragma mark - Private

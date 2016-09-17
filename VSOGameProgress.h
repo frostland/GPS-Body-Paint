@@ -1,14 +1,16 @@
-//
-//  VSOGameProgress.h
-//  GPS Body Paint
-//
-//  Created by François Lamboley on 7/16/09.
-//  Copyright 2009 VSO-Software. All rights reserved.
-//
+/*
+ * VSOGameProgress.h
+ * GPS Body Paint
+ *
+ * Created by François Lamboley on 7/16/09.
+ * Copyright 2009 VSO-Software. All rights reserved.
+ */
 
 #import <Foundation/Foundation.h>
 
 #import "VSOSettings.h"
+
+
 
 @protocol VSOGridPlayGame <NSObject>
 
@@ -29,26 +31,28 @@
 
 @end
 
-@protocol VSOGameProgressDelegate;
+
+@protocol VSOGameProgressDelegate
+
+- (void)gameDidFinish:(BOOL)didWin;
+
+@end
+
 
 @interface VSOGameProgress : NSObject {
-	VSOSettings *settings;
-	id <VSOGridPlayGame> gridPlayGame;
-	__weak id <VSOGameProgressDelegate> delegate;
 	NSTimer *timeLimitTimer;
 	
 	BOOL gameOver;
 	CGPoint lastPoint;
-	CGFloat doneArea;
-	NSDate *startDate;
-	CGFloat **progress;
 }
-@property(readonly) CGFloat doneArea;
+
+@property(nonatomic, readonly) CGFloat doneArea;
 @property(nonatomic, readonly) NSDate *startDate;
 @property(nonatomic, retain) id <VSOGridPlayGame> gridPlayGame;
 @property(nonatomic, retain) VSOSettings *settings;
 @property(nonatomic, readonly) CGFloat **progress;
 @property(nonatomic, weak) id <VSOGameProgressDelegate> delegate;
+
 - (id)initWithSettings:(VSOSettings *)s;
 
 - (void)gameDidStartWithLocation:(CGPoint)p diameter:(CGFloat)d;
@@ -58,11 +62,5 @@
 
 - (CGFloat)percentDone;
 - (CGFloat)totalArea; /* In pixel/m^2 */
-
-@end
-
-@protocol VSOGameProgressDelegate
-
-- (void)gameDidFinish:(BOOL)win;
 
 @end
