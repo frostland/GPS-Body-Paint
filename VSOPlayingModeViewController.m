@@ -45,8 +45,8 @@
 
 - (IBAction)timeChanged:(id)sender
 {
-	if ([self.datePicker countDownDuration]<60) [self.datePicker setCountDownDuration:0];
-	[NSUserDefaults.standardUserDefaults setDouble:[self.datePicker countDownDuration] forKey:VSO_UDK_PLAYING_TIME];
+	if (self.datePicker.countDownDuration < 60) self.datePicker.countDownDuration = 0;
+	[NSUserDefaults.standardUserDefaults setDouble:self.datePicker.countDownDuration forKey:VSO_UDK_PLAYING_TIME];
 }
 
 /* ***** Table View Data Source & Delegate ***** */
