@@ -78,7 +78,7 @@
 		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B9912FC1D8DB0FF00AA2C1A /* VSOCurLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOCurLocationView.h; sourceTree = "<group>"; };
 		7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOCurLocationView.m; sourceTree = "<group>"; };
-		7BA248211DCF818C007F5B2E /* Soccer Field.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Soccer Field.gpx"; sourceTree = "<group>"; };
+		7BA248211DCF818C007F5B2E /* Soccer Field.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; lineEnding = 0; path = "Soccer Field.gpx"; sourceTree = "<group>"; };
 		7BB0EA611D856B110057BFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOLevelSizeViewController.h; sourceTree = "<group>"; };
 		7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOLevelSizeViewController.m; sourceTree = "<group>"; };

@@ -165,6 +165,7 @@
 		
 		if (!userMovedMap) [self centerMapToCurrentUserLocation:self];
 		
+		mapFirstCenterDone = YES;
 		[self removeGettingLocationMsgAnimated];
 	} else {
 		[self.gameProgress playerMovedTo:[self.mapView convertCoordinate:lastCoordinate toPointToView:self.mapView]
