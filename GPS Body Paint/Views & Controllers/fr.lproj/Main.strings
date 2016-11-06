@@ -1,0 +1,91 @@
+/* Do not translate */
+"7DP-kz-wny.text" = ""; "Uig-ln-Pqh.text" = ""; "fhb-pI-Lmw.text" = ""; "sLt-7F-iqk.text" = "";
+"CHX-JS-0ip.text" = ""; "L7L-0o-GVU.text" = ""; "M2t-Hh-4SF.text" = ""; "jeb-EC-rxh.text" = "";
+"rib-e1-SK4.text" = ""; "uhS-O2-yVp.text" = ""; "8MW-56-tYM.text" = ""; "tmZ-6F-jWr.text" = "";
+"9Uh-hw-tpd.text" = "";
+/* Leave value to 1 space */
+"sjw-BZ-67C.title" = " ";
+
+
+
+/* Settings (Main View) Title */
+"bHC-Ik-XA4.title" = "GPS Body Paint";
+/* Settings Section Title */
+"C2p-dj-aZ9.headerTitle" = "Préférences";
+/* Settings: Playground Size */
+"Gl5-Zh-dbR.text" = "Terrain de jeu";
+/* Settings: Painting Size */
+"OCw-Cb-8ry.text" = "Taille du pinceau";
+/* Settings: Challenge Shape */
+"EHH-lM-uNC.text" = "Forme du challenge";
+/* Settings: Playing Mode */
+"oTY-Ug-pLR.text" = "Mode de jeu";
+/* Play Button on Settings View */
+"Bi0-gX-X1x.normalTitle" = "Jouer !";
+
+
+/* Playground Size View Title */
+"ozd-Uz-l4m.title" = "Terrain de jeu";
+/* Playground Size Choosing Description */
+"urc-5s-oDJ.text" = "Choisissez une taille ci-dessous :";
+
+
+/* Painting Size View Title */
+"KCD-bO-dSR.title" = "Taille du pinceau";
+/* Painting Size Choosing Description */
+"Wnm-Tk-rUY.text" = "Choisissez la taille du pinceau ci-dessous :";
+/* Painting Size: Big */
+"i7F-Ob-z7k.segmentTitles[0]" = "Gros";
+/* Painting Size: Medium */
+"i7F-Ob-z7k.segmentTitles[1]" = "Moyen";
+/* Painting Size: Small */
+"i7F-Ob-z7k.segmentTitles[2]" = "Petit";
+
+
+/* Challenge Shape View Title */
+"TuJ-9i-pou.title" = "Forme du challenge";
+/* Challenge Shape: Square */
+"hmM-mG-fCl.segmentTitles[0]" = "Carré";
+/* Challenge Shape: Hexagon */
+"hmM-mG-fCl.segmentTitles[1]" = "Hexagone";
+/* Challenge Shape: Triangle */
+"hmM-mG-fCl.segmentTitles[2]" = "Triangle";
+
+
+/* Playing Mode View Title */
+"H0p-u6-s4u.title" = "Mode de jeu";
+
+
+
+/* Play View: Loading Map */
+"d5e-T2-wzK.text" = "Chargement de la carte…";
+/* Play View: Filled Area */
+"1BV-zg-i8T.text" = "Rempli :";
+/* Play View: Goal */
+"qu2-ug-7Va.text" = "Objectif :";
+/* Play View: Playing Time */
+"HKY-iD-uj0.text" = "Temps de jeu :";
+/* Play View: Current GPS Accuracy */
+"Ltn-gm-KJc.text" = "Précision actuelle du GPS :";
+/* Play View: Start Playing */
+"40Z-RJ-3CX.normalTitle" = "Commencer à jouer";
+
+
+/* Getting Location View: Description */
+"H5j-PH-qo0.text" = "Récupération de votre position…\nAssurez-vous d’être à l’extérieur.";
+/* Getting Location View: Cancel */
+"tMo-eZ-nF0.normalTitle" = "Annuler";
+/* Getting Location View: Note about GPS delays */
+"y9J-6D-Ddb.text" = "Note : Il est possible que la récupération de votre position prenne quelque temps à cause des délais du GPS.";
+
+
+/* Game Over View Title */
+"oK0-9v-sVI.text" = "Jeu terminé !";
+/* Game Over: Playing Time */
+"hIr-54-JUq.text" = "Temps de jeu :";
+/* Game Over: Filled Area */
+"WJd-SW-VtM.text" = "Zone remplie :";
+/* Game Over: Square Meters Area Equivalent */
+"UmE-2R-HjY.text" = "Ce qui donne :";
+/* Game Over: Done Button */
+"dcR-MW-9F1.normalTitle" = "Terminé";
