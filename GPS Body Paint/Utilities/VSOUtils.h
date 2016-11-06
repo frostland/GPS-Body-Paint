@@ -10,9 +10,9 @@
 
 
 #ifndef NDEBUG
-#define NSDLog(format...) NSLog(format)
+# define NSDLog(format...) NSLog(format)
 #else
-#define NSDLog(format...) (void)NULL
+# define NSDLog(format...) (void)NULL
 #endif
 
 
