@@ -78,6 +78,7 @@
 		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B9912FC1D8DB0FF00AA2C1A /* VSOCurLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOCurLocationView.h; sourceTree = "<group>"; };
 		7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOCurLocationView.m; sourceTree = "<group>"; };
+		7BA248211DCF818C007F5B2E /* Soccer Field.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Soccer Field.gpx"; sourceTree = "<group>"; };
 		7BB0EA611D856B110057BFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOLevelSizeViewController.h; sourceTree = "<group>"; };
 		7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOLevelSizeViewController.m; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 			children = (
 				0FCDE41110160CD7001D5E65 /* Notes.rtf */,
 				7B27B92A1DCF374D006F44B7 /* GPS Body Paint */,
+				7BA248221DCF8193007F5B2E /* Fake Locations */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -240,6 +242,14 @@
 				0FD1BBCF100F374800000185 /* VSOUtils.c */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7BA248221DCF8193007F5B2E /* Fake Locations */ = {
+			isa = PBXGroup;
+			children = (
+				7BA248211DCF818C007F5B2E /* Soccer Field.gpx */,
+			);
+			path = "Fake Locations";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
