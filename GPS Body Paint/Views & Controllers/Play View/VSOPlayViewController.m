@@ -163,10 +163,8 @@
 	if (!mapLocked) {
 		coordinateForAnnotation = lastCoordinate;
 		
-		if (!mapFirstCenterDone) [self centerMapToCurrentUserLocation:self];
-		else if (!userMovedMap) [self.mapView setCenterCoordinate:coordinateForAnnotation animated:YES];
+		if (!userMovedMap) [self centerMapToCurrentUserLocation:self];
 		
-		mapFirstCenterDone = YES;
 		[self removeGettingLocationMsgAnimated];
 	} else {
 		[self.gameProgress playerMovedTo:[self.mapView convertCoordinate:lastCoordinate toPointToView:self.mapView]
