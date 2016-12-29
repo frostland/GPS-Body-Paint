@@ -1,16 +1,16 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "d137c677-41e9-7b41-b80e-7f5230572e8c++9661",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "00159064C3D24C8BAA1C1FE9E8C0D0FB5178B27A",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "d137c677-41e9-7b41-b80e-7f5230572e8c++9661" : {
+    "00159064C3D24C8BAA1C1FE9E8C0D0FB5178B27A" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "d137c677-41e9-7b41-b80e-7f5230572e8c++9661" : 9223372036854775807
+    "00159064C3D24C8BAA1C1FE9E8C0D0FB5178B27A" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0AAEE8E9-B236-4FBC-9F2C-B12C8100E392",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "d137c677-41e9-7b41-b80e-7f5230572e8c++9661" : "GPS%20Body%20Paint\/"
+    "00159064C3D24C8BAA1C1FE9E8C0D0FB5178B27A" : "GPS%20Body%20Paint\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "GPS Body Paint",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -19,7 +19,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.2.110\/iphone",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "d137c677-41e9-7b41-b80e-7f5230572e8c++9661"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "00159064C3D24C8BAA1C1FE9E8C0D0FB5178B27A"
     }
   ]
 }
