@@ -379,13 +379,13 @@
 		playingTime = -self.gameProgress.startDate.timeIntervalSinceNow;
 		
 		i = (NSUInteger)playingTime;
-		h = i/3600, m = (i-h*3600)/60, s = i-h*3600-m*60;
+		h = i/3600; m = (i-h*3600)/60; s = i-h*3600-m*60;
 		NSString *tasstr = [NSString stringWithFormat:@"%02lu:%02lu:%02lu", (unsigned long)h, (unsigned long)m, (unsigned long)s];
 		[self.wonLabelPlayingTime setText:tasstr];
 		
 		if (self.gameProgress.settings.playingMode == VSOPlayingModeTimeLimit) i = MAX(0, self.gameProgress.settings.playingTime - playingTime);
 		
-		h = i/3600, m = (i-h*3600)/60, s = i-h*3600-m*60;
+		h = i/3600; m = (i-h*3600)/60; s = i-h*3600-m*60;
 		tasstr = [NSString stringWithFormat:@"%02lu:%02lu:%02lu", (unsigned long)h, (unsigned long)m, (unsigned long)s];
 		[self.labelPlayingTime setText:tasstr];
 	}
