@@ -177,14 +177,14 @@
 		/* Showing arrows if user outside of map */
 		MKCoordinateRegion r = self.mapView.region;
 		[UIView animateWithDuration:VSO_ANIM_TIME_SHOW_ARROWS animations:^{
-			if (lastCoordinate.latitude < r.center.latitude-r.span.latitudeDelta/2.) self.imageArrowDown.alpha = 1.;
-			else                                                                     self.imageArrowDown.alpha = 0.;
-			if (lastCoordinate.latitude > r.center.latitude+r.span.latitudeDelta/2.) self.imageArrowTop.alpha = 1.;
-			else                                                                     self.imageArrowTop.alpha = 0.;
-			if (lastCoordinate.longitude < r.center.longitude-r.span.longitudeDelta/2.) self.imageArrowLeft.alpha = 1.;
-			else                                                                        self.imageArrowLeft.alpha = 0.;
-			if (lastCoordinate.longitude > r.center.longitude+r.span.longitudeDelta/2.) self.imageArrowRight.alpha = 1.;
-			else                                                                        self.imageArrowRight.alpha = 0.;
+			if (self->lastCoordinate.latitude < r.center.latitude-r.span.latitudeDelta/2.) self.imageArrowDown.alpha = 1.;
+			else                                                                           self.imageArrowDown.alpha = 0.;
+			if (self->lastCoordinate.latitude > r.center.latitude+r.span.latitudeDelta/2.) self.imageArrowTop.alpha = 1.;
+			else                                                                           self.imageArrowTop.alpha = 0.;
+			if (self->lastCoordinate.longitude < r.center.longitude-r.span.longitudeDelta/2.) self.imageArrowLeft.alpha = 1.;
+			else                                                                              self.imageArrowLeft.alpha = 0.;
+			if (self->lastCoordinate.longitude > r.center.longitude+r.span.longitudeDelta/2.) self.imageArrowRight.alpha = 1.;
+			else                                                                              self.imageArrowRight.alpha = 0.;
 		}];
 	}
 }

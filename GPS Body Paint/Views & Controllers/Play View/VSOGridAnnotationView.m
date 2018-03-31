@@ -197,8 +197,8 @@
 - (void)setCurUserLocation:(CGPoint)p withPrecision:(CGFloat)precision
 {
 	[UIView animateWithDuration:.5 animations:^{
-		curUserLocationView.precision = precision;
-		curUserLocationView.center = p;
+		self->curUserLocationView.precision = precision;
+		self->curUserLocationView.center = p;
 	}];
 }
 
