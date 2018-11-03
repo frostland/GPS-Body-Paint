@@ -8,6 +8,8 @@
 
 #import "VSOGridAnnotationView.h"
 
+#import "GPS_Body_Paint-Swift.h"
+
 #import "VSOUtils.h"
 
 
@@ -89,7 +91,7 @@
 {
 	gridDescription = (CGPoint***)malloc3DTable(xSize, ySize, 4, sizeof(CGPoint));
 	
-	CGPathRef shapePath = [self.gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds];
+	CGPathRef shapePath = [self.gameProgress.settings.gameShape pathForDrawingIn:self.bounds];
 	for (NSUInteger x = 0; x<xSize; x++) {
 		for (NSUInteger y = 0; y<ySize; y++) {
 			CGRect curRect = CGRectStandardize([self rectFromGridPixelAtX:x andY:y]);
@@ -150,7 +152,7 @@
 	NSDLog(@"Computing metadata");
 	metedataComputed = YES;
 	
-	gameRect = [self.gameProgress.settings.gameShape gameRectFromRect:self.bounds];
+	gameRect = [self.gameProgress.settings.gameShape gameRectFrom:self.bounds];
 	baseRect = [self.map convertRegion:MKCoordinateRegionMakeWithDistance([self.annotation coordinate], self.gameProgress.settings.gridSize, self.gameProgress.settings.gridSize) toRectToView:self];
 	
 	xSize = (int)(gameRect.size.width /baseRect.size.width) + 1;
@@ -170,7 +172,7 @@
 	
 	CGContextSaveGState(c);
 	
-	CGContextAddPath(c, [self.gameProgress.settings.gameShape shapeCGPathForDrawRect:r]);
+	CGContextAddPath(c, [self.gameProgress.settings.gameShape pathForDrawingIn:r]);
 	CGContextClip(c);
 	
 	CGContextSetStrokeColorWithColor(c, [[[UIColor blackColor] colorWithAlphaComponent:0.5] CGColor]);
@@ -186,7 +188,7 @@
 	
 	CGContextRestoreGState(c);
 	
-	[self.gameProgress.settings.gameShape drawInRect:self.bounds withContext:c];
+	[self.gameProgress.settings.gameShape drawIn:self.bounds context:c];
 }
 
 - (void)setCurHeading:(CGFloat)h
@@ -227,7 +229,7 @@
 	[self computeMetadata];
 	
 	*n = 0;
-	if (CGPathContainsPoint([self.gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds], NULL, p, NO)) {
+	if (CGPathContainsPoint([self.gameProgress.settings.gameShape pathForDrawingIn:self.bounds], NULL, p, NO)) {
 		NSUInteger xP = (int)(p.x + (self.bounds.origin.x-gameRect.origin.x))/baseRect.size.width;
 		NSUInteger yP = (int)(p.y + (self.bounds.origin.y-gameRect.origin.y))/baseRect.size.height;
 		hits[(*n)++] = CGPointMake(xP, yP);
@@ -303,7 +305,7 @@
 	if (self.gameProgress.progress[x][y] > 1) return;
 	
 	VSOFilledSquareView *v = [[VSOFilledSquareView alloc] initWithFrame:[self rectFromGridPixelAtX:x andY:y]];
-	v.clippingPath = [self.gameProgress.settings.gameShape shapeCGPathForDrawRect:self.bounds];
+	v.clippingPath = [self.gameProgress.settings.gameShape pathForDrawingIn:self.bounds];
 	v.alpha = 0.;
 	[self addSubview:v];
 	[UIView animateWithDuration:.5 animations:^{

@@ -10,7 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "Constants.h"
-#import "VSOGameShape.h"
+
+@class GameShape;
 
 
 
@@ -20,7 +21,7 @@
 @property(nonatomic) CGFloat gridSize;
 @property(nonatomic) CGFloat userLocationDiameter;
 
-@property(nonatomic, retain) VSOGameShape *gameShape;
+@property(nonatomic, retain) GameShape *gameShape;
 @property(nonatomic) VSOPlayingMode playingMode;
 @property(nonatomic) NSTimeInterval playingTime;
 @property(nonatomic) NSUInteger playingFillPercentToDo;

@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-#import "VSOGameShape.h"
 #import "VSOShapeView.h"
+
+@class GameShape;
 
 
 
 @interface VSOChallengeShapeViewController : UIViewController {
-	VSOGameShape *shape;
+	GameShape *shape;
 }
 
 + (NSString *)localizedSettingValue;

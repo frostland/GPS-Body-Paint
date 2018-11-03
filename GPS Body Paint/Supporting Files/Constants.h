@@ -6,11 +6,15 @@
  * Copyright 2009 VSO-Software. All rights reserved.
  */
 
-typedef enum VSOGameShapeType: NSUInteger {
+@import Foundation.NSObjCRuntime;
+@import ObjectiveC.NSObjCRuntime;
+
+
+typedef NS_ENUM(NSInteger, VSOGameShapeType) {
 	VSOGameShapeTypeSquare = 0,
 	VSOGameShapeTypeHexagon,
 	VSOGameShapeTypeTriangle
-} VSOGameShapeType;
+};
 
 typedef enum VSOPlayingMode: NSUInteger {
 	VSOPlayingModeFillIn = 0,

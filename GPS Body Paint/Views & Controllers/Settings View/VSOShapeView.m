@@ -8,6 +8,8 @@
 
 #import "VSOShapeView.h"
 
+#import "GPS_Body_Paint-Swift.h"
+
 
 
 @implementation VSOShapeView
@@ -15,10 +17,10 @@
 - (void)drawRect:(CGRect)rect
 {
 	CGContextRef c = UIGraphicsGetCurrentContext();
-	[self.gameShape drawInRect:self.bounds withContext:c];
+	[self.gameShape drawIn:self.bounds context:c];
 }
 
-- (void)setGameShape:(VSOGameShape *)gs
+- (void)setGameShape:(GameShape *)gs
 {
 	if (gs == self.gameShape) return;
 	_gameShape = gs;

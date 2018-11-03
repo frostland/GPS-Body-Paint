@@ -8,6 +8,10 @@
 
 #import "VSOChallengeShapeViewController.h"
 
+#import "GPS_Body_Paint-Swift.h"
+
+#import "Constants.h"
+
 
 
 @implementation VSOChallengeShapeViewController

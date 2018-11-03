@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "VSOGameShape.h"
+@class GameShape;
 
 
 
 @interface VSOShapeView : UIView
 
-@property(nonatomic, retain) VSOGameShape *gameShape;
+@property(nonatomic, retain) GameShape *gameShape;
 
 @end

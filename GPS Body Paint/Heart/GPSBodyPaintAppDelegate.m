@@ -8,6 +8,8 @@
 
 #import "GPSBodyPaintAppDelegate.h"
 
+#import "GPS_Body_Paint-Swift.h"
+
 #import "VSOSettings.h"
 #import "VSOSettingsViewController.h"
 
@@ -27,7 +29,7 @@
 	[defaultValues setValue:@(VSOPlayingModeFillIn) forKey:VSO_UDK_PLAYING_MODE];
 	[defaultValues setValue:@(5.*60.)               forKey:VSO_UDK_PLAYING_TIME];
 	[defaultValues setValue:@75                     forKey:VSO_UDK_PLAYING_FILL_PERCENTAGE];
-	[defaultValues setValue:[NSKeyedArchiver archivedDataWithRootObject:[VSOGameShape gameShapeWithType:VSOGameShapeTypeSquare]] forKey:VSO_UDK_GAME_SHAPE];
+	[defaultValues setValue:[NSKeyedArchiver archivedDataWithRootObject:[[GameShape alloc] initWithType:VSOGameShapeTypeSquare]] forKey:VSO_UDK_GAME_SHAPE];
 	
 	[NSUserDefaults.standardUserDefaults registerDefaults:defaultValues];
 }
