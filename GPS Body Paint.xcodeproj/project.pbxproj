@@ -16,8 +16,6 @@
 		0FD8DB94100DCCC800C076DB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD8DB93100DCCC800C076DB /* MapKit.framework */; };
 		0FD8DBD9100DD06E00C076DB /* VSOGridAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8DBD8100DD06E00C076DB /* VSOGridAnnotationView.m */; };
 		0FD8DC83100DDB0300C076DB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD8DC82100DDB0300C076DB /* CoreLocation.framework */; };
-		1D3623260D0F684500981E51 /* GPSBodyPaintAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */; };
-		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
@@ -26,6 +24,7 @@
 		7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042082218F0852003B7E3B /* CGRect+Hashable.swift */; };
 		7B042085218F2792003B7E3B /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042084218F2792003B7E3B /* ShapeView.swift */; };
 		7B042087218F2CE1003B7E3B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042086218F2CE1003B7E3B /* Settings.swift */; };
+		7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042088218F3221003B7E3B /* AppDelegate.swift */; };
 		7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */; };
 		7B395E5E1D856A4500941445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E601D856A4500941445 /* Main.storyboard */; };
 		7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */; };
@@ -55,8 +54,6 @@
 		0FD8DBD8100DD06E00C076DB /* VSOGridAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGridAnnotationView.m; sourceTree = "<group>"; };
 		0FD8DC82100DDB0300C076DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* GPSBodyPaintAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSBodyPaintAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSBodyPaintAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* GPS Body Paint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS Body Paint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,11 +61,11 @@
 		289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOPlayViewController.m; sourceTree = "<group>"; };
 		289233AC0DB2D0DB0083E9F9 /* VSOSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOSettingsViewController.h; sourceTree = "<group>"; };
 		289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOSettingsViewController.m; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS_Body_Paint_Prefix.pch; sourceTree = "<group>"; };
 		7B042082218F0852003B7E3B /* CGRect+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Hashable.swift"; sourceTree = "<group>"; };
 		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		7B042086218F2CE1003B7E3B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7B042088218F3221003B7E3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B395E5F1D856A4500941445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B3ECD4D1D84DFAB00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -205,8 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				7B042086218F2CE1003B7E3B /* Settings.swift */,
-				1D3623240D0F684500981E51 /* GPSBodyPaintAppDelegate.h */,
-				1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */,
+				7B042088218F3221003B7E3B /* AppDelegate.swift */,
 			);
 			path = Heart;
 			sourceTree = "<group>";
@@ -216,7 +212,6 @@
 			children = (
 				7B27B92F1DCF37E4006F44B7 /* Localizables */,
 				7BB0EA611D856B110057BFA2 /* Assets.xcassets */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
 				0F73F3F71010C4290004C707 /* Constants.h */,
 				32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */,
 				8D1107310486CEB800E47090 /* GPS_Body_Paint-Info.plist */,
@@ -328,8 +323,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* GPSBodyPaintAppDelegate.m in Sources */,
 				7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */,
 				7BB0EA651D858CAC0057BFA2 /* VSOLevelSizeViewController.m in Sources */,
 				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
@@ -340,6 +333,7 @@
 				0FD8DBD9100DD06E00C076DB /* VSOGridAnnotationView.m in Sources */,
 				0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */,
 				0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */,
+				7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */,
 				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
 				7B9912FE1D8DB0FF00AA2C1A /* VSOCurLocationView.m in Sources */,
 				7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */,
