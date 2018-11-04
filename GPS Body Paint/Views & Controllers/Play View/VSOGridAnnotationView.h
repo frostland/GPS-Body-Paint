@@ -10,12 +10,13 @@
 #import <UIKit/UIKit.h>
 
 #import "VSOGameProgress.h"
-#import "VSOCurLocationView.h"
+
+@class CurLocationView;
 
 
 
 @interface VSOGridAnnotationView : MKAnnotationView <VSOGridPlayGame> {
-	VSOCurLocationView *curUserLocationView;
+	CurLocationView *curUserLocationView;
 	
 	BOOL metedataComputed;
 	CGRect gameRect, baseRect;

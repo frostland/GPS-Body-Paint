@@ -25,11 +25,11 @@
 		7B042085218F2792003B7E3B /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042084218F2792003B7E3B /* ShapeView.swift */; };
 		7B042087218F2CE1003B7E3B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042086218F2CE1003B7E3B /* Settings.swift */; };
 		7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042088218F3221003B7E3B /* AppDelegate.swift */; };
+		7B04208B218F36C0003B7E3B /* CurLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B04208A218F36C0003B7E3B /* CurLocationView.swift */; };
 		7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */; };
 		7B395E5E1D856A4500941445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E601D856A4500941445 /* Main.storyboard */; };
 		7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */; };
 		7B7A26C8218098D20051D470 /* GameShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A26C7218098D20051D470 /* GameShape.swift */; };
-		7B9912FE1D8DB0FF00AA2C1A /* VSOCurLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */; };
 		7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0EA611D856B110057BFA2 /* Assets.xcassets */; };
 		7BB0EA651D858CAC0057BFA2 /* VSOLevelSizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */; };
 		7BB0EA681D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA671D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m */; };
@@ -66,6 +66,7 @@
 		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		7B042086218F2CE1003B7E3B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7B042088218F3221003B7E3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B04208A218F36C0003B7E3B /* CurLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurLocationView.swift; sourceTree = "<group>"; };
 		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B395E5F1D856A4500941445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B3ECD4D1D84DFAB00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -73,8 +74,6 @@
 		7B7A26C6218098D20051D470 /* GPS Body Paint-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPS Body Paint-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B7A26C7218098D20051D470 /* GameShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameShape.swift; sourceTree = "<group>"; };
 		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7B9912FC1D8DB0FF00AA2C1A /* VSOCurLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOCurLocationView.h; sourceTree = "<group>"; };
-		7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOCurLocationView.m; sourceTree = "<group>"; };
 		7BA248211DCF818C007F5B2E /* Soccer Field.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; lineEnding = 0; path = "Soccer Field.gpx"; sourceTree = "<group>"; };
 		7BA248281DCF8E7F007F5B2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7BA2482A1DCF9566007F5B2E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -139,8 +138,7 @@
 				0F7BBE92101EEC5A00F4EF59 /* VSOMapView.h */,
 				0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */,
 				7B7A26C7218098D20051D470 /* GameShape.swift */,
-				7B9912FC1D8DB0FF00AA2C1A /* VSOCurLocationView.h */,
-				7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */,
+				7B04208A218F36C0003B7E3B /* CurLocationView.swift */,
 				0FD8DBD7100DD06E00C076DB /* VSOGridAnnotationView.h */,
 				0FD8DBD8100DD06E00C076DB /* VSOGridAnnotationView.m */,
 				0FD1BB31100F31FB00000185 /* VSOGameProgress.h */,
@@ -328,6 +326,7 @@
 				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */,
 				7B042087218F2CE1003B7E3B /* Settings.swift in Sources */,
+				7B04208B218F36C0003B7E3B /* CurLocationView.swift in Sources */,
 				7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */,
 				0FD8DBD9100DD06E00C076DB /* VSOGridAnnotationView.m in Sources */,
@@ -335,7 +334,6 @@
 				0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */,
 				7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */,
 				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
-				7B9912FE1D8DB0FF00AA2C1A /* VSOCurLocationView.m in Sources */,
 				7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */,
 				7BB0EA681D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m in Sources */,
 				0F7BBE94101EEC5A00F4EF59 /* VSOMapView.m in Sources */,

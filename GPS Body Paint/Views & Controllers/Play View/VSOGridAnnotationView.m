@@ -63,7 +63,7 @@
 	if ((self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) != nil) {
 		self.opaque = NO;
 		self.userInteractionEnabled = NO;
-		curUserLocationView = [[VSOCurLocationView alloc] initWithFrame:CGRectZero];
+		curUserLocationView = [[CurLocationView alloc] initWithFrame:CGRectZero];
 		curUserLocationView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
 		[self addSubview:curUserLocationView];
 		[curUserLocationView.layer setZPosition:1000000.];
