@@ -9,6 +9,8 @@
 #import "VSOGameProgress.h"
 #import "VSOUtils.h"
 
+#import "GPS_Body_Paint-Swift.h"
+
 
 
 @interface VSOGameProgress ()
@@ -22,7 +24,7 @@
 
 @implementation VSOGameProgress
 
-- (id)initWithSettings:(VSOSettings *)s
+- (id)initWithSettings:(Settings *)s
 {
 	if ((self = [super init]) != nil) {
 		timeLimitTimer = nil;

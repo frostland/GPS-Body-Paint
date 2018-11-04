@@ -16,10 +16,10 @@ typedef NS_ENUM(NSInteger, VSOGameShapeType) {
 	VSOGameShapeTypeTriangle
 };
 
-typedef enum VSOPlayingMode: NSUInteger {
+typedef NS_ENUM(NSInteger, VSOPlayingMode) {
 	VSOPlayingModeFillIn = 0,
 	VSOPlayingModeTimeLimit,
-} VSOPlayingMode;
+};
 
 #define VSO_UDK_FIRST_LAUNCH            @"First Launch"
 #define VSO_UDK_GAME_SHAPE              @"VSO Saved Game Shape"

@@ -10,7 +10,6 @@
 
 #import "GPS_Body_Paint-Swift.h"
 
-#import "VSOSettings.h"
 #import "VSOSettingsViewController.h"
 
 #import "Constants.h"
@@ -36,7 +35,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	((VSOSettingsViewController *)((UINavigationController *)self.window.rootViewController).viewControllers.firstObject).settings = [VSOSettings new];
+	((VSOSettingsViewController *)((UINavigationController *)self.window.rootViewController).viewControllers.firstObject).settings = [Settings new];
 }
 
 @end

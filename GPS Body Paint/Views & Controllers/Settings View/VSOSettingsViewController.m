@@ -8,6 +8,8 @@
 
 #import "VSOSettingsViewController.h"
 
+#import "GPS_Body_Paint-Swift.h"
+
 #import "Constants.h"
 #import "VSOUtils.h"
 

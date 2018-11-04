@@ -7,13 +7,14 @@
  */
 
 #import "VSOPlayViewController.h"
-#import "VSOSettings.h"
+
+@class Settings;
 
 
 
 @interface VSOSettingsViewController : UITableViewController <VSOPlayViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
 
-@property(nonatomic, retain) VSOSettings *settings;
+@property(nonatomic, retain) Settings *settings;
 
 @property(nonatomic, retain) IBOutlet UILabel *labelLevelSize;
 @property(nonatomic, retain) IBOutlet UILabel *labelLevelDifficulty;

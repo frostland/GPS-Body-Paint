@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "VSOSettings.h"
+@class Settings;
 
 
 
@@ -49,11 +49,11 @@
 @property(nonatomic, readonly) CGFloat doneArea;
 @property(nonatomic, readonly) NSDate *startDate;
 @property(nonatomic, retain) id <VSOGridPlayGame> gridPlayGame;
-@property(nonatomic, retain) VSOSettings *settings;
+@property(nonatomic, retain) Settings *settings;
 @property(nonatomic, readonly) CGFloat **progress;
 @property(nonatomic, weak) id <VSOGameProgressDelegate> delegate;
 
-- (id)initWithSettings:(VSOSettings *)s;
+- (id)initWithSettings:(Settings *)s;
 
 - (void)gameDidStartWithLocation:(CGPoint)p diameter:(CGFloat)d;
 - (void)playerMovedTo:(CGPoint)p diameter:(CGFloat)d;

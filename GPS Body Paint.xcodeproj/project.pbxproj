@@ -11,7 +11,6 @@
 		0FC06FB5100E33F700B0D157 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC06FB4100E33F700B0D157 /* QuartzCore.framework */; };
 		0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF47581019E2D0005E5F41 /* Settings.bundle */; };
 		0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD076D6101F19C900D9AF11 /* Localizable.strings */; };
-		0FD1BB0E100F2C7900000185 /* VSOSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BB0D100F2C7900000185 /* VSOSettings.m */; };
 		0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BB32100F31FB00000185 /* VSOGameProgress.m */; };
 		0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BBCF100F374800000185 /* VSOUtils.c */; };
 		0FD8DB94100DCCC800C076DB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD8DB93100DCCC800C076DB /* MapKit.framework */; };
@@ -26,6 +25,7 @@
 		289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */; };
 		7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042082218F0852003B7E3B /* CGRect+Hashable.swift */; };
 		7B042085218F2792003B7E3B /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042084218F2792003B7E3B /* ShapeView.swift */; };
+		7B042087218F2CE1003B7E3B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042086218F2CE1003B7E3B /* Settings.swift */; };
 		7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */; };
 		7B395E5E1D856A4500941445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E601D856A4500941445 /* Main.storyboard */; };
 		7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */; };
@@ -46,8 +46,6 @@
 		0FCDE41110160CD7001D5E65 /* Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Notes.rtf; sourceTree = "<group>"; };
 		0FCF47581019E2D0005E5F41 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0FD076D8101F19EB00D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0FD1BB0C100F2C7900000185 /* VSOSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOSettings.h; sourceTree = "<group>"; };
-		0FD1BB0D100F2C7900000185 /* VSOSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOSettings.m; sourceTree = "<group>"; };
 		0FD1BB31100F31FB00000185 /* VSOGameProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOGameProgress.h; sourceTree = "<group>"; };
 		0FD1BB32100F31FB00000185 /* VSOGameProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGameProgress.m; sourceTree = "<group>"; };
 		0FD1BBCE100F374800000185 /* VSOUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOUtils.h; sourceTree = "<group>"; };
@@ -70,6 +68,7 @@
 		32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS_Body_Paint_Prefix.pch; sourceTree = "<group>"; };
 		7B042082218F0852003B7E3B /* CGRect+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Hashable.swift"; sourceTree = "<group>"; };
 		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		7B042086218F2CE1003B7E3B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B395E5F1D856A4500941445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B3ECD4D1D84DFAB00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -123,8 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				7B042084218F2792003B7E3B /* ShapeView.swift */,
-				0FD1BB0C100F2C7900000185 /* VSOSettings.h */,
-				0FD1BB0D100F2C7900000185 /* VSOSettings.m */,
 				7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */,
 				7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */,
 				7BB0EA661D8590AA0057BFA2 /* VSOLevelDifficultyViewController.h */,
@@ -207,6 +204,7 @@
 		7B27B92C1DCF378A006F44B7 /* Heart */ = {
 			isa = PBXGroup;
 			children = (
+				7B042086218F2CE1003B7E3B /* Settings.swift */,
 				1D3623240D0F684500981E51 /* GPSBodyPaintAppDelegate.h */,
 				1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */,
 			);
@@ -336,10 +334,10 @@
 				7BB0EA651D858CAC0057BFA2 /* VSOLevelSizeViewController.m in Sources */,
 				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */,
+				7B042087218F2CE1003B7E3B /* Settings.swift in Sources */,
 				7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */,
 				0FD8DBD9100DD06E00C076DB /* VSOGridAnnotationView.m in Sources */,
-				0FD1BB0E100F2C7900000185 /* VSOSettings.m in Sources */,
 				0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */,
 				0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */,
 				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
