@@ -17,7 +17,7 @@ class GameShape : NSObject, NSCoding {
 	
 	@objc
 	var shapeType: VSOGameShapeType {
-		didSet {polygonCache = nil; shapePathCache = nil}
+		didSet {polygonCache = nil; shapePathCache = [:]}
 	}
 	
 	@objc
@@ -39,7 +39,7 @@ class GameShape : NSObject, NSCoding {
 	
 	@objc
 	func pathForDrawing(in rect: CGRect) -> CGPath {
-		if let path = shapePathCache {return path}
+		if let path = shapePathCache[rect] {return path}
 		
 		let drawingRect = gameRect(from: rect)
 		let tmpPath = CGMutablePath()
@@ -56,7 +56,7 @@ class GameShape : NSObject, NSCoding {
 		let path = CGMutablePath()
 		path.addLines(between: polygon, transform: t)
 		path.closeSubpath()
-		shapePathCache = path
+		shapePathCache[rect] = path
 		
 		return path
 	}
@@ -127,6 +127,6 @@ class GameShape : NSObject, NSCoding {
 		return p
 	}
 	
-	private var shapePathCache: CGPath?
+	private var shapePathCache = [CGRect: CGPath]()
 	
 }
