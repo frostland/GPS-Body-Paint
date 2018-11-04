@@ -15,6 +15,9 @@
 
 
 
+@interface VSOPlayViewController () <VSOMapViewDelegate>
+@end
+
 @implementation VSOPlayViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -277,7 +280,7 @@
 }
 
 /* VSO Specific. NOT in original Map View Delegate... */
-- (void)mapViewDidReceiveTouch:(MKMapView *)mpV
+- (void)mapViewWithDidReceiveTouch:(MKMapView *)mapView
 {
 	userMovedMap = YES;
 }

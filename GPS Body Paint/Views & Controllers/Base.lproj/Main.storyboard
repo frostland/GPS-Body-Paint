@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bi0-gX-X1x">
-                            <rect key="frame" x="0.0" y="249" width="375" height="55"/>
+                            <rect key="frame" x="0.0" y="249.33333333333337" width="375" height="55"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                             <state key="normal" title="Play!"/>
@@ -240,7 +240,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkK-9v-ug2" userLabel="View With Map">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
                                 <subviews>
-                                    <mapView opaque="NO" multipleTouchEnabled="YES" contentMode="center" mapType="standard" zoomEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xE6-gm-fUk" customClass="VSOMapView">
+                                    <mapView opaque="NO" multipleTouchEnabled="YES" contentMode="center" mapType="standard" zoomEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xE6-gm-fUk" customClass="VSOMapView" customModule="GPS_Body_Paint" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
                                         <connections>
                                             <outlet property="delegate" destination="3rQ-ob-Jtt" id="YF3-iP-fU8"/>
