@@ -11,6 +11,8 @@
 
 #import "Constants.h"
 
+#import "GPS_Body_Paint-Swift.h"
+
 
 
 @implementation VSOPlayViewController

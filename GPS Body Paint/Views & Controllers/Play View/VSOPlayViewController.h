@@ -12,7 +12,8 @@
 
 #import "VSOGridAnnotationView.h"
 #import "VSOGameProgress.h"
-#import "VSOShapeView.h"
+
+@class ShapeView;
 
 #define SIMULATOR_CODE
 #undef SIMULATOR_CODE
@@ -50,7 +51,7 @@
 }
 
 @property(nonatomic, retain) IBOutlet MKMapView *mapView;
-@property(nonatomic, retain) IBOutlet VSOShapeView *viewShapePreview;
+@property(nonatomic, retain) IBOutlet ShapeView *viewShapePreview;
 
 //@property(nonatomic, retain) IBOutlet UIView *viewMapScale;
 //@property(nonatomic, retain) IBOutlet UILabel *labelScale;

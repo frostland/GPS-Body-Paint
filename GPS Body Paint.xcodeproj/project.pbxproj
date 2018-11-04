@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F7BBE94101EEC5A00F4EF59 /* VSOMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */; };
-		0F7E117610185013000D35AF /* VSOShapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7E117510185013000D35AF /* VSOShapeView.m */; };
 		0FC06FB5100E33F700B0D157 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC06FB4100E33F700B0D157 /* QuartzCore.framework */; };
 		0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF47581019E2D0005E5F41 /* Settings.bundle */; };
 		0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD076D6101F19C900D9AF11 /* Localizable.strings */; };
@@ -26,6 +25,7 @@
 		289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */; };
 		7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042082218F0852003B7E3B /* CGRect+Hashable.swift */; };
+		7B042085218F2792003B7E3B /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042084218F2792003B7E3B /* ShapeView.swift */; };
 		7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */; };
 		7B395E5E1D856A4500941445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E601D856A4500941445 /* Main.storyboard */; };
 		7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */; };
@@ -42,8 +42,6 @@
 		0F73F3F71010C4290004C707 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0F7BBE92101EEC5A00F4EF59 /* VSOMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOMapView.h; sourceTree = "<group>"; };
 		0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOMapView.m; sourceTree = "<group>"; };
-		0F7E117410185013000D35AF /* VSOShapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOShapeView.h; sourceTree = "<group>"; };
-		0F7E117510185013000D35AF /* VSOShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOShapeView.m; sourceTree = "<group>"; };
 		0FC06FB4100E33F700B0D157 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0FCDE41110160CD7001D5E65 /* Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Notes.rtf; sourceTree = "<group>"; };
 		0FCF47581019E2D0005E5F41 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -71,6 +69,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS_Body_Paint_Prefix.pch; sourceTree = "<group>"; };
 		7B042082218F0852003B7E3B /* CGRect+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Hashable.swift"; sourceTree = "<group>"; };
+		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B395E5F1D856A4500941445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B3ECD4D1D84DFAB00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -123,8 +122,7 @@
 		281C6CD70DB2D82200F60ACC /* Settings View */ = {
 			isa = PBXGroup;
 			children = (
-				0F7E117410185013000D35AF /* VSOShapeView.h */,
-				0F7E117510185013000D35AF /* VSOShapeView.m */,
+				7B042084218F2792003B7E3B /* ShapeView.swift */,
 				0FD1BB0C100F2C7900000185 /* VSOSettings.h */,
 				0FD1BB0D100F2C7900000185 /* VSOSettings.m */,
 				7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */,
@@ -344,10 +342,10 @@
 				0FD1BB0E100F2C7900000185 /* VSOSettings.m in Sources */,
 				0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */,
 				0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */,
+				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
 				7B9912FE1D8DB0FF00AA2C1A /* VSOCurLocationView.m in Sources */,
 				7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */,
 				7BB0EA681D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m in Sources */,
-				0F7E117610185013000D35AF /* VSOShapeView.m in Sources */,
 				0F7BBE94101EEC5A00F4EF59 /* VSOMapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

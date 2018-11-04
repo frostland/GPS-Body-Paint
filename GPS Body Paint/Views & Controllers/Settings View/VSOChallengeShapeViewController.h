@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "VSOShapeView.h"
-
-@class GameShape;
+@class GameShape, ShapeView;
 
 
 
@@ -21,7 +19,7 @@
 + (NSString *)localizedSettingValue;
 
 @property(nonatomic, retain) IBOutlet UISegmentedControl *segmentedControlChosenShape;
-@property(nonatomic, retain) IBOutlet VSOShapeView *shapeView;
+@property(nonatomic, retain) IBOutlet ShapeView *shapeView;
 
 - (IBAction)shapeChanged:(id)sender;
 

@@ -9,8 +9,6 @@
 #import "VSOPlayViewController.h"
 #import "VSOSettings.h"
 
-#import "VSOShapeView.h"
-
 
 
 @interface VSOSettingsViewController : UITableViewController <VSOPlayViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
