@@ -10,9 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import "VSOGridAnnotationView.h"
-#import "VSOGameProgress.h"
-
 @class ShapeView;
 
 #define SIMULATOR_CODE
@@ -29,8 +26,10 @@
 
 
 
-@interface VSOPlayViewController : UIViewController <MKMapViewDelegate, MKAnnotation, CLLocationManagerDelegate, VSOGameProgressDelegate> {
-	VSOGridAnnotationView *gridAnnotationView;
+@protocol GameProgressDelegate;
+@class GridAnnotationView, GameProgress;
+@interface VSOPlayViewController : UIViewController <MKMapViewDelegate, MKAnnotation, CLLocationManagerDelegate, GameProgressDelegate> {
+	GridAnnotationView *gridAnnotationView;
 	NSTimer *timerShowLoadingMap;
 	
 	NSTimeInterval playingTime;
@@ -80,7 +79,7 @@
 
 @property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property(nonatomic, weak) id <VSOPlayViewControllerDelegate> delegate;
-@property(nonatomic, retain) VSOGameProgress *gameProgress;
+@property(nonatomic, retain) GameProgress *gameProgress;
 
 - (IBAction)centerMapToCurrentUserLocation:(id)sender;
 

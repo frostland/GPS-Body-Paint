@@ -7,7 +7,6 @@
  */
 
 #import "VSOPlayViewController.h"
-#import "VSOUtils.h"
 
 #import "Constants.h"
 
@@ -44,7 +43,7 @@
 
 - (void)dealloc
 {
-	NSDLog(@"Deallocing a VSOPlayViewController");
+//	NSLog(@"Deallocing a VSOPlayViewController");
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -148,7 +147,7 @@
 {
 	CLLocation *newLocation = locations.lastObject;
 	lastCoordinate = newLocation.coordinate;
-	NSDLog(@"did get location: %g, %g. Horizontal accuracy: %g", lastCoordinate.latitude, lastCoordinate.longitude, newLocation.horizontalAccuracy);
+//	NSLog(@"did get location: %g, %g. Horizontal accuracy: %g", lastCoordinate.latitude, lastCoordinate.longitude, newLocation.horizontalAccuracy);
 	
 	/* Negative accuracy means no location found */
 	if (signbit(newLocation.horizontalAccuracy)) return;
@@ -218,9 +217,9 @@
 {
 	if ([annotation isKindOfClass:self.class]) {
 		/* Try to dequeue an existing grid view first. */
-		gridAnnotationView = (VSOGridAnnotationView *)[mpV dequeueReusableAnnotationViewWithIdentifier:@"GridAnnotation"];
+		gridAnnotationView = (GridAnnotationView *)[mpV dequeueReusableAnnotationViewWithIdentifier:@"GridAnnotation"];
 		
-		if (gridAnnotationView == nil) gridAnnotationView = [[VSOGridAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"GridAnnotation"];
+		if (gridAnnotationView == nil) gridAnnotationView = [[GridAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"GridAnnotation"];
 		else                           gridAnnotationView.annotation = annotation;
 		
 		CGFloat delta = 0.;
@@ -240,7 +239,7 @@
 
 - (void)mapViewWillStartLoadingMap:(MKMapView *)mpV
 {
-	NSDLog(@"mapViewWillStartLoadingMap:");
+//	NSLog(@"mapViewWillStartLoadingMap:");
 	self.buttonLockMap.enabled = NO;
 	if (timerShowLoadingMap != nil) return;
 	timerShowLoadingMap = [NSTimer scheduledTimerWithTimeInterval:3. target:self selector:@selector(showViewLoadingMap:) userInfo:NULL repeats:NO];
@@ -248,7 +247,7 @@
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mpV
 {
-	NSDLog(@"mapViewDidFinishLoadingMap:");
+//	NSLog(@"mapViewDidFinishLoadingMap:");
 	[timerShowLoadingMap invalidate];
 	timerShowLoadingMap = nil;
 	
@@ -261,7 +260,7 @@
 
 - (void)mapViewDidFailLoadingMap:(MKMapView *)mpV withError:(NSError *)error
 {
-	NSDLog(@"mapViewDidFailLoadingMap:withError:");
+//	NSLog(@"mapViewDidFailLoadingMap:withError:");
 	if (mapMoving || !warnForMapLoadingErrors) {
 		if (!mapMoving) [self mapViewDidFinishLoadingMap:mpV];
 		return;
@@ -287,18 +286,18 @@
 
 - (void)mapView:(MKMapView *)mpV regionWillChangeAnimated:(BOOL)animated
 {
-	NSDLog(@"mapView:regionWillChangeAnimated:");
+//	NSLog(@"mapView:regionWillChangeAnimated:");
 	mapMoving = YES;
 	self.buttonLockMap.enabled = NO;
 }
 
 - (void)mapView:(MKMapView *)mpV regionDidChangeAnimated:(BOOL)animated
 {
-	NSDLog(@"mapView:regionDidChangeAnimated:");
+//	NSLog(@"mapView:regionDidChangeAnimated:");
 	mapMoving = NO;
 	self.buttonLockMap.enabled = YES;
 	
-	NSDLog(@"Map width: %g meters", [self mapWidth]);
+//	NSLog(@"Map width: %g meters", [self mapWidth]);
 /*	NSUInteger w = (NSUInteger)(self.mapWidth + 0.5);
 	self.labelScale.text = [NSString stringWithFormat:NSLocalizedString(@"n m format", nil), w/4];
 	if (w > VSO_MAX_MAP_SPAN_FOR_PLAYGROUND) [self.labelScale setTextColor:UIColor.redColor];
@@ -306,7 +305,7 @@
 	if (mapFirstCenterDone) self.viewShapePreview.hidden = NO;
 }
 
-#pragma mark - VSOGameProgressDelegate
+#pragma mark - GameProgressDelegate
 
 /* Called by the game progress controller */
 - (void)gameDidFinish:(BOOL)win

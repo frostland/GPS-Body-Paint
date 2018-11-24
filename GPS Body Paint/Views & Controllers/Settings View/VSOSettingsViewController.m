@@ -11,7 +11,6 @@
 #import "GPS_Body_Paint-Swift.h"
 
 #import "Constants.h"
-#import "VSOUtils.h"
 
 #import "VSOLevelSizeViewController.h"
 #import "VSOLevelDifficultyViewController.h"
@@ -54,7 +53,7 @@
 		self.settings.playingFillPercentToDo = [ud integerForKey:VSO_UDK_PLAYING_FILL_PERCENTAGE];
 		self.settings.userLocationDiameter = 10. - [ud integerForKey:VSO_UDK_LEVEL_PAINTING_SIZE]*1.9;
 		
-		controller.gameProgress = [[VSOGameProgress alloc] initWithSettings:self.settings];
+		controller.gameProgress = [[GameProgress alloc] initWithSettings:self.settings];
 		controller.delegate = self;
 	}
 }
@@ -62,7 +61,7 @@
 /* Ugly, isn't it? */
 - (void)doDismissModalViewControllerAnimated
 {
-	NSDLog(@"doDismissModalViewControllerAnimated called");
+//	NSLog(@"doDismissModalViewControllerAnimated called");
 	
 	if ([self presentedViewController] == nil) return;
 	[self dismissViewControllerAnimated:YES completion:NULL];
