@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bi0-gX-X1x">
-                            <rect key="frame" x="0.0" y="249.33333333333337" width="375" height="55"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bi0-gX-X1x">
+                            <rect key="frame" x="0.0" y="249" width="150" height="55"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                             <state key="normal" title="Play!"/>
@@ -649,7 +649,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="508"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayingModeCell" textLabel="9Uh-hw-tpd" style="IBUITableViewCellStyleDefault" id="RJi-P6-1v9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayingModeCell" textLabel="9Uh-hw-tpd" style="IBUITableViewCellStyleDefault" id="RJi-P6-1v9">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RJi-P6-1v9" id="0nr-m1-aAo">
@@ -716,7 +716,7 @@
         <!--Painting Size-->
         <scene sceneID="lBE-gz-NRR">
             <objects>
-                <viewController title="Painting Size" id="KCD-bO-dSR" customClass="VSOLevelDifficultyViewController" sceneMemberID="viewController">
+                <viewController title="Painting Size" id="KCD-bO-dSR" customClass="LevelDifficultyViewController" customModule="GPS_Body_Paint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6KR-IO-yQT"/>
                         <viewControllerLayoutGuide type="bottom" id="Yh9-Xe-tXl"/>
@@ -753,7 +753,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="segmentedControlChosenPaintingSize" destination="i7F-Ob-z7k" id="4hv-3t-Lbh"/>
+                        <outlet property="segmentedControlPaintingSize" destination="i7F-Ob-z7k" id="IRf-Ze-MaM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3EF-V3-j9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
