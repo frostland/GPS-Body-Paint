@@ -15,20 +15,18 @@ import UIKit
 @objc
 class GameShape : NSObject, NSCoding {
 	
-	@objc
-	var shapeType: VSOGameShapeType {
+	var shapeType: GameShapeType {
 		didSet {polygonCache = nil; shapePathCache = [:]}
 	}
 	
-	@objc
-	init(type: VSOGameShapeType) {
+	init(type: GameShapeType) {
 		shapeType = type
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
-		var t = VSOGameShapeType.square.rawValue
+		var t = GameShapeType.square.rawValue
 		aDecoder.decodeValue(ofObjCType: (t as NSNumber).objCType, at: &t)
-		shapeType = VSOGameShapeType(rawValue: t) ?? .square
+		shapeType = GameShapeType(rawValue: t) ?? .square
 		super.init()
 	}
 	

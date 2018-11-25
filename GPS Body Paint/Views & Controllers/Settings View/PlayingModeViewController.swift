@@ -15,7 +15,7 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 	
 	@objc
 	static var localizedSettingValue: String {
-		return playingMode(from: UserDefaults.standard.integer(forKey: VSO_UDK_PLAYING_MODE))
+		return playingMode(from: UserDefaults.standard.integer(forKey: Constants.UserDefault.playingMode))
 	}
 	
 	@IBOutlet var pickerView: UIPickerView!
@@ -25,10 +25,10 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 		super.viewDidLoad()
 		
 		let ud = UserDefaults.standard
-		datePicker.countDownDuration = ud.double(forKey: VSO_UDK_PLAYING_TIME)
+		datePicker.countDownDuration = ud.double(forKey: Constants.UserDefault.playingTime)
 		
 		let r: Int
-		switch ud.integer(forKey: VSO_UDK_PLAYING_FILL_PERCENTAGE) {
+		switch ud.integer(forKey: Constants.UserDefault.playingFillPercentage) {
 		case 100: r = 0
 		case  90: r = 1
 		case  75: r = 2
@@ -38,16 +38,16 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 		}
 		pickerView.selectRow(r, inComponent: 0, animated: false)
 		
-		switch VSOPlayingMode(rawValue: ud.integer(forKey: VSO_UDK_PLAYING_MODE)) {
+		switch PlayingMode(rawValue: ud.integer(forKey: Constants.UserDefault.playingMode)) {
 		case .fillIn?:    pickerView.alpha = 1; datePicker.alpha = 0
 		case .timeLimit?: pickerView.alpha = 0; datePicker.alpha = 1
-		default: fatalError("Unknown playing mode \(ud.integer(forKey: VSO_UDK_PLAYING_MODE))")
+		default: fatalError("Unknown playing mode \(ud.integer(forKey: Constants.UserDefault.playingMode))")
 		}
 	}
 	
 	@IBAction func timeChanged(_ sender: AnyObject) {
 		if datePicker.countDownDuration < 60 {datePicker.countDownDuration = 0}
-		UserDefaults.standard.set(datePicker.countDownDuration, forKey: VSO_UDK_PLAYING_TIME)
+		UserDefaults.standard.set(datePicker.countDownDuration, forKey: Constants.UserDefault.playingTime)
 	}
 	
 	/* *****************************************
@@ -62,7 +62,7 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 		let cell = tableView.dequeueReusableCell(withIdentifier: "PlayingModeCell", for: indexPath)
 		
 		let r = indexPath[1]
-		let m = UserDefaults.standard.integer(forKey: VSO_UDK_PLAYING_MODE)
+		let m = UserDefaults.standard.integer(forKey: Constants.UserDefault.playingMode)
 		if m == r {cell.accessoryType = .checkmark}
 		else      {cell.accessoryType = .none}
 		cell.textLabel?.text = PlayingModeViewController.playingMode(from: r)
@@ -72,9 +72,9 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let r = indexPath[1]
-		UserDefaults.standard.set(r, forKey: VSO_UDK_PLAYING_MODE)
+		UserDefaults.standard.set(r, forKey: Constants.UserDefault.playingMode)
 		UIView.animate(withDuration: 0.25, animations: {
-			switch VSOPlayingMode(rawValue: r) {
+			switch PlayingMode(rawValue: r) {
 			case .fillIn?:    self.pickerView.alpha = 1; self.datePicker.alpha = 0
 			case .timeLimit?: self.pickerView.alpha = 0; self.datePicker.alpha = 1
 			default: fatalError("Unknown playing mode \(r)")
@@ -98,7 +98,7 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		UserDefaults.standard.set(nPercent(from: row), forKey: VSO_UDK_PLAYING_FILL_PERCENTAGE)
+		UserDefaults.standard.set(nPercent(from: row), forKey: Constants.UserDefault.playingFillPercentage)
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

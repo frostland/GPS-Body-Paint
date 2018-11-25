@@ -41,13 +41,13 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 			let ud = UserDefaults.standard
 			let controller = segue.destination as! PlayViewController
 			
-			settings.gameShape = NSKeyedUnarchiver.unarchiveObject(with: ud.data(forKey: VSO_UDK_GAME_SHAPE)!)! as! GameShape
-			settings.playgroundSize = ud.double(forKey: VSO_UDK_LEVEL_SIZE)
+			settings.gameShape = NSKeyedUnarchiver.unarchiveObject(with: ud.data(forKey: Constants.UserDefault.gameShape)!)! as! GameShape
+			settings.playgroundSize = ud.double(forKey: Constants.UserDefault.levelSize)
 			settings.gridSize = 3
-			settings.playingMode = VSOPlayingMode(rawValue: ud.integer(forKey: VSO_UDK_PLAYING_MODE))!
-			settings.playingTime = ud.double(forKey: VSO_UDK_PLAYING_TIME)
-			settings.playingFillPercentToDo = ud.integer(forKey: VSO_UDK_PLAYING_FILL_PERCENTAGE)
-			settings.userLocationDiameter = 10 - CLLocationDistance(ud.integer(forKey: VSO_UDK_LEVEL_PAINTING_SIZE))*1.9
+			settings.playingMode = PlayingMode(rawValue: ud.integer(forKey: Constants.UserDefault.playingMode))!
+			settings.playingTime = ud.double(forKey: Constants.UserDefault.playingTime)
+			settings.playingFillPercentToDo = ud.integer(forKey: Constants.UserDefault.playingFillPercentage)
+			settings.userLocationDiameter = 10 - CLLocationDistance(ud.integer(forKey: Constants.UserDefault.paintingSize))*1.9
 			
 			controller.gameProgress = GameProgress(settings: settings)
 			controller.delegate = self

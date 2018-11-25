@@ -15,7 +15,7 @@ class LevelSizeViewController : UIViewController, UIPickerViewDataSource, UIPick
 	
 	@objc
 	static var localizedSettingValue: String {
-		return localizedString(from: UserDefaults.standard.integer(forKey: VSO_UDK_LEVEL_SIZE))
+		return localizedString(from: UserDefaults.standard.integer(forKey: Constants.UserDefault.levelSize))
 	}
 	
 	@IBOutlet var pickerView: UIPickerView!
@@ -23,7 +23,7 @@ class LevelSizeViewController : UIViewController, UIPickerViewDataSource, UIPick
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let s = UserDefaults.standard.integer(forKey: VSO_UDK_LEVEL_SIZE)
+		let s = UserDefaults.standard.integer(forKey: Constants.UserDefault.levelSize)
 		let r: Int
 		switch s {
 		case 25: r = 0
@@ -47,7 +47,7 @@ class LevelSizeViewController : UIViewController, UIPickerViewDataSource, UIPick
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		UserDefaults.standard.set(nMeters(from: row), forKey: VSO_UDK_LEVEL_SIZE)
+		UserDefaults.standard.set(nMeters(from: row), forKey: Constants.UserDefault.levelSize)
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

@@ -20,13 +20,13 @@ class AppDelegate : NSObject, UIApplicationDelegate {
 		super.init()
 		
 		UserDefaults.standard.register(defaults: [
-			VSO_UDK_FIRST_LAUNCH:            true,
-			VSO_UDK_LEVEL_PAINTING_SIZE:     1,
-			VSO_UDK_LEVEL_SIZE:              25,
-			VSO_UDK_PLAYING_MODE:            VSOPlayingMode.fillIn.rawValue,
-			VSO_UDK_PLAYING_TIME:            5*60,
-			VSO_UDK_PLAYING_FILL_PERCENTAGE: 75,
-			VSO_UDK_GAME_SHAPE:              NSKeyedArchiver.archivedData(withRootObject: GameShape(type: .square))
+			Constants.UserDefault.firstLaunch:           true,
+			Constants.UserDefault.paintingSize:          1,
+			Constants.UserDefault.levelSize:             25,
+			Constants.UserDefault.playingMode:           PlayingMode.fillIn.rawValue,
+			Constants.UserDefault.playingTime:           5*60,
+			Constants.UserDefault.playingFillPercentage: 75,
+			Constants.UserDefault.gameShape:             NSKeyedArchiver.archivedData(withRootObject: GameShape(type: .square))
 		])
 	}
 	

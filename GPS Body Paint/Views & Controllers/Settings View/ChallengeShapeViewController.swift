@@ -15,7 +15,7 @@ class ChallengeShapeViewController : UIViewController {
 	
 	@objc
 	static var localizedSettingValue: String {
-		let shape = UserDefaults.standard.data(forKey: VSO_UDK_GAME_SHAPE).flatMap{ NSKeyedUnarchiver.unarchiveObject(with: $0) } as? GameShape ?? GameShape(type: .square)
+		let shape = UserDefaults.standard.data(forKey: Constants.UserDefault.gameShape).flatMap{ NSKeyedUnarchiver.unarchiveObject(with: $0) } as? GameShape ?? GameShape(type: .square)
 		switch shape.shapeType {
 		case .square:   return NSLocalizedString("square",   comment: "Square shape type")
 		case .hexagon:  return NSLocalizedString("hexagon",  comment: "Hexagon shape type")
@@ -27,7 +27,7 @@ class ChallengeShapeViewController : UIViewController {
 	@IBOutlet var shapeView: ShapeView!
 	
 	required init?(coder aDecoder: NSCoder) {
-		shape = UserDefaults.standard.data(forKey: VSO_UDK_GAME_SHAPE).flatMap{ NSKeyedUnarchiver.unarchiveObject(with: $0) } as? GameShape ?? GameShape(type: .square)
+		shape = UserDefaults.standard.data(forKey: Constants.UserDefault.gameShape).flatMap{ NSKeyedUnarchiver.unarchiveObject(with: $0) } as? GameShape ?? GameShape(type: .square)
 		super.init(coder: aDecoder)
 	}
 	
@@ -39,8 +39,8 @@ class ChallengeShapeViewController : UIViewController {
 	}
 	
 	@IBAction func shapeChanged(_ sender: AnyObject) {
-		shape.shapeType = VSOGameShapeType(rawValue: segmentedControlShape.selectedSegmentIndex) ?? .square
-		UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: shape), forKey: VSO_UDK_GAME_SHAPE)
+		shape.shapeType = GameShapeType(rawValue: segmentedControlShape.selectedSegmentIndex) ?? .square
+		UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: shape), forKey: Constants.UserDefault.gameShape)
 		
 		shapeView.setNeedsDisplay()
 	}
