@@ -352,7 +352,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
       MARK: - Private
 	   *************** */
 	
-	private var gridAnnotationView: GridAnnotationView!
+	private var gridAnnotationView: GridAnnotationView! /* TODO: Check forced unwrap */
 	private var timerShowLoadingMap: Timer?
 	
 	private var playingTime = TimeInterval(0)
@@ -433,7 +433,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 	@objc
 	private func refreshTimes(_ t: Timer?) {
 		if mapLocked {
-			playingTime = -gameProgress.startDate!.timeIntervalSinceNow
+			playingTime = -gameProgress.startDate!.timeIntervalSinceNow /* TODO: Check forced unwrap */
 			
 			let i = Int(playingTime)
 			let h = i/3600, m = (i - h*3600)/60, s = i - h*3600 - m*60

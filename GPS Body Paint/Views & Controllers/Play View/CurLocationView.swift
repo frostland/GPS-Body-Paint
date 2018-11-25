@@ -39,7 +39,7 @@ class CurLocationView : UIView {
 	
 	override var frame: CGRect {
 		set {
-			/* Converted straight from ObjC. But this is BAD! */
+			/* TODO: Converted straight from ObjC, but this is BAD! */
 			var f = newValue
 			let s = max(USER_LOCATION_VIEW_CENTER_DOT_SIZE, precision + 3)
 			

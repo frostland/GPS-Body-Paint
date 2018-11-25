@@ -45,7 +45,7 @@ class GameProgress : NSObject {
 	
 	private(set) var doneArea = CGFloat(0)
 	private(set) var startDate: Date?
-	var gridPlayGame: GridPlayGame!
+	var gridPlayGame: GridPlayGame! /* TODO: Check forced unwrap */
 	var settings: Settings
 	private(set) var progress = [[CGFloat]]()
 	weak var delegate: GameProgressDelegate?

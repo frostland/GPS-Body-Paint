@@ -15,8 +15,8 @@ import UIKit
 class GridAnnotationView : MKAnnotationView, GridPlayGame {
 	
 	var totalArea = CGFloat(0)
-	var map: MKMapView!
-	var gameProgress: GameProgress!
+	var map: MKMapView! /* TODO: Check forced unwrap */
+	var gameProgress: GameProgress! /* TODO: Check forced unwrap */
 	
 	var numberOfHorizontalPixels: Int {
 		computeMetadataIfNeeded()
@@ -157,7 +157,7 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 	private var curUserLocationView: CurLocationView
 	
 	private var metedataComputed = false
-	private var gameRect, baseRect: CGRect!
+	private var gameRect, baseRect: CGRect! /* TODO: Check forced unwrap */
 	private var xSize = 0, ySize = 0
 	private var gridDescription = [[[CGPoint]]]()
 	private var xStart = 0, yStart = 0
@@ -178,12 +178,12 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 	private func computeMetadataIfNeeded() {
 		/* We assume gameProgress.settings.gridSize and annotation.coordinate
 		 * won't change once this method has been called. */
-		guard !metedataComputed else {return}
+		guard !metedataComputed, let annotation = annotation else {return}
 //		NSLog("Computing metadata")
 		metedataComputed = true
 		
 		gameRect = gameProgress.settings.gameShape.gameRect(from: bounds)
-		baseRect = map.convert(MKCoordinateRegion(center: annotation!.coordinate, latitudinalMeters: gameProgress.settings.gridSize, longitudinalMeters: gameProgress.settings.gridSize), toRectTo: self)
+		baseRect = map.convert(MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: gameProgress.settings.gridSize, longitudinalMeters: gameProgress.settings.gridSize), toRectTo: self)
 		
 		xSize = Int(gameRect.width  / baseRect.width)  + 1
 		ySize = Int(gameRect.height / baseRect.height) + 1
@@ -274,7 +274,7 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 
 private class SquareFilledView : UIView {
 	
-	var clippingPath: CGPath!
+	var clippingPath: CGPath! /* TODO: Check forced unwrap */
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
