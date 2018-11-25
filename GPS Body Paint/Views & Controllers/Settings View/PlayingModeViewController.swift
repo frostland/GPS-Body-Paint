@@ -13,7 +13,6 @@ import UIKit
 
 class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate {
 	
-	@objc
 	static var localizedSettingValue: String {
 		return playingMode(from: UserDefaults.standard.integer(forKey: Constants.UserDefault.playingMode))
 	}

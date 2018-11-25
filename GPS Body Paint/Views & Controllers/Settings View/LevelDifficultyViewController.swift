@@ -13,7 +13,6 @@ import UIKit
 
 class LevelDifficultyViewController : UIViewController {
 	
-	@objc
 	static var localizedSettingValue: String {
 		switch UserDefaults.standard.integer(forKey: Constants.UserDefault.paintingSize) {
 		case 0: return NSLocalizedString("big",    comment: "Big painting size")

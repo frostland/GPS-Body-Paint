@@ -17,11 +17,11 @@ private let USER_LOCATION_VIEW_CENTER_DOT_SIZE = CGFloat(5)
 
 class CurLocationView : UIView {
 	
-	/* Should be optional. Will be once we’re full Swift! Also should be in radian… currently is in degrees. */
-	@objc var heading = CLLocationDirection(-1) {
+	/* Should be in radian… currently is in degrees. */
+	var heading: CLLocationDirection? {
 		didSet {setNeedsDisplay()}
 	}
-	@objc var precision = CGFloat(0) {
+	var precision = CGFloat(0) {
 		didSet {let f = frame; frame = f}
 	}
 	
@@ -59,7 +59,7 @@ class CurLocationView : UIView {
 		
 		let center = CGPoint(x: rect.midX, y: rect.midY)
 		
-		if heading >= 0 {
+		if let heading = heading {
 			c.concatenate(CGAffineTransform(translationX: center.x, y: center.y))
 			c.concatenate(CGAffineTransform(rotationAngle: CGFloat(-2*CLLocationDirection.pi*(heading/360))))
 			c.concatenate(CGAffineTransform(translationX: -center.x, y: -center.y))
@@ -74,7 +74,7 @@ class CurLocationView : UIView {
 		c.fillEllipse(in: precisionRect)
 		c.strokeEllipse(in: precisionRect)
 		
-		if heading >= 0 {
+		if heading != nil {
 			/* Heading is defined. Drawing the arrow. */
 			let r = precision/2
 			c.move(to: CGPoint(x: center.x, y: center.y - r))

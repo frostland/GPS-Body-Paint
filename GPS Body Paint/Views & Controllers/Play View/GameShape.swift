@@ -12,7 +12,6 @@ import UIKit
 
 
 
-@objc
 class GameShape : NSObject, NSCoding {
 	
 	var shapeType: GameShapeType {
@@ -35,7 +34,6 @@ class GameShape : NSObject, NSCoding {
 		aCoder.encodeValue(ofObjCType: (r as NSNumber).objCType, at: &r)
 	}
 	
-	@objc
 	func pathForDrawing(in rect: CGRect) -> CGPath {
 		if let path = shapePathCache[rect] {return path}
 		
@@ -62,7 +60,6 @@ class GameShape : NSObject, NSCoding {
 	/** Compute the game rect from the map bounds. The game rect is a square
 	whose side is a little shorter than the shorter side of the input rect (90%
 	of the size), centered in the input rect. */
-	@objc
 	func gameRect(from rect: CGRect) -> CGRect {
 		let size = min(rect.width, rect.height)*0.9
 		let center = CGPoint(x: rect.midX, y: rect.midY)
@@ -70,7 +67,6 @@ class GameShape : NSObject, NSCoding {
 		return CGRect(x: center.x - size/2, y: center.y - size/2, width: size, height: size).integral
 	}
 	
-	@objc
 	func draw(in rect: CGRect, context: CGContext) {
 		context.saveGState()
 		

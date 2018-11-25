@@ -15,8 +15,8 @@ import UIKit
 class GridAnnotationView : MKAnnotationView, GridPlayGame {
 	
 	var totalArea = CGFloat(0)
-	@objc var map: MKMapView!
-	@objc var gameProgress: GameProgress!
+	var map: MKMapView!
+	var gameProgress: GameProgress!
 	
 	var numberOfHorizontalPixels: Int {
 		computeMetadataIfNeeded()

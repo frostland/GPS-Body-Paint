@@ -13,7 +13,6 @@ import UIKit
 
 class LevelSizeViewController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 	
-	@objc
 	static var localizedSettingValue: String {
 		return localizedString(from: UserDefaults.standard.integer(forKey: Constants.UserDefault.levelSize))
 	}

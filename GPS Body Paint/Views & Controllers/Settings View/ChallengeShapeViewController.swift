@@ -13,7 +13,6 @@ import UIKit
 
 class ChallengeShapeViewController : UIViewController {
 	
-	@objc
 	static var localizedSettingValue: String {
 		let shape = UserDefaults.standard.data(forKey: Constants.UserDefault.gameShape).flatMap{ NSKeyedUnarchiver.unarchiveObject(with: $0) } as? GameShape ?? GameShape(type: .square)
 		switch shape.shapeType {

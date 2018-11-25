@@ -13,7 +13,6 @@ import UIKit
 
 class ShapeView : UIView {
 	
-	@objc
 	var gameShape: GameShape? {
 		didSet {setNeedsDisplay()}
 	}

@@ -40,17 +40,16 @@ protocol GameProgressDelegate {
 	
 }
 
-@objc
+
 class GameProgress : NSObject {
 	
-	@objc private(set) var doneArea = CGFloat(0)
-	@objc private(set) var startDate: Date?
-	@objc var gridPlayGame: GridPlayGame!
-	@objc var settings: Settings
+	private(set) var doneArea = CGFloat(0)
+	private(set) var startDate: Date?
+	var gridPlayGame: GridPlayGame!
+	var settings: Settings
 	private(set) var progress = [[CGFloat]]()
-	@objc weak var delegate: GameProgressDelegate?
+	weak var delegate: GameProgressDelegate?
 	
-	@objc
 	var percentDone: CGFloat {
 		return (doneArea/gridPlayGame.totalArea)*100
 	}
@@ -59,7 +58,6 @@ class GameProgress : NSObject {
 		return gridPlayGame.totalArea
 	}
 	
-	@objc
 	init(settings s: Settings) {
 		settings = s
 	}
@@ -69,7 +67,6 @@ class GameProgress : NSObject {
 		timeLimitTimer = nil
 	}
 	
-	@objc
 	func gameDidStart(location p: CGPoint, diameter d: CGFloat) {
 		let xSize = gridPlayGame.numberOfHorizontalPixels
 		let ySize = gridPlayGame.numberOfVerticalPixels
@@ -90,13 +87,11 @@ class GameProgress : NSObject {
 		playerMoved(to: p, diameter: d)
 	}
 	
-	@objc
 	func gameDidFinish() {
 		timeLimitTimer?.invalidate()
 		timeLimitTimer = nil
 	}
 	
-	@objc
 	func playerMoved(to p: CGPoint, diameter d: CGFloat) {
 		guard !gameOver else {return}
 		guard let startDate = startDate else {return}
@@ -126,7 +121,6 @@ class GameProgress : NSObject {
 		if gameOver {delegate?.gameDidFinish(won: true)}
 	}
 	
-	@objc
 	func setCurrentHeading(_ h: CLLocationDirection) {
 		gridPlayGame.setCurrentHeading(h)
 	}
