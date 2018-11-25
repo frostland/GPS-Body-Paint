@@ -48,7 +48,6 @@
 		1D6058910D05DD3D006BFB54 /* GPS Body Paint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS Body Paint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS_Body_Paint_Prefix.pch; sourceTree = "<group>"; };
 		7B042082218F0852003B7E3B /* CGRect+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Hashable.swift"; sourceTree = "<group>"; };
 		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		7B042086218F2CE1003B7E3B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -190,7 +189,6 @@
 				7B27B92F1DCF37E4006F44B7 /* Localizables */,
 				7BB0EA611D856B110057BFA2 /* Assets.xcassets */,
 				0F73F3F71010C4290004C707 /* Constants.h */,
-				32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */,
 				8D1107310486CEB800E47090 /* GPS_Body_Paint-Info.plist */,
 				7B7A26C6218098D20051D470 /* GPS Body Paint-Bridging-Header.h */,
 				0FCF47581019E2D0005E5F41 /* Settings.bundle */,
@@ -360,7 +358,6 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GPS Body Paint/Supporting Files/GPS_Body_Paint_Prefix.pch";
 				INFOPLIST_FILE = "GPS Body Paint/Supporting Files/GPS_Body_Paint-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.vso-software.GPSBodyPaint";
@@ -379,7 +376,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = DVL8GW97S8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GPS Body Paint/Supporting Files/GPS_Body_Paint_Prefix.pch";
 				INFOPLIST_FILE = "GPS Body Paint/Supporting Files/GPS_Body_Paint-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.vso-software.GPSBodyPaint";
