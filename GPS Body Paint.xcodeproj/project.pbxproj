@@ -29,9 +29,9 @@
 		7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */; };
 		7B5B75A621AAE5DD002B8509 /* LevelSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75A521AAE5DD002B8509 /* LevelSizeViewController.swift */; };
 		7B5B75A821AAEA0E002B8509 /* LevelDifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75A721AAEA0E002B8509 /* LevelDifficultyViewController.swift */; };
+		7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */; };
 		7B7A26C8218098D20051D470 /* GameShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A26C7218098D20051D470 /* GameShape.swift */; };
 		7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0EA611D856B110057BFA2 /* Assets.xcassets */; };
-		7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */; };
 		7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */; };
 		7BF0E33F2194B19E00657C2D /* GridAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0E33E2194B19E00657C2D /* GridAnnotationView.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +66,7 @@
 		7B3ECD4F1D84DFAC00DFEB0D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B5B75A521AAE5DD002B8509 /* LevelSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSizeViewController.swift; sourceTree = "<group>"; };
 		7B5B75A721AAEA0E002B8509 /* LevelDifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDifficultyViewController.swift; sourceTree = "<group>"; };
+		7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeShapeViewController.swift; sourceTree = "<group>"; };
 		7B7A26C6218098D20051D470 /* GPS Body Paint-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPS Body Paint-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B7A26C7218098D20051D470 /* GameShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameShape.swift; sourceTree = "<group>"; };
 		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -73,8 +74,6 @@
 		7BA248281DCF8E7F007F5B2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7BA2482A1DCF9566007F5B2E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		7BB0EA611D856B110057BFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7BB0EA691D8593E80057BFA2 /* VSOChallengeShapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOChallengeShapeViewController.h; sourceTree = "<group>"; };
-		7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOChallengeShapeViewController.m; sourceTree = "<group>"; };
 		7BB0EA6C1D8596190057BFA2 /* VSOPlayingModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOPlayingModeViewController.h; sourceTree = "<group>"; };
 		7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOPlayingModeViewController.m; sourceTree = "<group>"; };
 		7BF0E33E2194B19E00657C2D /* GridAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridAnnotationView.swift; sourceTree = "<group>"; };
@@ -112,8 +111,7 @@
 				7B042084218F2792003B7E3B /* ShapeView.swift */,
 				7B5B75A521AAE5DD002B8509 /* LevelSizeViewController.swift */,
 				7B5B75A721AAEA0E002B8509 /* LevelDifficultyViewController.swift */,
-				7BB0EA691D8593E80057BFA2 /* VSOChallengeShapeViewController.h */,
-				7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */,
+				7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */,
 				7BB0EA6C1D8596190057BFA2 /* VSOPlayingModeViewController.h */,
 				7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */,
 				289233AC0DB2D0DB0083E9F9 /* VSOSettingsViewController.h */,
@@ -306,13 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */,
 				7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */,
 				7B1BF61F21A76B6B00E84910 /* GameProgress.swift in Sources */,
 				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */,
 				7B042087218F2CE1003B7E3B /* Settings.swift in Sources */,
 				7B04208B218F36C0003B7E3B /* CurLocationView.swift in Sources */,
-				7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */,
 				7B04208D218F5813003B7E3B /* VSOMapView.swift in Sources */,
 				7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */,

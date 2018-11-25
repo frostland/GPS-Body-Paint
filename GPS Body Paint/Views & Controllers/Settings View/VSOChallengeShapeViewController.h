@@ -12,7 +12,7 @@
 
 
 
-@interface VSOChallengeShapeViewController : UIViewController {
+@interface ChallengeShapeViewController : UIViewController {
 	GameShape *shape;
 }
 

@@ -12,7 +12,6 @@
 
 #import "Constants.h"
 
-#import "VSOChallengeShapeViewController.h"
 #import "VSOPlayingModeViewController.h"
 
 
@@ -77,7 +76,7 @@
 {
 	self.labelLevelSize.text = LevelSizeViewController.localizedSettingValue;
 	self.labelLevelDifficulty.text = LevelDifficultyViewController.localizedSettingValue;
-	self.labelChallengeShape.text = VSOChallengeShapeViewController.localizedSettingValue;
+	self.labelChallengeShape.text = ChallengeShapeViewController.localizedSettingValue;
 	self.labelPlayingMode.text = VSOPlayingModeViewController.localizedSettingValue;
 }
 
