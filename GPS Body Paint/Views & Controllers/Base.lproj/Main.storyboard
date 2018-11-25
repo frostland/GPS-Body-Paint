@@ -636,7 +636,7 @@
         <!--Playing Mode-->
         <scene sceneID="fBG-Qx-X1p">
             <objects>
-                <viewController title="Playing Mode" id="H0p-u6-s4u" customClass="VSOPlayingModeViewController" sceneMemberID="viewController">
+                <viewController title="Playing Mode" id="H0p-u6-s4u" customClass="PlayingModeViewController" customModule="GPS_Body_Paint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="42W-Yx-cBB"/>
                         <viewControllerLayoutGuide type="bottom" id="1Rp-MC-Pen"/>

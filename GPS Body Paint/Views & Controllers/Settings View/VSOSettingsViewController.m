@@ -12,8 +12,6 @@
 
 #import "Constants.h"
 
-#import "VSOPlayingModeViewController.h"
-
 
 
 @implementation VSOSettingsViewController
@@ -77,7 +75,7 @@
 	self.labelLevelSize.text = LevelSizeViewController.localizedSettingValue;
 	self.labelLevelDifficulty.text = LevelDifficultyViewController.localizedSettingValue;
 	self.labelChallengeShape.text = ChallengeShapeViewController.localizedSettingValue;
-	self.labelPlayingMode.text = VSOPlayingModeViewController.localizedSettingValue;
+	self.labelPlayingMode.text = PlayingModeViewController.localizedSettingValue;
 }
 
 @end
