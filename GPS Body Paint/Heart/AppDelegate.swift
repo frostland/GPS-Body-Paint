@@ -31,7 +31,7 @@ class AppDelegate : NSObject, UIApplicationDelegate {
 	}
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-		((window!.rootViewController! as! UINavigationController).viewControllers.first! as! VSOSettingsViewController).settings = Settings()
+		((window!.rootViewController! as! UINavigationController).viewControllers.first! as! SettingsViewController).settings = Settings()
 		return true
 	}
 	

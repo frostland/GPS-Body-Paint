@@ -6,6 +6,7 @@
  * Copyright © 2018 Frost Land. All rights reserved.
  */
 
+import CoreGraphics
 import Foundation
 
 
