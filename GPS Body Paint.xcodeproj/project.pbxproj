@@ -15,7 +15,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
-		289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */; };
 		7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042082218F0852003B7E3B /* CGRect+Hashable.swift */; };
 		7B042085218F2792003B7E3B /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042084218F2792003B7E3B /* ShapeView.swift */; };
 		7B042087218F2CE1003B7E3B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042086218F2CE1003B7E3B /* Settings.swift */; };
@@ -31,6 +30,7 @@
 		7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */; };
 		7B5B75AC21AAF354002B8509 /* PlayingModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75AB21AAF354002B8509 /* PlayingModeViewController.swift */; };
 		7B5B75AE21AAF85F002B8509 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75AD21AAF85F002B8509 /* SettingsViewController.swift */; };
+		7B5B75B021AAFDC4002B8509 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75AF21AAFDC4002B8509 /* PlayViewController.swift */; };
 		7B7A26C8218098D20051D470 /* GameShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A26C7218098D20051D470 /* GameShape.swift */; };
 		7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0EA611D856B110057BFA2 /* Assets.xcassets */; };
 		7BF0E33F2194B19E00657C2D /* GridAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0E33E2194B19E00657C2D /* GridAnnotationView.swift */; };
@@ -48,8 +48,6 @@
 		1D6058910D05DD3D006BFB54 /* GPS Body Paint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS Body Paint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		289233A80DB2D0DB0083E9F9 /* VSOPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOPlayViewController.h; sourceTree = "<group>"; };
-		289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOPlayViewController.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS_Body_Paint_Prefix.pch; sourceTree = "<group>"; };
 		7B042082218F0852003B7E3B /* CGRect+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Hashable.swift"; sourceTree = "<group>"; };
 		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
@@ -67,6 +65,7 @@
 		7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeShapeViewController.swift; sourceTree = "<group>"; };
 		7B5B75AB21AAF354002B8509 /* PlayingModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingModeViewController.swift; sourceTree = "<group>"; };
 		7B5B75AD21AAF85F002B8509 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7B5B75AF21AAFDC4002B8509 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7B7A26C6218098D20051D470 /* GPS Body Paint-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPS Body Paint-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B7A26C7218098D20051D470 /* GameShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameShape.swift; sourceTree = "<group>"; };
 		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -124,8 +123,7 @@
 				7B04208A218F36C0003B7E3B /* CurLocationView.swift */,
 				7BF0E33E2194B19E00657C2D /* GridAnnotationView.swift */,
 				7B1BF61E21A76B6B00E84910 /* GameProgress.swift */,
-				289233A80DB2D0DB0083E9F9 /* VSOPlayViewController.h */,
-				289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */,
+				7B5B75AF21AAFDC4002B8509 /* PlayViewController.swift */,
 			);
 			path = "Play View";
 			sourceTree = "<group>";
@@ -304,10 +302,10 @@
 				7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */,
 				7B1BF61F21A76B6B00E84910 /* GameProgress.swift in Sources */,
 				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
-				289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */,
 				7B042087218F2CE1003B7E3B /* Settings.swift in Sources */,
 				7B04208B218F36C0003B7E3B /* CurLocationView.swift in Sources */,
 				7B04208D218F5813003B7E3B /* VSOMapView.swift in Sources */,
+				7B5B75B021AAFDC4002B8509 /* PlayViewController.swift in Sources */,
 				7B5B75AE21AAF85F002B8509 /* SettingsViewController.swift in Sources */,
 				7B5B75AC21AAF354002B8509 /* PlayingModeViewController.swift in Sources */,
 				7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */,

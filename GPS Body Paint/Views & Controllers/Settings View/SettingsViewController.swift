@@ -6,12 +6,13 @@
  * Copyright © 2018 Frost Land. All rights reserved.
  */
 
+import CoreLocation
 import Foundation
 import UIKit
 
 
 
-class SettingsViewController : UITableViewController, UINavigationControllerDelegate, VSOPlayViewControllerDelegate {
+class SettingsViewController : UITableViewController, UINavigationControllerDelegate, PlayViewControllerDelegate {
 	
 	var settings: Settings!
 	
@@ -38,7 +39,7 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 		switch segue.identifier {
 		case "Play"?:
 			let ud = UserDefaults.standard
-			let controller = segue.destination as! VSOPlayViewController
+			let controller = segue.destination as! PlayViewController
 			
 			settings.gameShape = NSKeyedUnarchiver.unarchiveObject(with: ud.data(forKey: VSO_UDK_GAME_SHAPE)!)! as! GameShape
 			settings.playgroundSize = ud.double(forKey: VSO_UDK_LEVEL_SIZE)
@@ -46,7 +47,7 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 			settings.playingMode = VSOPlayingMode(rawValue: ud.integer(forKey: VSO_UDK_PLAYING_MODE))!
 			settings.playingTime = ud.double(forKey: VSO_UDK_PLAYING_TIME)
 			settings.playingFillPercentToDo = ud.integer(forKey: VSO_UDK_PLAYING_FILL_PERCENTAGE)
-			settings.userLocationDiameter = 10 - CGFloat(ud.integer(forKey: VSO_UDK_LEVEL_PAINTING_SIZE))*1.9
+			settings.userLocationDiameter = 10 - CLLocationDistance(ud.integer(forKey: VSO_UDK_LEVEL_PAINTING_SIZE))*1.9
 			
 			controller.gameProgress = GameProgress(settings: settings)
 			controller.delegate = self
@@ -64,7 +65,7 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(150), execute: { [weak self] in self?.doDismissModalViewControllerAnimated() })
 	}
 	
-	func playViewControllerDidFinish(_ controller: VSOPlayViewController!) {
+	func playViewControllerDidFinish(_ controller: PlayViewController) {
 		doDismissModalViewControllerAnimated()
 	}
 	

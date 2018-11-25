@@ -7,6 +7,7 @@
  */
 
 import CoreGraphics
+import CoreLocation
 import Foundation
 
 
@@ -24,7 +25,7 @@ protocol GridPlayGame : class {
 	func area(atGridX x: Int, gridY y: Int) -> CGFloat
 	
 	/* If h == -1., heading is undefined */
-	func setCurrentHeading(_ h: CGFloat)
+	func setCurrentHeading(_ h: CLLocationDirection)
 	/* p and precision are in the receiver's coordinate system */
 	func setCurrentUserLocation(_ p: CGPoint, precision: CGFloat)
 	func addSquareVisited(atGridX x: Int, gridY y: Int)
@@ -126,7 +127,7 @@ class GameProgress : NSObject {
 	}
 	
 	@objc
-	func setCurrentHeading(_ h: CGFloat) {
+	func setCurrentHeading(_ h: CLLocationDirection) {
 		gridPlayGame.setCurrentHeading(h)
 	}
 	

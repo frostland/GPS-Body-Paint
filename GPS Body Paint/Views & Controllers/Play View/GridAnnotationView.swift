@@ -139,7 +139,7 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 		return hits
 	}
 	
-	func setCurrentHeading(_ h: CGFloat) {
+	func setCurrentHeading(_ h: CLLocationDirection) {
 		curUserLocationView.heading = h
 	}
 	

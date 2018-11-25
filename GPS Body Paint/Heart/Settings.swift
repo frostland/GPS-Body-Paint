@@ -17,7 +17,7 @@ class Settings : NSObject {
 	/** The Max size of the sides of the region of the map. */
 	@objc var playgroundSize = CLLocationDistance(25)
 	@objc var gridSize = CLLocationDistance(5)
-	@objc var userLocationDiameter = CGFloat(8.1)
+	@objc var userLocationDiameter = CLLocationDistance(8.1)
 	
 	@objc var gameShape = GameShape(type: .square)
 	@objc var playingMode = VSOPlayingMode.fillIn

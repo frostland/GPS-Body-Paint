@@ -7,6 +7,7 @@
  */
 
 import CoreGraphics
+import CoreLocation
 import Foundation
 import UIKit
 
@@ -17,7 +18,7 @@ private let USER_LOCATION_VIEW_CENTER_DOT_SIZE = CGFloat(5)
 class CurLocationView : UIView {
 	
 	/* Should be optional. Will be once we’re full Swift! Also should be in radian… currently is in degrees. */
-	@objc var heading = CGFloat(-1) {
+	@objc var heading = CLLocationDirection(-1) {
 		didSet {setNeedsDisplay()}
 	}
 	@objc var precision = CGFloat(0) {
@@ -60,7 +61,7 @@ class CurLocationView : UIView {
 		
 		if heading >= 0 {
 			c.concatenate(CGAffineTransform(translationX: center.x, y: center.y))
-			c.concatenate(CGAffineTransform(rotationAngle: -2*CGFloat.pi*(heading/360)))
+			c.concatenate(CGAffineTransform(rotationAngle: CGFloat(-2*CLLocationDirection.pi*(heading/360))))
 			c.concatenate(CGAffineTransform(translationX: -center.x, y: -center.y))
 		}
 		
