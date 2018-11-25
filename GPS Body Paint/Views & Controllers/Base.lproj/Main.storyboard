@@ -763,7 +763,7 @@
         <!--Playground Size-->
         <scene sceneID="bAv-tm-mO0">
             <objects>
-                <viewController title="Playground Size" id="ozd-Uz-l4m" customClass="VSOLevelSizeViewController" sceneMemberID="viewController">
+                <viewController title="Playground Size" id="ozd-Uz-l4m" customClass="LevelSizeViewController" customModule="GPS_Body_Paint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8nj-0s-Ili"/>
                         <viewControllerLayoutGuide type="bottom" id="iN3-Is-Tz3"/>
@@ -795,6 +795,9 @@
                             <constraint firstAttribute="trailing" secondItem="nST-zh-yr6" secondAttribute="trailing" id="Kfc-Pg-i5M"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="nST-zh-yr6" id="fqW-zz-FNr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4L-iF-A7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

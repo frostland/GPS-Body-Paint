@@ -10,7 +10,7 @@
 
 
 
-@interface VSOLevelSizeViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface LevelSizeViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 + (NSString *)localizedSettingValue;
 
