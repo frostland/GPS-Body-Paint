@@ -31,9 +31,11 @@ class VSOMapView : MKMapView {
 //	}
 	
 	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-		(delegate as? VSOMapViewDelegate)?.mapView?(didReceiveTouch: self)
-		
-		return super.hitTest(point, with: event)
+		let ret = super.hitTest(point, with: event)
+		if ret != nil {
+			(delegate as? VSOMapViewDelegate)?.mapView?(didReceiveTouch: self)
+		}
+		return ret
 	}
 	
 }
