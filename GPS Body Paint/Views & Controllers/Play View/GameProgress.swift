@@ -45,16 +45,18 @@ class GameProgress : NSObject {
 	
 	private(set) var doneArea = CGFloat(0)
 	private(set) var startDate: Date?
-	var gridPlayGame: GridPlayGame! /* TODO: Check forced unwrap */
+	var gridPlayGame: GridPlayGame?
 	var settings: Settings
 	private(set) var progress = [[CGFloat]]()
 	weak var delegate: GameProgressDelegate?
 	
 	var percentDone: CGFloat {
+		guard let gridPlayGame = gridPlayGame else {return 0}
 		return (doneArea/gridPlayGame.totalArea)*100
 	}
 	
 	var totalArea: CGFloat {
+		guard let gridPlayGame = gridPlayGame else {return 0}
 		return gridPlayGame.totalArea
 	}
 	
@@ -68,6 +70,7 @@ class GameProgress : NSObject {
 	}
 	
 	func gameDidStart(location p: CGPoint, diameter d: CGFloat) {
+		guard let gridPlayGame = gridPlayGame else {return}
 		let xSize = gridPlayGame.numberOfHorizontalPixels
 		let ySize = gridPlayGame.numberOfVerticalPixels
 		
@@ -93,6 +96,7 @@ class GameProgress : NSObject {
 	}
 	
 	func playerMoved(to p: CGPoint, diameter d: CGFloat) {
+		guard let gridPlayGame = gridPlayGame else {return}
 		guard !gameOver else {return}
 		guard let startDate = startDate else {return}
 		
@@ -122,7 +126,7 @@ class GameProgress : NSObject {
 	}
 	
 	func setCurrentHeading(_ h: CLLocationDirection) {
-		gridPlayGame.setCurrentHeading(h)
+		gridPlayGame?.setCurrentHeading(h)
 	}
 	
 	private var gameOver = false
