@@ -18,8 +18,10 @@ class ShapeView : UIView {
 	}
 	
 	override func draw(_ rect: CGRect) {
+		guard let gameShape = gameShape else {return}
 		guard let c = UIGraphicsGetCurrentContext() else {return}
-		gameShape?.draw(in: bounds, context: c)
+		
+		gameShape.draw(in: bounds, context: c)
 	}
 	
 }

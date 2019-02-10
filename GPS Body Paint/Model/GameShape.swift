@@ -12,6 +12,13 @@ import UIKit
 
 
 
+enum GameShapeType : Int {
+	case square = 0
+	case hexagon = 1
+	case triangle = 2
+}
+
+
 class GameShape : NSObject, NSCoding {
 	
 	var shapeType: GameShapeType {

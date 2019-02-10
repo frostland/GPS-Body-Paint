@@ -48,7 +48,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 	@IBOutlet var wonLabelFilledSquareMeters: UILabel!
 	
 	weak var delegate: PlayViewControllerDelegate?
-	var gameProgress: GameProgress!
+	var gameProgress: GameProgressController!
 	
 	required init?(coder aDecoder: NSCoder) {
 		locationManager = CLLocationManager()
@@ -57,7 +57,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 		coordinateForAnnotation = CLLocationCoordinate2D(latitude: 40.792651, longitude: -73.959167)
 //		coordinateForAnnotation = CLLocationCoordinate2D(latitude: 43.580212 + CLLocationDegrees.random(in: 0...9), longitude: 1.29724 + CLLocationDegrees.random(in: 0...9))
 		
-		warnForMapLoadingErrors = UserDefaults.standard.bool(forKey: Constants.UserDefault.warnOnMapLoadingFailure)
+		warnForMapLoadingErrors = s.warnOnMapLoadingFailure
 		
 		super.init(coder: aDecoder)
 		
@@ -95,13 +95,13 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 		let font: UIFont
 		let playingOrRemainingTitle: String
 		switch gameProgress.settings.playingMode {
-		case .fillIn:
+		case .fillIn(let goal):
 			font = labelPlayingTimeTitle.font
 			playingOrRemainingTitle = NSLocalizedString("playing time", comment: "Playing time label title in the game view")
 			
 			labelGoal.isHidden = false
 			labelGoalPercentage.isHidden = false
-			labelGoalPercentage.text = String(format: NSLocalizedString("percent complete format", comment: "Here, there is only a %d with the percent sign (%% for %) following"), gameProgress.settings.playingFillPercentToDo)
+			labelGoalPercentage.text = String(format: NSLocalizedString("percent complete format", comment: "Here, there is only a %d with the percent sign (%% for %) following"), goal)
 			
 		case .timeLimit:
 			font = labelGoal.font
@@ -170,13 +170,13 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 		
 		/* Negative accuracy means no location found */
 		guard newLocation.horizontalAccuracy.sign == .plus else {return}
-//		guard newLocation.horizontalAccuracy <= gameProgress.settings.playgroundSize else {return}
+//		guard newLocation.horizontalAccuracy <= gameProgress.settings.levelSize else {return}
 		
 		lastGPSRefresh = Date()
 		labelGPSAccuracy.text = String(format: NSLocalizedString("n m format", comment: "Format for \"10 m\""), Int(newLocation.horizontalAccuracy.rounded()))
 		
-		if UserDefaults.standard.bool(forKey: Constants.UserDefault.firstLaunch) {
-			UserDefaults.standard.set(false, forKey: Constants.UserDefault.firstLaunch)
+		if s.firstLaunch {
+			s.firstLaunch = false
 			
 			let alertController = UIAlertController(
 				title: NSLocalizedString("play info", comment: "Pop-up title when playing for the first time"),
@@ -205,7 +205,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 			
 			/* Showing arrows if user outside of map */
 			let r = mapView.region
-			UIView.animate(withDuration: Constants.AnimTimes.showArrows, animations: {
+			UIView.animate(withDuration: c.animTimeShowArrows, animations: {
 				if lastCoordinate.latitude < r.center.latitude-r.span.latitudeDelta/2 {self.imageArrowDown.alpha = 1}
 				else                                                                  {self.imageArrowDown.alpha = 0}
 				if lastCoordinate.latitude > r.center.latitude+r.span.latitudeDelta/2 {self.imageArrowTop.alpha = 1}
@@ -277,7 +277,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 		timerShowLoadingMap?.invalidate()
 		timerShowLoadingMap = nil
 		
-		UIView.animate(withDuration: Constants.AnimTimes.showViewLoadingMap, animations: {
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
 			self.viewLoadingMap.alpha = 0
 		})
 		
@@ -343,7 +343,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 		let k = 1/mapView.convert(MKCoordinateRegion(center: coordinateForAnnotation, latitudinalMeters: 1, longitudinalMeters: 1), toRectTo: mapView).width
 		wonLabelFilledSquareMeters.text = String(format: NSLocalizedString("n square meters format", comment: "Format for \"10 square meters\""), Int((sqrt(gameProgress.doneArea)*k).rounded()))
 		
-		UIView.animate(withDuration: Constants.AnimTimes.showGameOver, animations: {
+		UIView.animate(withDuration: c.animTimeShowGameOver, animations: {
 			self.viewGameOver.alpha = 1
 		})
 	}
@@ -351,6 +351,10 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 	/* ***************
       MARK: - Private
 	   *************** */
+	
+	/* Dependencies */
+	private let c = S.sp.constants
+	private let s = S.sp.appSettings
 	
 	private var gridAnnotationView: GridAnnotationView! /* TODO: Check forced unwrap */
 	private var timerShowLoadingMap: Timer?
@@ -382,7 +386,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 	private var score: Int {
 		let k = 1/mapView.convert(MKCoordinateRegion(center: coordinateForAnnotation, latitudinalMeters: 1, longitudinalMeters: 1), toRectTo: mapView).width
 		let area = Double(sqrt(gameProgress.doneArea)*k)
-		let scoreMultiplier = Double(1 + CGFloat(UserDefaults.standard.integer(forKey: Constants.UserDefault.paintingSize))/2)
+		let scoreMultiplier = 1 + Double(s.paintingSize.rawValue)/2
 		
 		return Int(((area / log10(playingTime+1.5)) * scoreMultiplier).rounded())
 	}
@@ -392,19 +396,19 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 		timerShowLoadingMap?.invalidate()
 		timerShowLoadingMap = nil
 		
-		UIView.animate(withDuration: Constants.AnimTimes.showViewLoadingMap, animations: {
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
 			self.viewLoadingMap.alpha = 1
 		})
 	}
 	
 	private func showViewGettingLocation() {
-		UIView.animate(withDuration: Constants.AnimTimes.showViewLoadingMap, animations: {
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
 			self.viewGettingLocation.alpha = 1
 		})
 	}
 	
 	private func removeGettingLocationMsgAnimated() {
-		UIView.animate(withDuration: Constants.AnimTimes.showViewLoadingMap, animations: {
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
 			self.viewGettingLocation.alpha = 0
 		})
 	}
@@ -412,7 +416,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 	private func lockMap(_ lockButton: UIButton?) {
 		mapLocked = true
 		/* If the current region of the map is too big, we decrease it */
-		let max = Constants.maxMapSpanForPlayground
+		let max = c.maxMapSpanForPlayground
 		if mapWidth > max {mapView.region = MKCoordinateRegion(center: mapView.region.center, latitudinalMeters: max, longitudinalMeters: max)}
 		
 		mapView.isZoomEnabled = false
@@ -442,8 +446,8 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 			
 			let i2: Int
 			switch gameProgress.settings.playingMode {
-			case .fillIn:    i2 = i
-			case .timeLimit: i2 = Int(max(TimeInterval(0), gameProgress.settings.playingTime - playingTime))
+			case .fillIn:              i2 = i
+			case .timeLimit(let time): i2 = Int(max(TimeInterval(0), time - playingTime))
 			}
 			let h2 = i2/3600, m2 = (i2 - h2*3600)/60, s2 = i2 - h2*3600 - m2*60
 			let tasstr2 = String(format: "%02lu:%02lu:%02lu", h2, m2, s2)
@@ -452,7 +456,7 @@ class PlayViewController : UIViewController, MKMapViewDelegate, MKAnnotation, CL
 		
 		if let lastGPSRefresh = lastGPSRefresh {
 			let i = -lastGPSRefresh.timeIntervalSinceNow
-			if mapLocked && i > Constants.timeBeforeShowingGettingLocMsg {showViewGettingLocation()}
+			if mapLocked && i > c.timeBeforeShowingGettingLocMsg {showViewGettingLocation()}
 		}
 	}
 	

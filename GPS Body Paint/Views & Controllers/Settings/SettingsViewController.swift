@@ -14,8 +14,6 @@ import UIKit
 
 class SettingsViewController : UITableViewController, UINavigationControllerDelegate, PlayViewControllerDelegate {
 	
-	var settings: Settings!
-	
 	@IBOutlet var labelLevelSize: UILabel!
 	@IBOutlet var labelLevelDifficulty: UILabel!
 	@IBOutlet var labelChallengeShape: UILabel!
@@ -38,18 +36,9 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 		
 		switch segue.identifier {
 		case "Play"?:
-			let ud = UserDefaults.standard
 			let controller = segue.destination as! PlayViewController
 			
-			settings.gameShape = NSKeyedUnarchiver.unarchiveObject(with: ud.data(forKey: Constants.UserDefault.gameShape)!)! as! GameShape
-			settings.playgroundSize = ud.double(forKey: Constants.UserDefault.levelSize)
-			settings.gridSize = 3
-			settings.playingMode = PlayingMode(rawValue: ud.integer(forKey: Constants.UserDefault.playingMode))!
-			settings.playingTime = ud.double(forKey: Constants.UserDefault.playingTime)
-			settings.playingFillPercentToDo = ud.integer(forKey: Constants.UserDefault.playingFillPercentage)
-			settings.userLocationDiameter = 10 - CLLocationDistance(ud.integer(forKey: Constants.UserDefault.paintingSize))*1.9
-			
-			controller.gameProgress = GameProgress(settings: settings)
+			controller.gameProgress = GameProgressController(settings: GameSettings(from: s))
 			controller.delegate = self
 			
 		default: (/*nop*/)
@@ -72,6 +61,9 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 	/* ***************
       MARK: - Private
 	   *************** */
+	
+	/* Dependencies */
+	private let s = S.sp.appSettings
 	
 	private func refreshUI() {
 		labelLevelSize.text = LevelSizeViewController.localizedSettingValue

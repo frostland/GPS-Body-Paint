@@ -16,7 +16,7 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 	
 	var totalArea = CGFloat(0)
 	var map: MKMapView! /* TODO: Check forced unwrap */
-	var gameProgress: GameProgress! /* TODO: Check forced unwrap */
+	var gameProgress: GameProgressController! /* TODO: Check forced unwrap */
 	
 	var numberOfHorizontalPixels: Int {
 		computeMetadataIfNeeded()
