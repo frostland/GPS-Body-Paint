@@ -14,10 +14,11 @@ import UIKit
 class ChallengeShapeViewController : UIViewController {
 	
 	static var localizedSettingValue: String {
-		switch S.sp.appSettings.gameShape.shapeType {
-		case .square:   return NSLocalizedString("square",   comment: "Square shape type")
-		case .hexagon:  return NSLocalizedString("hexagon",  comment: "Hexagon shape type")
-		case .triangle: return NSLocalizedString("triangle", comment: "Triangle shape type")
+		switch S.sp.appSettings.gameShape.builtinGameShapeId {
+		case nil:        return NSLocalizedString("custom",   comment: "Custom shape type")
+		case .square?:   return NSLocalizedString("square",   comment: "Square shape type")
+		case .hexagon?:  return NSLocalizedString("hexagon",  comment: "Hexagon shape type")
+		case .triangle?: return NSLocalizedString("triangle", comment: "Triangle shape type")
 		}
 	}
 	
@@ -33,14 +34,13 @@ class ChallengeShapeViewController : UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		segmentedControlShape.selectedSegmentIndex = min(shape.shapeType.rawValue, segmentedControlShape.numberOfSegments)
+		segmentedControlShape.selectedSegmentIndex = min(shape.builtinGameShapeId?.rawValue ?? -1, segmentedControlShape.numberOfSegments)
 		shapeView.gameShape = shape
 	}
 	
 	@IBAction func shapeChanged(_ sender: AnyObject) {
-		shape.shapeType = GameShapeType(rawValue: segmentedControlShape.selectedSegmentIndex) ?? .square
-		shapeView.setNeedsDisplay()
-		
+		shape = GameShape(shapeId: BuiltInGameShapeId(rawValue: segmentedControlShape.selectedSegmentIndex) ?? .square)
+		shapeView.gameShape = shape
 		s.gameShape = shape
 	}
 	

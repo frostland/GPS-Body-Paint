@@ -12,33 +12,60 @@ import UIKit
 
 
 
-enum GameShapeType : Int {
+enum BuiltInGameShapeId : Int {
+	
 	case square = 0
 	case hexagon = 1
 	case triangle = 2
+	
+	var polygon: [CGPoint] {
+		switch self {
+		case .square:
+			return [
+				CGPoint(x: 0, y: 0),
+				CGPoint(x: 0, y: 1),
+				CGPoint(x: 1, y: 1),
+				CGPoint(x: 1, y: 0),
+			]
+			
+		case .hexagon:
+			let t = CGAffineTransform(rotationAngle: CGFloat.pi/3.0)
+			let p0 = CGPoint(x: 1, y: 0)
+			let p1 = p0.applying(t)
+			let p2 = p1.applying(t)
+			let p3 = p2.applying(t)
+			let p4 = p3.applying(t)
+			let p5 = p4.applying(t)
+			return [p0, p1, p2, p3, p4, p5]
+			
+		case .triangle:
+			return [
+				CGPoint(x:   1, y: 1),
+				CGPoint(x: 0.5, y: 0),
+				CGPoint(x:   0, y: 1)
+			]
+		}
+	}
+	
 }
 
 
-class GameShape : NSObject, NSCoding {
+class GameShape {
 	
-	var shapeType: GameShapeType {
-		didSet {polygonCache = nil; shapePathCache = [:]}
+	/** The polygon for the shape. */
+	let polygon: [CGPoint]
+	/** The built-in shape id for the current shape. Can be `nil` if the polygon
+	was set manually on the shape. */
+	let builtinGameShapeId: BuiltInGameShapeId?
+	
+	init(polygon p: [CGPoint]) {
+		builtinGameShapeId = nil
+		polygon = p
 	}
 	
-	init(type: GameShapeType) {
-		shapeType = type
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		var t = GameShapeType.square.rawValue
-		aDecoder.decodeValue(ofObjCType: (t as NSNumber).objCType, at: &t)
-		shapeType = GameShapeType(rawValue: t) ?? .square
-		super.init()
-	}
-	
-	func encode(with aCoder: NSCoder) {
-		var r = shapeType.rawValue
-		aCoder.encodeValue(ofObjCType: (r as NSNumber).objCType, at: &r)
+	init(shapeId: BuiltInGameShapeId) {
+		builtinGameShapeId = shapeId
+		polygon = shapeId.polygon
 	}
 	
 	func pathForDrawing(in rect: CGRect) -> CGPath {
@@ -91,42 +118,6 @@ class GameShape : NSObject, NSCoding {
 	/* ***************
       MARK: - Private
 	   *************** */
-	
-	private var polygonCache: [CGPoint]?
-	private var polygon: [CGPoint] {
-		if let c = polygonCache {return c}
-		
-		let p: [CGPoint]
-		switch shapeType {
-		case .square:
-			p = [
-				CGPoint(x: 0, y: 0),
-				CGPoint(x: 0, y: 1),
-				CGPoint(x: 1, y: 1),
-				CGPoint(x: 1, y: 0),
-			]
-			
-		case .hexagon:
-			let t = CGAffineTransform(rotationAngle: CGFloat.pi/3.0)
-			let p0 = CGPoint(x: 1, y: 0)
-			let p1 = p0.applying(t)
-			let p2 = p1.applying(t)
-			let p3 = p2.applying(t)
-			let p4 = p3.applying(t)
-			let p5 = p4.applying(t)
-			p = [p0, p1, p2, p3, p4, p5]
-			
-		case .triangle:
-			p = [
-				CGPoint(x:   1, y: 1),
-				CGPoint(x: 0.5, y: 0),
-				CGPoint(x:   0, y: 1)
-			]
-		}
-		
-		polygonCache = p
-		return p
-	}
 	
 	private var shapePathCache = [CGRect: CGPath]()
 	

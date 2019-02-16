@@ -29,7 +29,8 @@ class AppSettings {
 			.playingModeId:           PlayingMode.fillInId,
 			.playingModeFillValue:    75,
 			.playingModeTimeValue:    TimeInterval(5*60),
-			.gameShape:               NSKeyedArchiver.archivedData(withRootObject: GameShape(type: .square)),
+			.gameShapeId:             BuiltInGameShapeId.square.rawValue,
+			.gameShapePolygon:        nil,
 			.warnOnMapLoadingFailure: true
 		]
 		
@@ -63,8 +64,24 @@ class AppSettings {
 	}
 	
 	var gameShape: GameShape {
-		get {return ud.data(forKey: SettingsKey.gameShape.rawValue).flatMap{ NSKeyedUnarchiver.unarchiveObject(with: $0) as? GameShape } ?? GameShape(type: .square)}
-		set {ud.set(NSKeyedArchiver.archivedData(withRootObject: newValue), forKey: SettingsKey.gameShape.rawValue)}
+		get {
+			if let idRaw = ud.value(forKey: SettingsKey.gameShapeId.rawValue) as? NSNumber, let id = BuiltInGameShapeId(rawValue: idRaw.intValue) {
+				return GameShape(shapeId: id)
+			} else if let polygon = ud.array(forKey: SettingsKey.gameShapePolygon.rawValue) as? [CGPoint] {
+				return GameShape(polygon: polygon)
+			} else {
+				return GameShape(shapeId: .square)
+			}
+		}
+		set {
+			if let id = newValue.builtinGameShapeId {
+				ud.set(id.rawValue, forKey: SettingsKey.gameShapeId.rawValue)
+				ud.removeObject(forKey: SettingsKey.gameShapePolygon.rawValue)
+			} else {
+				ud.set(newValue.polygon, forKey: SettingsKey.gameShapePolygon.rawValue)
+				ud.removeObject(forKey: SettingsKey.gameShapeId.rawValue)
+			}
+		}
 	}
 	
 	var paintingSize: PaintingSize {
@@ -131,7 +148,8 @@ class AppSettings {
 		
 		case firstLaunch             = "First Launch"
 		
-		case gameShape               = "VSO Saved Game Shape"
+		case gameShapeId             = "VSO Saved Game Shape Id"
+		case gameShapePolygon        = "VSO Saved Game Shape Polygon"
 		case paintingSize            = "VSO Level Painting Size"
 		case levelSize               = "VSO Level Size"
 		

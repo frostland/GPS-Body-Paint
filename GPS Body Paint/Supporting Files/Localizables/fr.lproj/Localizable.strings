@@ -1,4 +1,4 @@
-﻿/* No comment provided by engineer. */
+/* No comment provided by engineer. */
 "play info" = "Instruction de jeu";
 
 /* No comment provided by engineer. */
@@ -68,6 +68,7 @@
 "square" = "Carré";
 "hexagon" = "Hexagone";
 "triangle" = "Triangle";
+"custom" = "Personnalisé";
 
 /* Level difficulties */
 "big" = "Gros";
