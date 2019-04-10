@@ -188,8 +188,8 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 		xSize = Int(gameRect.width  / baseRect.width)  + 1
 		ySize = Int(gameRect.height / baseRect.height) + 1
 		
-		xStart = Int(gameRect.minX + (baseRect.minX - gameRect.minX) - ((baseRect.minX - gameRect.minX).rounded(.towardZero) / baseRect.width ) * baseRect.width)
-		yStart = Int(gameRect.minY + (baseRect.minY - gameRect.minY) - ((baseRect.minY - gameRect.minY).rounded(.towardZero) / baseRect.height) * baseRect.height)
+		xStart = Int(gameRect.minX + CGFloat(baseRect.minX - gameRect.minX) - (CGFloat(baseRect.minX - gameRect.minX).rounded(.towardZero) / baseRect.width ) * baseRect.width)
+		yStart = Int(gameRect.minY + CGFloat(baseRect.minY - gameRect.minY) - (CGFloat(baseRect.minY - gameRect.minY).rounded(.towardZero) / baseRect.height) * baseRect.height)
 		
 		computeGridDescription()
 	}
