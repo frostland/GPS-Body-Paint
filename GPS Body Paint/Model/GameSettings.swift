@@ -22,8 +22,11 @@ struct GameSettings {
 		playingMode = appSettings.playingMode
 	}
 	
-	/** The Max size of the sides of the region of the map. */
+	/** The minimum distance in meters on the x or y axis of the visible portion
+	of the map. Because phones are vertical, this distance will always be the
+	visible distance in meters on the x axis of the map (latitude). */
 	var playgroundSize: CLLocationDistance
+	/** The size in meters of a cell of the playing grid. */
 	var gridSize: CLLocationDistance
 	var userLocationDiameter: CLLocationDistance
 	

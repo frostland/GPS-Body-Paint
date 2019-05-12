@@ -55,11 +55,11 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 		c.clip()
 		
 		c.setStrokeColor(UIColor.black.withAlphaComponent(0.5).cgColor)
-		for x in stride(from: CGFloat(xStart), to: gameRect.maxX, by: baseRect.width) {
+		for x in stride(from: CGFloat(xStart), to: gameRect.maxX, by: baseCellRect.width) {
 			c.move(to: CGPoint(x: x, y: gameRect.minY))
 			c.addLine(to: CGPoint(x: x, y: gameRect.maxY))
 		}
-		for y in stride(from: CGFloat(yStart), to: gameRect.maxY, by: baseRect.height) {
+		for y in stride(from: CGFloat(yStart), to: gameRect.maxY, by: baseCellRect.height) {
 			c.move(to: CGPoint(x: gameRect.minX, y: y))
 			c.addLine(to: CGPoint(x: gameRect.maxX, y: y))
 		}
@@ -72,7 +72,7 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 	
 	func rectFrom(gridPixelX x: Int, y: Int) -> CGRect {
 		computeMetadataIfNeeded()
-		return CGRect(x: CGFloat(xStart) + baseRect.width*CGFloat(x), y: CGFloat(yStart) + baseRect.height*CGFloat(y), width: baseRect.width, height: baseRect.height)
+		return CGRect(x: CGFloat(xStart) + baseCellRect.width*CGFloat(x), y: CGFloat(yStart) + baseCellRect.height*CGFloat(y), width: baseCellRect.width, height: baseCellRect.height)
 	}
 	
 	func addSquareVisited(atGridX x: Int, gridY y: Int) {
@@ -91,7 +91,7 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 		let points = gridDescription[x][y]
 		return (
 			areaOfTriangle(p1: points[0], p2: points[1], p3: points[3]) +
-				areaOfTriangle(p1: points[1], p2: points[2], p3: points[3])
+			areaOfTriangle(p1: points[1], p2: points[2], p3: points[3])
 		)
 	}
 	
@@ -104,8 +104,8 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 		computeMetadataIfNeeded()
 		
 		if gameProgress.settings.gameShape.pathForDrawing(in: bounds).contains(p) {
-			let xP = (p.x + (bounds.minX-gameRect.minX)).rounded(.towardZero)/baseRect.width
-			let yP = (p.y + (bounds.minY-gameRect.minY)).rounded(.towardZero)/baseRect.height
+			let xP = (p.x + (bounds.minX-gameRect.minX)).rounded(.towardZero)/baseCellRect.width
+			let yP = (p.y + (bounds.minY-gameRect.minY)).rounded(.towardZero)/baseCellRect.height
 			hits.append(CGPoint(x: xP, y: yP))
 		}
 		
@@ -157,7 +157,7 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 	private var curUserLocationView: CurLocationView
 	
 	private var metedataComputed = false
-	private var gameRect, baseRect: CGRect! /* TODO: Check forced unwrap */
+	private var gameRect, baseCellRect: CGRect! /* TODO: Check forced unwrap */
 	private var xSize = 0, ySize = 0
 	private var gridDescription = [[[CGPoint]]]()
 	private var xStart = 0, yStart = 0
@@ -183,13 +183,13 @@ class GridAnnotationView : MKAnnotationView, GridPlayGame {
 		metedataComputed = true
 		
 		gameRect = gameProgress.settings.gameShape.gameRect(from: bounds)
-		baseRect = map.convert(MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: gameProgress.settings.gridSize, longitudinalMeters: gameProgress.settings.gridSize), toRectTo: self)
+		baseCellRect = map.convert(MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: gameProgress.settings.gridSize, longitudinalMeters: gameProgress.settings.gridSize), toRectTo: self)
 		
-		xSize = Int(gameRect.width  / baseRect.width)  + 1
-		ySize = Int(gameRect.height / baseRect.height) + 1
+		xSize = Int(gameRect.width  / baseCellRect.width)  + 1
+		ySize = Int(gameRect.height / baseCellRect.height) + 1
 		
-		xStart = Int(gameRect.minX + CGFloat(baseRect.minX - gameRect.minX) - (CGFloat(baseRect.minX - gameRect.minX).rounded(.towardZero) / baseRect.width ) * baseRect.width)
-		yStart = Int(gameRect.minY + CGFloat(baseRect.minY - gameRect.minY) - (CGFloat(baseRect.minY - gameRect.minY).rounded(.towardZero) / baseRect.height) * baseRect.height)
+		xStart = Int(gameRect.minX + CGFloat(baseCellRect.minX - gameRect.minX) - (CGFloat(baseCellRect.minX - gameRect.minX).rounded(.towardZero) / baseCellRect.width ) * baseCellRect.width)
+		yStart = Int(gameRect.minY + CGFloat(baseCellRect.minY - gameRect.minY) - (CGFloat(baseCellRect.minY - gameRect.minY).rounded(.towardZero) / baseCellRect.height) * baseCellRect.height)
 		
 		computeGridDescription()
 	}

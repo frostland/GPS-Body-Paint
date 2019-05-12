@@ -37,8 +37,7 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 		switch segue.identifier {
 		case "Play"?:
 			let controller = segue.destination as! PlayViewController
-			
-			controller.gameProgress = GameProgressController(settings: GameSettings(from: s))
+			controller.gameController = GameController(settings: GameSettings(from: s))
 			controller.delegate = self
 			
 		default: (/*nop*/)
