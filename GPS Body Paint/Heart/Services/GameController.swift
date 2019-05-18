@@ -12,42 +12,67 @@ import Foundation
 
 
 /* All methods are called on the main thread. */
-@objc /* To be compatible with NSHashTable */
-protocol GameControllerDelegate {
+protocol GameControllerDelegate : class {
+	
+	func gameController(_ gameController: GameController, didChangeStatus newStatus: GameController.Status)
 	
 	func gameController(_ gameController: GameController, failedToRetrieveLocation error: Error)
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?)
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?)
+	
+	func gameController(_ gameController: GameController, didChangeProgress progress: GameProgress)
 	
 }
 
 
 class GameController : NSObject, CLLocationManagerDelegate {
 	
-	let gameSettings: GameSettings
+	/** If precision is not better than 25 meters, we cannot start playing */
+	static let minHorizontalPrecisionToStartPlaying = CLLocationAccuracy(25)
 	
-	private(set) var grid: Grid?
-	private(set) var filledArea: CGFloat = 0
-	private(set) var timePlaying: TimeInterval?
+	enum Status {
+		
+		case idle
+		case trackingUserPosition
+		case playing(gameProgress: GameProgress)
+		
+		var gameProgress: GameProgress? {
+			switch self {
+			case .playing(gameProgress: let gp): return gp
+			default:                             return nil
+			}
+		}
+		
+	}
+	
+	let gameSettings: GameSettings
+	weak var delegate: GameControllerDelegate?
+	
+	var status = Status.idle
+	
+	var gameProgress: GameProgress? {
+		return status.gameProgress
+	}
 	
 	var isPlaying: Bool {
-		return grid != nil
+		return gameProgress != nil
+	}
+	
+	var canStartPlaying: Bool {
+		guard let loc = currentLocation else {return false}
+		return !isPlaying && loc.horizontalAccuracy < GameController.minHorizontalPrecisionToStartPlaying
 	}
 	
 	private(set) var currentLocation: CLLocation? {
 		didSet {
 			assert(Thread.isMainThread)
-			for d in delegates.allObjects {
-				d.gameController(self, didGetNewLocation: currentLocation)
-			}
+			delegate?.gameController(self, didGetNewLocation: currentLocation)
 		}
 	}
 	private(set) var currentHeading: CLHeading? {
 		didSet {
 			assert(Thread.isMainThread)
-			for d in delegates.allObjects {
-				d.gameController(self, didGetNewHeading: currentHeading)
-			}
+			delegate?.gameController(self, didGetNewHeading: currentHeading)
 		}
 	}
 	
@@ -70,30 +95,20 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	}
 	
 	func startPlaying() {
+		guard canStartPlaying else {return}
 	}
 	
-	/** Add a delegate to the delegates list. Must be called on the main thread. */
-	func addDelegate(_ obj: GameControllerDelegate) {
-		assert(Thread.isMainThread)
-		delegates.add(obj)
-	}
-	
-	/** Remove a delegate from the delegates list. Must be called on the main
-	thread. */
-	func removeDelegate(_ obj: GameControllerDelegate) {
-		assert(Thread.isMainThread)
-		delegates.remove(obj)
+	func stopPlaying() {
+		guard isPlaying else {return}
 	}
 	
 	/* *********************************
-      MARK: - Location Manager Delegate
+	   MARK: - Location Manager Delegate
 	   ********************************* */
 	
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 		assert(Thread.isMainThread)
-		for delegate in delegates.allObjects {
-			delegate.gameController(self, failedToRetrieveLocation: error)
-		}
+		delegate?.gameController(self, failedToRetrieveLocation: error)
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -115,7 +130,5 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	
 	/* Dependencies */
 	private let locationManager: CLLocationManager
-	
-	private var delegates = NSHashTable<GameControllerDelegate>.weakObjects()
 	
 }

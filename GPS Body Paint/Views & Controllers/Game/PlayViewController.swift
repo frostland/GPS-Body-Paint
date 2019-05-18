@@ -37,12 +37,12 @@ class PlayViewController : UIViewController {
 		willSet {
 			/* We allow the game controller to be set once only */
 			assert(gameController == nil)
-			newValue.addDelegate(self)
+			newValue.delegate = self
 		}
 	}
 	
 	@IBOutlet var mapView: VSOMapView!
-	@IBOutlet var viewShapePreview: ShapeView?
+	@IBOutlet var viewShapePreview: ShapeView!
 	
 	@IBOutlet var labelPlayingTime: UILabel!
 	@IBOutlet var labelPlayingTimeTitle: UILabel!
@@ -67,6 +67,22 @@ class PlayViewController : UIViewController {
 	@IBOutlet var wonLabelFilledPercent: UILabel!
 	@IBOutlet var wonLabelFilledSquareMeters: UILabel!
 	
+	/* ****************************
+	   MARK: - Controller Lifecycle
+	   **************************** */
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		gameController.startTrackingPhonePosition()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		gameController.stopPlaying()
+	}
+	
 	/* ***************************
 	   MARK: - Controller Settings
 	   *************************** */
@@ -80,7 +96,7 @@ class PlayViewController : UIViewController {
 	   *************** */
 	
 	@IBAction func startOrStopPlayingButtonTouchUpInside(_ sender: AnyObject) {
-		/* TODO */
+		gameController.startPlaying()
 	}
 	
 	@IBAction func centerMapToCurrentUserLocation(_ sender: AnyObject) {
@@ -90,8 +106,8 @@ class PlayViewController : UIViewController {
 	}
 	
 	@IBAction func stopPlaying(_ sender: AnyObject) {
-		/* TODO */
-		delegate?.playViewControllerDidFinish(self)
+		gameController.stopPlaying()
+//		delegate?.playViewControllerDidFinish(self)
 	}
 	
 }
@@ -101,6 +117,14 @@ class PlayViewController : UIViewController {
    ******************************** */
 
 extension PlayViewController : GameControllerDelegate {
+	
+	func gameController(_ gameController: GameController, didChangeStatus newStatus: GameController.Status) {
+		switch newStatus {
+		case .idle: ()
+		case .trackingUserPosition: ()
+		case .playing(gameProgress: let gp): ()
+		}
+	}
 	
 	func gameController(_ gameController: GameController, failedToRetrieveLocation error: Error) {
 		/* If there is an error retrieving the location of the user, there’s
@@ -120,6 +144,10 @@ extension PlayViewController : GameControllerDelegate {
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?) {
+	}
+	
+	func gameController(_ gameController: GameController, didChangeProgress progress: GameProgress) {
+		
 	}
 	
 }

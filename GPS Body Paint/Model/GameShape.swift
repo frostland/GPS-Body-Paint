@@ -68,51 +68,29 @@ class GameShape {
 		polygon = shapeId.polygon
 	}
 	
-	func pathForDrawing(in rect: CGRect) -> CGPath {
-		if let path = shapePathCache[rect] {return path}
+	/** The path for the shape in the given rect. The path will be not have any
+	padding or magins from the rect. */
+	func pathForDrawing(in drawingRect: CGRect) -> CGPath {
+		if let path = shapePathCache[drawingRect] {return path}
 		
-		let drawingRect = gameRect(from: rect)
 		let tmpPath = CGMutablePath()
-		
 		tmpPath.addLines(between: polygon)
 		tmpPath.closeSubpath()
 		
 		let bb = tmpPath.boundingBox
+		let scale = min(drawingRect.width/bb.width, drawingRect.height/bb.height)
+		
 		let t = CGAffineTransform.identity
 			.concatenating(CGAffineTransform(translationX: -bb.midX, y: -bb.midY))
-			.concatenating(CGAffineTransform(scaleX: drawingRect.width/bb.width, y: drawingRect.height/bb.height))
+			.concatenating(CGAffineTransform(scaleX: scale, y: scale))
 			.concatenating(CGAffineTransform(translationX: drawingRect.midX, y: drawingRect.midY))
 		
 		let path = CGMutablePath()
 		path.addLines(between: polygon, transform: t)
 		path.closeSubpath()
-		shapePathCache[rect] = path
+		shapePathCache[drawingRect] = path
 		
 		return path
-	}
-	
-	/** Compute the game rect from the map bounds. The game rect is a square
-	whose side is a little shorter than the shorter side of the input rect (90%
-	of the size), centered in the input rect. */
-	func gameRect(from rect: CGRect) -> CGRect {
-		let size = min(rect.width, rect.height)*0.9
-		let center = CGPoint(x: rect.midX, y: rect.midY)
-		
-		return CGRect(x: center.x - size/2, y: center.y - size/2, width: size, height: size).integral
-	}
-	
-	func draw(in rect: CGRect, context: CGContext) {
-		context.saveGState()
-		
-		context.setLineWidth(0.5)
-		
-		context.setStrokeColor(UIColor.red.cgColor)
-		context.setFillColor(UIColor.red.withAlphaComponent(0.15).cgColor)
-		
-		context.addPath(pathForDrawing(in: rect))
-		context.drawPath(using: .fillStroke)
-		
-		context.restoreGState()
 	}
 	
 	/* ***************
@@ -120,5 +98,15 @@ class GameShape {
 	   *************** */
 	
 	private var shapePathCache = [CGRect: CGPath]()
+	
+	/** Compute the game rect from the map bounds. The game rect is a square
+	whose side is a little shorter than the shorter side of the input rect (90%
+	of the size), centered in the input rect. */
+//	private func gameRect(from rect: CGRect) -> CGRect {
+//		let size = min(rect.width, rect.height)*0.9
+//		let center = CGPoint(x: rect.midX, y: rect.midY)
+//
+//		return CGRect(x: center.x - size/2, y: center.y - size/2, width: size, height: size).integral
+//	}
 	
 }

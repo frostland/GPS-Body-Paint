@@ -39,6 +39,8 @@
 		7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC1ACA2218B61D00BCBC63 /* GameController.swift */; };
 		7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC1ACC2218C57500BCBC63 /* Grid.swift */; };
 		7BC852DE221A10BD0029358D /* Quadrilateral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC852DD221A10BD0029358D /* Quadrilateral.swift */; };
+		7BF4C2D8229046FC00A09929 /* GameProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4C2D7229046FC00A09929 /* GameProgress.swift */; };
+		7BF4C2DA2290982800A09929 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4C2D92290982800A09929 /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		7BBC1ACC2218C57500BCBC63 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		7BC852DD221A10BD0029358D /* Quadrilateral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadrilateral.swift; sourceTree = "<group>"; };
 		7BF0E33E2194B19E00657C2D /* OBS_GridAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBS_GridAnnotationView.swift; sourceTree = "<group>"; };
+		7BF4C2D7229046FC00A09929 /* GameProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgress.swift; sourceTree = "<group>"; };
+		7BF4C2D92290982800A09929 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GPS_Body_Paint-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GPS_Body_Paint-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +239,7 @@
 		7B80538B220F8456009DE2C4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7BF4C2D92290982800A09929 /* GridView.swift */,
 				7B042084218F2792003B7E3B /* ShapeView.swift */,
 			);
 			path = Common;
@@ -243,8 +248,9 @@
 		7B80538C220F8519009DE2C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7BBC1ACC2218C57500BCBC63 /* Grid.swift */,
 				7BC852DD221A10BD0029358D /* Quadrilateral.swift */,
+				7BBC1ACC2218C57500BCBC63 /* Grid.swift */,
+				7BF4C2D7229046FC00A09929 /* GameProgress.swift */,
 				7B7A26C7218098D20051D470 /* GameShape.swift */,
 				7B80538F220F8599009DE2C4 /* PaintingSize.swift */,
 				7B80538D220F854C009DE2C4 /* PlayingMode.swift */,
@@ -355,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF4C2D8229046FC00A09929 /* GameProgress.swift in Sources */,
 				7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */,
 				7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */,
 				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
@@ -368,6 +375,7 @@
 				7B80539222102F7F009DE2C4 /* GameSettings.swift in Sources */,
 				7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */,
 				7B732DF021F4DC60004EEB01 /* ServicesProvider.swift in Sources */,
+				7BF4C2DA2290982800A09929 /* GridView.swift in Sources */,
 				7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */,
 				7BA2FEF722886E5C00F6EBB9 /* PlayViewController.swift in Sources */,
 				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
