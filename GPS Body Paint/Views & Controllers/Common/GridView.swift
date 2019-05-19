@@ -14,7 +14,20 @@ import UIKit
 class GridView : UIView {
 	
 	var grid: Grid? {
-		didSet {setNeedsDisplay()}
+		didSet {
+			filledSquareViews.values.forEach{ $0.removeFromSuperview() }
+			filledSquareViews.removeAll()
+			
+			if let g = grid {
+				let mask = CAShapeLayer()
+				mask.path = g.path
+				layer.mask = mask
+			} else {
+				layer.mask = nil
+			}
+			
+			setNeedsDisplay()
+		}
 	}
 	
 	override func draw(_ rect: CGRect) {
@@ -23,14 +36,30 @@ class GridView : UIView {
 		
 		c.saveGState()
 		
-//		c.addPath(gameShape.pathForDrawing(in: bounds))
-//		c.clip()
-		
 		c.setStrokeColor(UIColor.black.withAlphaComponent(0.5).cgColor)
 		c.addPath(grid.lines)
 		c.strokePath()
 		
 		c.restoreGState()
 	}
+	
+	func addFilledSquare(at coordinate: Grid.Coordinate) {
+		guard let grid = grid else {return}
+		guard filledSquareViews[coordinate] == nil else {return}
+		
+		let frame = grid.square(at: coordinate)
+		let v = UIView(frame: frame)
+		v.backgroundColor = UIColor(red: 0.7, green: 0.8, blue: 1, alpha: 0.7)
+		v.alpha = 0
+		addSubview(v)
+		
+		UIView.animate(withDuration: 0.5, animations: {
+			v.alpha = 1
+		})
+		
+		filledSquareViews[coordinate] = v
+	}
+
+	private var filledSquareViews = [Grid.Coordinate: UIView]()
 	
 }

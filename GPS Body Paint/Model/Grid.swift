@@ -19,20 +19,24 @@ struct Grid {
 		
 	}
 	
+	let path: CGPath
 	let lines: CGPath
+	let gridSize: CGFloat
+	let nCols, nRows: Int
 	private(set) var filledCoordinates = Set<Grid.Coordinate>()
 	
-	init(shape: GameShape, in rect: CGRect, gridSize: CGFloat) {
+	init(shape: GameShape, in rect: CGRect, gridSize s: CGFloat) {
 //		let computationStartDate = Date()
-		let path = shape.pathForDrawing(in: rect)
+		gridSize = s
+		path = shape.pathForDrawing(in: rect)
 		let center = CGPoint(x: rect.midX, y: rect.midY)
 		
 		/* *** Computing the number of colums and rows to store *** */
 		
 		let approximateColsCount = Int((rect.width  / gridSize).rounded(.up))
 		let approximateRowsCount = Int((rect.height / gridSize).rounded(.up))
-		assert(CGFloat(approximateColsCount)*gridSize > rect.width)
-		assert(CGFloat(approximateRowsCount)*gridSize > rect.height)
+		assert(CGFloat(approximateColsCount)*s > rect.width)
+		assert(CGFloat(approximateRowsCount)*s > rect.height)
 		
 		if approximateColsCount % 2 == 0 {nCols = approximateColsCount + 1}
 		else                             {nCols = approximateColsCount}
@@ -42,8 +46,8 @@ struct Grid {
 		/* *** Computing the quadrilaterals in the grid *** */
 		
 		var cellsBuilding = [Quadrilateral?]()
-		let xStart = center.x - gridSize*(CGFloat(nCols)/2)
-		let yStart = center.y - gridSize*(CGFloat(nRows)/2)
+		xStart = center.x - gridSize*(CGFloat(nCols)/2)
+		yStart = center.y - gridSize*(CGFloat(nRows)/2)
 		for y in stride(from: yStart, to: rect.maxY, by: gridSize) {
 			for x in stride(from: xStart, to: rect.maxX, by: gridSize) {
 				let tlCorner = CGPoint(x: x,            y: y)
@@ -109,14 +113,14 @@ struct Grid {
 			
 			let p1 = CGPoint(x: x, y: pathBoundingBox.minY)
 			let p2 = CGPoint(x: x, y: pathBoundingBox.maxY)
-			linesBuilding.addLines(between: [Grid.nearestPoint(in: path, from: p1, direction: p2), Grid.nearestPoint(in: path, from: p2, direction: p1)])
+			linesBuilding.addLines(between: [p1, p2])
 		}
 		stride(from: yStart + gridSize, to: rect.maxY, by: gridSize).forEach{ y in
 			guard y > pathBoundingBox.minY && y < pathBoundingBox.maxY else {return}
 			
 			let p1 = CGPoint(x: pathBoundingBox.minX, y: y)
 			let p2 = CGPoint(x: pathBoundingBox.maxX, y: y)
-			linesBuilding.addLines(between: [Grid.nearestPoint(in: path, from: p1, direction: p2), Grid.nearestPoint(in: path, from: p2, direction: p1)])
+			linesBuilding.addLines(between:[p1, p2])
 		}
 		lines = linesBuilding
 		
@@ -142,6 +146,20 @@ struct Grid {
 		return cells.reduce(CGFloat(0), { $0 + ($1?.area() ?? 0) })
 	}
 	
+	func filledArea() -> CGFloat {
+		return filledCoordinates.reduce(CGFloat(0), { $0 + (self[$1]?.area() ?? 0) })
+	}
+	
+	func square(at coordinates: Coordinate) -> CGRect {
+		assert(coordinates.row >= 0 && coordinates.row < nRows)
+		assert(coordinates.col >= 0 && coordinates.col < nCols)
+		return CGRect(
+			x: xStart + CGFloat(coordinates.col) * gridSize,
+			y: yStart + CGFloat(coordinates.row) * gridSize,
+			width: gridSize, height: gridSize
+		)
+	}
+	
 	/** Returns true if the fill actually did something. Crashes for out of
 	bounds coordinates (when assertions are active). */
 	mutating func fillCoordinate(_ c: Coordinate) -> Bool {
@@ -154,7 +172,7 @@ struct Grid {
 	   MARK: - Private
 	   *************** */
 	
-	private let nCols, nRows: Int
+	private let xStart, yStart: CGFloat
 	private let cells: [Quadrilateral?]
 	
 	/* We assume points are correct (p not in path and d in path) */
