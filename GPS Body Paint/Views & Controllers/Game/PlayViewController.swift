@@ -110,6 +110,45 @@ class PlayViewController : UIViewController {
 //		delegate?.playViewControllerDidFinish(self)
 	}
 	
+	/* ***************
+	   MARK: - Private
+	   *************** */
+	
+	private let c = S.sp.constants
+	
+	private var timerShowLoadingMap: Timer?
+	
+}
+
+/* *************************
+   MARK: - Map View Delegate
+   ************************* */
+
+extension PlayViewController : VSOMapViewDelegate {
+	
+	func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+		buttonLockMap.isEnabled = false
+		
+		guard timerShowLoadingMap == nil else {return}
+		timerShowLoadingMap = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(PlayViewController.showViewLoadingMap(_:)), userInfo: nil, repeats: false)
+	}
+	
+	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+		timerShowLoadingMap?.invalidate()
+		timerShowLoadingMap = nil
+		
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
+			self.viewLoadingMap.alpha = 0
+		})
+	}
+	
+	@objc
+	private func showViewLoadingMap(_ sender: Timer) {
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
+			self.viewLoadingMap.alpha = 1
+		})
+	}
+	
 }
 
 /* ********************************
