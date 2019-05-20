@@ -42,7 +42,9 @@ class PlayViewController : UIViewController {
 	}
 	
 	@IBOutlet var mapView: VSOMapView!
-	@IBOutlet var viewShapePreview: ShapeView!
+	@IBOutlet var viewShapeContainer: ShapeView!
+	
+	@IBOutlet var buttonStartStopPlay: UIButton!
 	
 	@IBOutlet var labelPlayingTime: UILabel!
 	@IBOutlet var labelPlayingTimeTitle: UILabel!
@@ -56,8 +58,6 @@ class PlayViewController : UIViewController {
 	@IBOutlet var viewLoadingMap: UIView!
 	@IBOutlet var viewGameOver: UIView!
 	
-	@IBOutlet var buttonLockMap: UIButton!
-	@IBOutlet var buttonCenterMap: UIButton?
 	@IBOutlet var imageArrowTop: UIImageView!
 	@IBOutlet var imageArrowRight: UIImageView!
 	@IBOutlet var imageArrowDown: UIImageView!
@@ -95,8 +95,12 @@ class PlayViewController : UIViewController {
 	   MARK: - Actions
 	   *************** */
 	
-	@IBAction func startOrStopPlayingButtonTouchUpInside(_ sender: AnyObject) {
-		gameController.startPlaying()
+	@IBAction func startOrStopPlaying(_ sender: UIButton) {
+		if !gameController.isPlaying {
+			gameController.startPlaying(in: viewShapeContainer, with: mapView)
+		} else {
+			gameController.stopPlaying()
+		}
 	}
 	
 	@IBAction func centerMapToCurrentUserLocation(_ sender: AnyObject) {
@@ -115,7 +119,9 @@ class PlayViewController : UIViewController {
 	   *************** */
 	
 	private let c = S.sp.constants
+	private let s = S.sp.appSettings
 	
+	private var mapMoving = false
 	private var timerShowLoadingMap: Timer?
 	
 }
@@ -127,13 +133,15 @@ class PlayViewController : UIViewController {
 extension PlayViewController : VSOMapViewDelegate {
 	
 	func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
-		buttonLockMap.isEnabled = false
+		buttonStartStopPlay.isEnabled = false
 		
 		guard timerShowLoadingMap == nil else {return}
 		timerShowLoadingMap = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(PlayViewController.showViewLoadingMap(_:)), userInfo: nil, repeats: false)
 	}
 	
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+		buttonStartStopPlay.isEnabled = true
+		
 		timerShowLoadingMap?.invalidate()
 		timerShowLoadingMap = nil
 		
@@ -149,6 +157,28 @@ extension PlayViewController : VSOMapViewDelegate {
 		})
 	}
 	
+	func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: Error) {
+		guard !mapMoving && s.warnOnMapLoadingFailure else {
+			if !mapMoving {mapViewDidFinishLoadingMap(mapView)}
+			return
+		}
+		
+		s.warnOnMapLoadingFailure = false
+		timerShowLoadingMap?.invalidate()
+		timerShowLoadingMap = nil
+		
+		let alertController = UIAlertController(
+			title: NSLocalizedString("cannot get map", comment: "Title of the cannot load map popup"),
+			message: NSLocalizedString("cannot get map, please check network", comment: "Message of the cannot load map popup"),
+			preferredStyle: .alert
+		)
+		alertController.addAction(UIAlertAction(title: NSLocalizedString("play anyway", comment: "Play anyway button on the cannot load map popup"), style: .default, handler: nil))
+		alertController.addAction(UIAlertAction(title: NSLocalizedString("stop playing", comment: "Stop playing button on the cannot load map popup"), style: .cancel, handler: { _ in
+			self.stopPlaying(self)
+		}))
+		present(alertController, animated: true, completion: nil)
+	}
+	
 }
 
 /* ********************************
@@ -159,9 +189,13 @@ extension PlayViewController : GameControllerDelegate {
 	
 	func gameController(_ gameController: GameController, didChangeStatus newStatus: GameController.Status) {
 		switch newStatus {
-		case .idle: ()
-		case .trackingUserPosition: ()
-		case .playing(gameProgress: let gp): ()
+		case .idle: (/*nop*/)
+		case .trackingUserPosition:
+			(/*nop*/)
+			
+		case .playing(gameProgress: let gp):
+			buttonStartStopPlay.setTitle(NSLocalizedString("stop playing", comment: "Stop playing button title"), for: .normal)
+			
 		}
 	}
 	
@@ -180,6 +214,14 @@ extension PlayViewController : GameControllerDelegate {
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?) {
+		if !gameController.isPlaying {
+			guard let loc = newLocation else {return}
+			
+			/* TODO: Delta is a bit more than this, we must calculate how much. */
+			let region = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: gameController.gameSettings.gridSize, longitudinalMeters: gameController.gameSettings.gridSize)
+			mapView.setRegion(region, animated: true)
+		} else {
+		}
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?) {

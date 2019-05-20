@@ -34,6 +34,7 @@
 		7B80538E220F854C009DE2C4 /* PlayingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80538D220F854C009DE2C4 /* PlayingMode.swift */; };
 		7B805390220F8599009DE2C4 /* PaintingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80538F220F8599009DE2C4 /* PaintingSize.swift */; };
 		7B80539222102F7F009DE2C4 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80539122102F7F009DE2C4 /* GameSettings.swift */; };
+		7B84A56522934C5F00A2E68C /* MapUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84A56422934C5F00A2E68C /* MapUtils.swift */; };
 		7BA2FEF722886E5C00F6EBB9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */; };
 		7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0EA611D856B110057BFA2 /* Assets.xcassets */; };
 		7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC1ACA2218B61D00BCBC63 /* GameController.swift */; };
@@ -76,6 +77,7 @@
 		7B80538D220F854C009DE2C4 /* PlayingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingMode.swift; sourceTree = "<group>"; };
 		7B80538F220F8599009DE2C4 /* PaintingSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingSize.swift; sourceTree = "<group>"; };
 		7B80539122102F7F009DE2C4 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		7B84A56422934C5F00A2E68C /* MapUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUtils.swift; sourceTree = "<group>"; };
 		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7BA248211DCF818C007F5B2E /* Soccer Field.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; lineEnding = 0; path = "Soccer Field.gpx"; sourceTree = "<group>"; };
 		7BA248281DCF8E7F007F5B2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		7B27B9301DCF3BED006F44B7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7B84A56422934C5F00A2E68C /* MapUtils.swift */,
 				7B04208C218F5813003B7E3B /* VSOMapView.swift */,
 				7B042082218F0852003B7E3B /* CGRect+Hashable.swift */,
 			);
@@ -379,6 +382,7 @@
 				7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */,
 				7BA2FEF722886E5C00F6EBB9 /* PlayViewController.swift in Sources */,
 				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
+				7B84A56522934C5F00A2E68C /* MapUtils.swift in Sources */,
 				7B5B75A621AAE5DD002B8509 /* LevelSizeViewController.swift in Sources */,
 				7B80538E220F854C009DE2C4 /* PlayingMode.swift in Sources */,
 				7B805390220F8599009DE2C4 /* PaintingSize.swift in Sources */,

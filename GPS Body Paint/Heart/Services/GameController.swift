@@ -9,6 +9,7 @@
 import CoreGraphics
 import CoreLocation
 import Foundation
+import MapKit
 
 
 /* All methods are called on the main thread. */
@@ -36,6 +37,13 @@ class GameController : NSObject, CLLocationManagerDelegate {
 		case trackingUserPosition
 		case playing(gameProgress: GameProgress)
 		
+		var isIdle: Bool {
+			switch self {
+			case .idle: return true
+			default:    return false
+			}
+		}
+		
 		var gameProgress: GameProgress? {
 			switch self {
 			case .playing(gameProgress: let gp): return gp
@@ -48,7 +56,11 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	let gameSettings: GameSettings
 	weak var delegate: GameControllerDelegate?
 	
-	var status = Status.idle
+	var status = Status.idle {
+		didSet {
+			delegate?.gameController(self, didChangeStatus: status)
+		}
+	}
 	
 	var gameProgress: GameProgress? {
 		return status.gameProgress
@@ -88,18 +100,42 @@ class GameController : NSObject, CLLocationManagerDelegate {
 		locationManager.delegate = self
 	}
 	
-	func startTrackingPhonePosition() {
+	deinit {
+		locationManager.stopUpdatingHeading()
+		locationManager.stopUpdatingLocation()
+	}
+	
+	@discardableResult
+	func startTrackingPhonePosition() -> Bool {
+		guard status.isIdle else {return false}
+		
 		locationManager.requestWhenInUseAuthorization()
 		locationManager.startUpdatingLocation()
 		locationManager.startUpdatingHeading()
+		return true
 	}
 	
-	func startPlaying() {
-		guard canStartPlaying else {return}
+	@discardableResult
+	func startPlaying(in shapeView: UIView, with mapView: MKMapView) -> Bool {
+		guard canStartPlaying, let loc = currentLocation else {return false}
+		
+		let bounds = shapeView.bounds
+		let region = mapView.convert(bounds, toRegionFrom: shapeView)
+		let gridSizePixels = mapView.convert(MKCoordinateRegion(center: region.center, latitudinalMeters: gameSettings.gridSize, longitudinalMeters: gameSettings.gridSize), toRectTo: shapeView).width
+		status = .playing(gameProgress:
+			GameProgress(
+				center: loc.coordinate,
+				fullArea: region.longitudeSpanInMeters * region.latitudeSpanInMeters,
+				grid: Grid(shape: gameSettings.gameShape, in: bounds, gridSize: gridSizePixels)
+			)
+		)
+		return true
 	}
 	
-	func stopPlaying() {
-		guard isPlaying else {return}
+	@discardableResult
+	func stopPlaying() -> Bool {
+		guard isPlaying else {return false}
+		return true
 	}
 	
 	/* *********************************
