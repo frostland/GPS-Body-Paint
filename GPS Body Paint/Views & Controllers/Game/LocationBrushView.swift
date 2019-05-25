@@ -9,74 +9,62 @@
 import CoreGraphics
 import CoreLocation
 import Foundation
+import MapKit
 import UIKit
 
-private let USER_LOCATION_VIEW_CENTER_DOT_SIZE = CGFloat(5)
 
 
-
-class CurLocationView : UIView {
+class LocationBrushView : MKAnnotationView {
 	
-	/* Should be in radian… currently is in degrees. */
+	var brushSizeInPixels: CGFloat {
+		get {return frame.width}
+		set {frame = CGRect(origin: frame.origin, size: CGSize(width: newValue, height: newValue)); setNeedsDisplay()}
+	}
+	
+	/** In degree! Because CoreLocation sends the heading in degrees… */
 	var heading: CLLocationDirection? {
 		didSet {setNeedsDisplay()}
 	}
-	var precision = CGFloat(0) {
-		didSet {let f = frame; frame = f}
-	}
 	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
+	override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+		super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
 		
 		isOpaque = false
-		backgroundColor = .clear
 		contentMode = .redraw
+		backgroundColor = .clear
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("Unsupported init method")
 	}
 	
-	override var frame: CGRect {
-		set {
-			/* TODO: Converted straight from ObjC, but this is BAD! */
-			var f = newValue
-			let s = max(USER_LOCATION_VIEW_CENTER_DOT_SIZE, precision + 3)
-			
-			f.origin.x += (f.size.width  - s)/2
-			f.origin.y += (f.size.height - s)/2
-			f.size.width = s
-			f.size.height = s
-			
-			super.frame = f
-		}
-		get {return super.frame}
-	}
-	
 	override func draw(_ rect: CGRect) {
 //		NSLog("Drawing a CurLocationView with rect: %@", NSStringFromCGRect(rect));
 		guard let c = UIGraphicsGetCurrentContext() else {return}
 		
-		let center = CGPoint(x: rect.midX, y: rect.midY)
+		let strokeWidth = CGFloat(1)
+		
+		let circleSize = max(0, min(bounds.width - strokeWidth*2, bounds.height - strokeWidth*2))
+		let center = CGPoint(x: bounds.midX, y: bounds.midY)
+		let circleBounds = CGRect(x: center.x - circleSize/2, y: center.y - circleSize/2, width: circleSize, height: circleSize)
 		
 		if let heading = heading {
 			c.concatenate(CGAffineTransform(translationX: center.x, y: center.y))
-			c.concatenate(CGAffineTransform(rotationAngle: CGFloat(-2*CLLocationDirection.pi*(heading/360))))
+			c.concatenate(CGAffineTransform(rotationAngle: CGFloat(2*CLLocationDirection.pi*(heading/360))))
 			c.concatenate(CGAffineTransform(translationX: -center.x, y: -center.y))
 		}
 		
-		let precisionRect = CGRect(x: center.x - precision/2, y: center.y - precision/2, width: precision, height: precision)
 		let color = UIColor(red: 89/255, green: 52/255, blue: 22/255, alpha: 1)
 		c.setFillColor(color.withAlphaComponent(0.3).cgColor)
 		c.setStrokeColor(color.cgColor)
-		c.setLineWidth(1)
+		c.setLineWidth(strokeWidth)
 		
-		c.fillEllipse(in: precisionRect)
-		c.strokeEllipse(in: precisionRect)
+		c.fillEllipse(in: circleBounds)
+		c.strokeEllipse(in: circleBounds)
 		
 		if heading != nil {
 			/* Heading is defined. Drawing the arrow. */
-			let r = precision/2
+			let r = circleSize/2
 			c.move(to: CGPoint(x: center.x, y: center.y - r))
 			c.addLine(to: CGPoint(x: center.x + cos(  CGFloat.pi/3)*r, y: center.y + sin(  CGFloat.pi/3)*r))
 			c.addLine(to: CGPoint(x: center.x + cos(2*CGFloat.pi/3)*r, y: center.y + sin(2*CGFloat.pi/3)*r))
@@ -86,8 +74,10 @@ class CurLocationView : UIView {
 			c.drawPath(using: .fillStroke)
 		} else {
 			c.setFillColor(color.cgColor)
-			c.fillEllipse(in: CGRect(x: center.x - USER_LOCATION_VIEW_CENTER_DOT_SIZE/2, y: center.y - USER_LOCATION_VIEW_CENTER_DOT_SIZE/2, width: USER_LOCATION_VIEW_CENTER_DOT_SIZE, height: USER_LOCATION_VIEW_CENTER_DOT_SIZE))
+			c.fillEllipse(in: CGRect(x: center.x - centerDotSize/2, y: center.y - centerDotSize/2, width: centerDotSize, height: centerDotSize))
 		}
 	}
+	
+	private let centerDotSize = CGFloat(5)
 	
 }

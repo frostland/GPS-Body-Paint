@@ -30,4 +30,9 @@ extension MKCoordinateRegion {
 		return l1.distance(from: l2)
 	}
 	
+	/* Actual unit is CLLocationDistance^2 */
+	var area: CLLocationDistance {
+		return latitudeSpanInMeters * longitudeSpanInMeters
+	}
+	
 }

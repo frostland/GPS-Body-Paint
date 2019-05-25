@@ -40,6 +40,7 @@
 		7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC1ACA2218B61D00BCBC63 /* GameController.swift */; };
 		7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC1ACC2218C57500BCBC63 /* Grid.swift */; };
 		7BC852DE221A10BD0029358D /* Quadrilateral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC852DD221A10BD0029358D /* Quadrilateral.swift */; };
+		7BD401122299830000A9DEE0 /* LocationBrushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B04208A218F36C0003B7E3B /* LocationBrushView.swift */; };
 		7BF4C2D8229046FC00A09929 /* GameProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4C2D7229046FC00A09929 /* GameProgress.swift */; };
 		7BF4C2DA2290982800A09929 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4C2D92290982800A09929 /* GridView.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +60,7 @@
 		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		7B042086218F2CE1003B7E3B /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		7B042088218F3221003B7E3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B04208A218F36C0003B7E3B /* OBS_CurLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBS_CurLocationView.swift; sourceTree = "<group>"; };
+		7B04208A218F36C0003B7E3B /* LocationBrushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBrushView.swift; sourceTree = "<group>"; };
 		7B04208C218F5813003B7E3B /* VSOMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSOMapView.swift; sourceTree = "<group>"; };
 		7B1BF61E21A76B6B00E84910 /* OBS_GameProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBS_GameProgressController.swift; sourceTree = "<group>"; };
 		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,7 +132,7 @@
 		289233A00DB2D0730083E9F9 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				7B04208A218F36C0003B7E3B /* OBS_CurLocationView.swift */,
+				7B04208A218F36C0003B7E3B /* LocationBrushView.swift */,
 				7BF0E33E2194B19E00657C2D /* OBS_GridAnnotationView.swift */,
 				7B5B75AF21AAFDC4002B8509 /* OBS_PlayViewController.swift */,
 				7B1BF61E21A76B6B00E84910 /* OBS_GameProgressController.swift */,
@@ -386,6 +387,7 @@
 				7B5B75A621AAE5DD002B8509 /* LevelSizeViewController.swift in Sources */,
 				7B80538E220F854C009DE2C4 /* PlayingMode.swift in Sources */,
 				7B805390220F8599009DE2C4 /* PaintingSize.swift in Sources */,
+				7BD401122299830000A9DEE0 /* LocationBrushView.swift in Sources */,
 				7B5B75A821AAEA0E002B8509 /* LevelDifficultyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

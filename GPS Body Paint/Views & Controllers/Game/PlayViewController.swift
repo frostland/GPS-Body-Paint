@@ -30,7 +30,7 @@ protocol PlayViewControllerDelegate : class {
  * We could probably split this controller in at least two, if not three parts.
  * But it is not done… */
 
-class PlayViewController : UIViewController {
+class PlayViewController : UIViewController, MKAnnotation {
 	
 	weak var delegate: PlayViewControllerDelegate?
 	var gameController: GameController! {
@@ -42,7 +42,8 @@ class PlayViewController : UIViewController {
 	}
 	
 	@IBOutlet var mapView: VSOMapView!
-	@IBOutlet var viewShapeContainer: ShapeView!
+	@IBOutlet var shapeView: ShapeView!
+	@IBOutlet var gridView: GridView!
 	
 	@IBOutlet var buttonStartStopPlay: UIButton!
 	
@@ -67,9 +68,22 @@ class PlayViewController : UIViewController {
 	@IBOutlet var wonLabelFilledPercent: UILabel!
 	@IBOutlet var wonLabelFilledSquareMeters: UILabel!
 	
+	@objc dynamic var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+	
 	/* ****************************
 	   MARK: - Controller Lifecycle
 	   **************************** */
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		if #available(iOS 11.0, *) {
+			mapView.register(LocationBrushView.self, forAnnotationViewWithReuseIdentifier: locationBrushReuseIdentifier)
+		}
+		
+		viewLoadingMap.alpha = 0
+		shapeView.gameShape = gameController.gameSettings.gameShape
+	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
@@ -87,8 +101,12 @@ class PlayViewController : UIViewController {
 	   MARK: - Controller Settings
 	   *************************** */
 	
-	override var prefersStatusBarHidden: Bool {
-		return true
+//	override var prefersStatusBarHidden: Bool {
+//		return true
+//	}
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
 	}
 	
 	/* ***************
@@ -97,7 +115,7 @@ class PlayViewController : UIViewController {
 	
 	@IBAction func startOrStopPlaying(_ sender: UIButton) {
 		if !gameController.isPlaying {
-			gameController.startPlaying(in: viewShapeContainer, with: mapView)
+			gameController.startPlaying(in: shapeView, with: mapView)
 		} else {
 			gameController.stopPlaying()
 		}
@@ -124,6 +142,13 @@ class PlayViewController : UIViewController {
 	private var mapMoving = false
 	private var timerShowLoadingMap: Timer?
 	
+	private let locationBrushReuseIdentifier = "LocationBrushView"
+	private var locationBrushView: LocationBrushView? {
+		didSet {
+			locationBrushView?.brushSizeInPixels = 42
+		}
+	}
+	
 }
 
 /* *************************
@@ -132,7 +157,28 @@ class PlayViewController : UIViewController {
 
 extension PlayViewController : VSOMapViewDelegate {
 	
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		guard annotation === self else {return nil}
+		
+		let ret: LocationBrushView
+		
+		/* Try to dequeue an existing grid view first */
+		if #available(iOS 11.0, *) {
+			ret = (mapView.dequeueReusableAnnotationView(withIdentifier: locationBrushReuseIdentifier, for: annotation) as! LocationBrushView)
+		} else if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: locationBrushReuseIdentifier) as? LocationBrushView {
+			ret = annotationView
+		} else {
+			ret = LocationBrushView(annotation: annotation, reuseIdentifier: locationBrushReuseIdentifier)
+		}
+		
+		ret.heading = gameController.currentHeading?.trueHeading
+		locationBrushView = ret
+		return ret
+	}
+	
 	func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+//		NSLog("mapViewWillStartLoadingMap")
+		
 		buttonStartStopPlay.isEnabled = false
 		
 		guard timerShowLoadingMap == nil else {return}
@@ -140,6 +186,8 @@ extension PlayViewController : VSOMapViewDelegate {
 	}
 	
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+//		NSLog("mapViewDidFinishLoadingMap")
+		
 		buttonStartStopPlay.isEnabled = true
 		
 		timerShowLoadingMap?.invalidate()
@@ -191,11 +239,19 @@ extension PlayViewController : GameControllerDelegate {
 		switch newStatus {
 		case .idle: (/*nop*/)
 		case .trackingUserPosition:
-			(/*nop*/)
+			mapView.removeAnnotation(self)
+			mapView.isScrollEnabled = true
+			mapView.showsUserLocation = true
 			
-		case .playing(gameProgress: let gp):
+			gridView.grid = nil
+			
+		case .playing(let gp):
+			mapView.addAnnotation(self)
+			mapView.isScrollEnabled = false
+			mapView.showsUserLocation = false
 			buttonStartStopPlay.setTitle(NSLocalizedString("stop playing", comment: "Stop playing button title"), for: .normal)
 			
+			gridView.grid = gp.grid
 		}
 	}
 	
@@ -214,6 +270,8 @@ extension PlayViewController : GameControllerDelegate {
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?) {
+		coordinate = newLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+		
 		if !gameController.isPlaying {
 			guard let loc = newLocation else {return}
 			
@@ -225,6 +283,7 @@ extension PlayViewController : GameControllerDelegate {
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?) {
+		locationBrushView?.heading = newHeading?.trueHeading
 	}
 	
 	func gameController(_ gameController: GameController, didChangeProgress progress: GameProgress) {

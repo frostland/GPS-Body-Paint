@@ -119,14 +119,13 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	func startPlaying(in shapeView: UIView, with mapView: MKMapView) -> Bool {
 		guard canStartPlaying, let loc = currentLocation else {return false}
 		
-		let bounds = shapeView.bounds
-		let region = mapView.convert(bounds, toRegionFrom: shapeView)
-		let gridSizePixels = mapView.convert(MKCoordinateRegion(center: region.center, latitudinalMeters: gameSettings.gridSize, longitudinalMeters: gameSettings.gridSize), toRectTo: shapeView).width
 		status = .playing(gameProgress:
 			GameProgress(
 				center: loc.coordinate,
-				fullArea: region.longitudeSpanInMeters * region.latitudeSpanInMeters,
-				grid: Grid(shape: gameSettings.gameShape, in: bounds, gridSize: gridSizePixels)
+				gameShape: gameSettings.gameShape,
+				gridSizeInMeters: gameSettings.gridSize,
+				gridView: shapeView,
+				mapView: mapView
 			)
 		)
 		return true

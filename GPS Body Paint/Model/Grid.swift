@@ -20,10 +20,11 @@ struct Grid {
 	}
 	
 	let path: CGPath
+	let area: CGFloat
+	
 	let lines: CGPath
 	let gridSize: CGFloat
 	let nCols, nRows: Int
-	private(set) var filledCoordinates = Set<Grid.Coordinate>()
 	
 	init(shape: GameShape, in rect: CGRect, gridSize s: CGFloat) {
 //		let computationStartDate = Date()
@@ -35,8 +36,8 @@ struct Grid {
 		
 		let approximateColsCount = Int((rect.width  / gridSize).rounded(.up))
 		let approximateRowsCount = Int((rect.height / gridSize).rounded(.up))
-		assert(CGFloat(approximateColsCount)*s > rect.width)
-		assert(CGFloat(approximateRowsCount)*s > rect.height)
+		assert(CGFloat(approximateColsCount)*s >= rect.width)
+		assert(CGFloat(approximateRowsCount)*s >= rect.height)
 		
 		if approximateColsCount % 2 == 0 {nCols = approximateColsCount + 1}
 		else                             {nCols = approximateColsCount}
@@ -124,6 +125,8 @@ struct Grid {
 		}
 		lines = linesBuilding
 		
+		area = cells.reduce(CGFloat(0), { $0 + ($1?.area() ?? 0) })
+		
 		assert(nCols%2 == 1)
 		assert(nRows%2 == 1)
 		assert(cells.count == nCols*nRows)
@@ -142,14 +145,6 @@ struct Grid {
 		return cells[col + row*nCols]
 	}
 	
-	func area() -> CGFloat {
-		return cells.reduce(CGFloat(0), { $0 + ($1?.area() ?? 0) })
-	}
-	
-	func filledArea() -> CGFloat {
-		return filledCoordinates.reduce(CGFloat(0), { $0 + (self[$1]?.area() ?? 0) })
-	}
-	
 	func square(at coordinates: Coordinate) -> CGRect {
 		assert(coordinates.row >= 0 && coordinates.row < nRows)
 		assert(coordinates.col >= 0 && coordinates.col < nCols)
@@ -158,14 +153,6 @@ struct Grid {
 			y: yStart + CGFloat(coordinates.row) * gridSize,
 			width: gridSize, height: gridSize
 		)
-	}
-	
-	/** Returns true if the fill actually did something. Crashes for out of
-	bounds coordinates (when assertions are active). */
-	mutating func fillCoordinate(_ c: Coordinate) -> Bool {
-		assert(c.row >= 0 && c.row < nRows)
-		assert(c.col >= 0 && c.col < nCols)
-		return filledCoordinates.insert(c).inserted
 	}
 	
 	/* ***************
