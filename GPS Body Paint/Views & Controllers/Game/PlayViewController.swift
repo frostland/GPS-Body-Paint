@@ -78,6 +78,15 @@ class PlayViewController : UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		/* I’d have prefered the map type to be satellite, but because of
+		 * unforeseen limitations, this won’t be possible. The map has a maximum
+		 * zoom level which is way lower when map type is satellite than standard.
+		 * On an Xs, the map is so small the pixel grid size becomes 0 and the app
+		 * crashes… */
+		if #available(iOS 11.0, *) {
+			mapView.mapType = .mutedStandard
+		}
+		
 		viewLoadingMap.alpha = 0
 		viewMapOverlay.isHidden = true
 		locationBrushView.isHidden = true
@@ -286,7 +295,11 @@ extension PlayViewController : GameControllerDelegate {
 			 * errors) “mapView.regionThatFits(regionWeWant)”.
 			 * To workaround this, we change the size of the shape view so the
 			 * shape has the user’s defined span on the map. This is done in the
-			 * mapView delegate method mapViewDidChangeVisibleRegion. */
+			 * mapView delegate method mapViewDidChangeVisibleRegion. Note we could
+			 * whoozer’ize the map (apply an affine transform on the map to do the
+			 * zoom ourselves), but 1/ the solution is complex to implement (too
+			 * complex for this project anyway) and 2/ I’m not sure it is allowed
+			 * per Apple’s guidelines. */
 		} else {
 		}
 		

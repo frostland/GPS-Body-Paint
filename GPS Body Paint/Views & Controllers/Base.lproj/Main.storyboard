@@ -227,7 +227,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkK-9v-ug2" userLabel="View With Map">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="638"/>
                                 <subviews>
-                                    <mapView opaque="NO" multipleTouchEnabled="YES" contentMode="center" mapType="satelliteFlyover" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsCompass="NO" showsPointsOfInterest="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xE6-gm-fUk" customClass="VSOMapView" customModule="GPS_Body_Paint" customModuleProvider="target">
+                                    <mapView opaque="NO" multipleTouchEnabled="YES" contentMode="center" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xE6-gm-fUk" customClass="VSOMapView" customModule="GPS_Body_Paint" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="638"/>
                                         <connections>
                                             <outlet property="delegate" destination="3rQ-ob-Jtt" id="YF3-iP-fU8"/>
