@@ -199,12 +199,12 @@ struct Grid {
 		return cells[col + row*nCols]
 	}
 	
-	func coordinatesIntersectingSurfaceBetweenCircles(_ c1: Circle, _ c2: Circle, blacklisted: Set<Coordinate> = []) -> Set<Coordinate> {
+	func coordinatesIntersectingSurfaceBetweenCircles(_ c0: Circle, _ c1: Circle, blacklisted: Set<Coordinate> = []) -> Set<Coordinate> {
 		var result = Set<Coordinate>()
 		
-		let maxRadius = max(c1.radius, c2.radius)
-		let minReachablePoint = CGPoint(x: min(c1.center.x, c2.center.x) - maxRadius, y: min(c1.center.y, c2.center.y) - maxRadius)
-		let maxReachablePoint = CGPoint(x: max(c1.center.x, c2.center.x) + maxRadius, y: max(c1.center.y, c2.center.y) + maxRadius)
+		let maxRadius = max(c0.radius, c1.radius)
+		let minReachablePoint = CGPoint(x: min(c0.center.x, c1.center.x) - maxRadius, y: min(c0.center.y, c1.center.y) - maxRadius)
+		let maxReachablePoint = CGPoint(x: max(c0.center.x, c1.center.x) + maxRadius, y: max(c0.center.y, c1.center.y) + maxRadius)
 		
 		for col in 0..<nCols {
 			for row in 0..<nRows {
@@ -219,7 +219,7 @@ struct Grid {
 				guard enclosingRect.maxX >= minReachablePoint.x else {continue}
 				guard enclosingRect.maxY >= minReachablePoint.y else {continue}
 				
-				if q.points.contains(where: { $0.distance(from: c1.center) <= c1.radius || $0.distance(from: c2.center) <= c2.radius }) {
+				if q.points.contains(where: { $0.distance(from: c0.center) <= c0.radius || $0.distance(from: c1.center) <= c1.radius }) {
 					/* The quadrilateral has at least one point inside at least one
 					 * of the circles (easiest case). */
 					result.insert(c)
@@ -228,15 +228,48 @@ struct Grid {
 				
 				/* Basic detection did not see a hit. Let’s dig deeper. */
 				
-				// TODO: Dig deeper
-				//          1) Do any of the segments of the quadrilateral intersect
-				//             with either of the circles
-				//          2) Do any of the segments of the quadrilateral intersect
-				//             with the segment from the center of c1 to the center
-				//             of c2?
-				//          3) Do any of the segments of the quadrilateral intersect
-				//             with the segments parallels to the previous segment,
-				//             until the border of the circle?
+				let segmentBetweenC0AndC1Centers = Segment(p0: c0.center, p1: c1.center)
+				if let perpendicularNormalizedVector = segmentBetweenC0AndC1Centers.normalizedCounterClockwisePerpendicularVector() {
+					/* Do any of the segments of the quadrilateral intersect with the
+					 * segment from the center of c1 to the center of c2? Note we’re
+					 * in the “perpendicular vector” if because there is no need to
+					 * check this if we can’t get the perpendicular vector (segment
+					 * is empty). */
+					if q.segments.contains(where: { Grid.intersectionPoint(between: $0, and: segmentBetweenC0AndC1Centers) != nil }) {
+						result.insert(c)
+						continue
+					}
+					
+					/* Now let’s check the same thing, but for multiple segments all
+					 * between the two circles.
+					 * Note: There are a few structure that could be computed outside
+					 *       the loop to optimize a bit. We assume things will go
+					 *       fast and leave it as-is for the moment. */
+					let interval = gridSize/2
+					let nSteps = Int((maxRadius / interval).rounded(.awayFromZero))
+					let c0StepDistance = c0.radius/CGFloat(nSteps)
+					let c1StepDistance = c1.radius/CGFloat(nSteps)
+					for step in 1...nSteps {
+						let c0Distance = c0StepDistance * CGFloat(step)
+						let c1Distance = c1StepDistance * CGFloat(step)
+						let segment1 = Segment(
+							p0: c0.center.pointMoving(along: perpendicularNormalizedVector, distance: c0Distance),
+							p1: c1.center.pointMoving(along: perpendicularNormalizedVector, distance: c1Distance)
+						)
+						let segment2 = Segment(
+							p0: c0.center.pointMoving(along: perpendicularNormalizedVector, distance: -c0Distance),
+							p1: c1.center.pointMoving(along: perpendicularNormalizedVector, distance: -c1Distance)
+						)
+						if q.segments.contains(where: { Grid.intersectionPoint(between: $0, and: segment1) != nil || Grid.intersectionPoint(between: $0, and: segment2) != nil }) {
+							result.insert(c)
+							continue
+						}
+					}
+				}
+				
+				/* TODO? Dig even deeper:
+				 *    -> Do any of the segments of the quadrilateral intersect with
+				 *       either of the circles. */
 			}
 		}
 		

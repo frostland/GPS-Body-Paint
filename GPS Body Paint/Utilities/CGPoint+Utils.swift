@@ -17,7 +17,14 @@ extension CGPoint {
 		let p2 = otherPoint
 		let dx = p2.x - p1.x
 		let dy = p2.y - p1.y
-		return sqrt(dx * dx + dy * dy)
+		return (dx * dx + dy * dy).squareRoot()
+	}
+	
+	func pointMoving(along normalizedVector: CGPoint, distance: CGFloat) -> CGPoint {
+		return CGPoint(
+			x: x + distance * normalizedVector.x,
+			y: y + distance * normalizedVector.y
+		)
 	}
 	
 }

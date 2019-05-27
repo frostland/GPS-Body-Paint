@@ -22,6 +22,9 @@ struct Quadrilateral {
 	var l1: Segment {return Segment(p0: p1, p1: p2)}
 	var l2: Segment {return Segment(p0: p2, p1: p3)}
 	var l3: Segment {return Segment(p0: p3, p1: p0)}
+	var segments: [Segment] {
+		return [l0, l1, l2, l3]
+	}
 	
 	var enclosingRect: CGRect {
 		let pts = points
@@ -60,7 +63,7 @@ struct Quadrilateral {
 		let a = -dy/dx
 		let b = -a*p0.x - p0.y
 		
-		return (sqrt(dx*dx + dy*dy) * (abs(a*p2.x + p2.y + b) / sqrt(a*a + 1)))/2
+		return ((dx*dx + dy*dy).squareRoot() * (abs(a*p2.x + p2.y + b) / (a*a + 1).squareRoot()))/2
 	}
 	
 }
