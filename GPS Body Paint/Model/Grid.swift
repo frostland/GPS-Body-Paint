@@ -133,6 +133,33 @@ struct Grid {
 		assert(CGFloat(nCols)*gridSize - rect.width  < gridSize*2)
 		assert(CGFloat(nRows)*gridSize - rect.height < gridSize*2)
 //		print("Computation time: \(-computationStartDate.timeIntervalSinceNow)")
+		
+		/* *** TESTING THE intersectionPoint METHOD *** */
+//		/* (x: 0.5, y: 0.5) */
+//		print(Grid.intersectionPoint(
+//			between: Segment(p1: CGPoint(x: 0, y: 0), p2: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p1: CGPoint(x: 0, y: 1), p2: CGPoint(x: 1, y: 0))
+//		))
+//		/* nil */
+//		print(Grid.intersectionPoint(
+//			between: Segment(p1: CGPoint(x: 0, y: 0), p2: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p1: CGPoint(x: 0, y: 0), p2: CGPoint(x: 1, y: 1))
+//		))
+//		/* nil */
+//		print(Grid.intersectionPoint(
+//			between: Segment(p1: CGPoint(x: 0,   y: 0),   p2: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p1: CGPoint(x: 0.6, y: 0.4), p2: CGPoint(x: 1, y: 0))
+//		))
+//		/* (x: 0.5, y: 0.5) */
+//		print(Grid.intersectionPoint(
+//			between: Segment(p1: CGPoint(x: 0,     y: 0),     p2: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p1: CGPoint(x: 0.499, y: 0.501), p2: CGPoint(x: 1, y: 0))
+//		))
+//		/* (x: 0.5, y: 0.5) */
+//		print(Grid.intersectionPoint(
+//			between: Segment(p1: CGPoint(x: 0,   y: 0),   p2: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p1: CGPoint(x: 0.5, y: 0.5), p2: CGPoint(x: 1, y: 0))
+//		))
 	}
 	
 	subscript(coordinate: Coordinate) -> Quadrilateral? {
@@ -162,7 +189,56 @@ struct Grid {
 	private let xStart, yStart: CGFloat
 	private let cells: [Quadrilateral?]
 	
-	/* We assume points are correct (p not in path and d in path) */
+	private struct Segment {
+		
+		var p1: CGPoint
+		var p2: CGPoint
+		
+	}
+	
+	/* Basically from FLGraphicsUtils.m in the Logiblocs project. I don’t really
+	 * understand it anymore… */
+	private static func intersectionPoint(between s1: Segment, and s2: Segment) -> CGPoint? {
+		var currentDenomin = (
+			(s1.p1.y - s1.p2.y) * (s2.p2.x - s2.p1.x) -
+			(s2.p2.y - s2.p1.y) * (s1.p1.x - s1.p2.x)
+		)
+		guard abs(currentDenomin) > 0.000001 else {return nil}
+		
+		let coeffForIsInLine = (
+			((s2.p1.y - s1.p2.y) * (s1.p1.x - s1.p2.x) -
+			 (s1.p1.y - s1.p2.y) * (s2.p1.x - s1.p2.x)) /
+			currentDenomin
+		)
+		
+		let linesIntersect = (coeffForIsInLine >= 0 && coeffForIsInLine <= 1)
+		guard linesIntersect else {return nil}
+		
+		let coeffForResize: CGFloat
+		currentDenomin = s1.p1.x - s1.p2.x
+		if abs(currentDenomin) > 0.000001 {
+			coeffForResize = (coeffForIsInLine * (s2.p2.x - s2.p1.x) + s2.p1.x - s1.p2.x) / currentDenomin
+		} else {
+			currentDenomin = s1.p1.y - s1.p2.y
+			if abs(currentDenomin) > 0.000001 {
+				coeffForResize = (coeffForIsInLine * (s2.p2.y - s2.p1.y) + s2.p1.y - s1.p2.y) / currentDenomin
+			} else {
+				return nil
+			}
+		}
+		
+		return CGPoint(
+			x: s1.p2.x + (s1.p1.x - s1.p2.x) * coeffForResize,
+			y: s1.p2.y + (s1.p1.y - s1.p2.y) * coeffForResize
+		)
+	}
+	
+	/* We assume points are correct (p not in path and d in path).
+	 * Note this method uses a terrible algorithm. We should use maths to find
+	 * the value we want instead of iterating points on the lines until I we
+	 * reach what we search for…
+	 * Actually the method above (intersectionPoint) could probably do this job
+	 * for us. */
 	private static func nearestPoint(in path: CGPath, from p: CGPoint, direction d: CGPoint) -> CGPoint {
 		let precision = CGFloat(0.001)
 		
