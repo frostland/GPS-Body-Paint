@@ -15,9 +15,9 @@ class LevelDifficultyViewController : UIViewController {
 	
 	static var localizedSettingValue: String {
 		switch S.sp.appSettings.paintingSize {
-		case .small:  return NSLocalizedString("big",    comment: "Big painting size")
+		case .big:    return NSLocalizedString("big",    comment: "Big painting size")
 		case .medium: return NSLocalizedString("medium", comment: "Medium painting size")
-		case .big:    return NSLocalizedString("small",  comment: "Small painting size")
+		case .small:  return NSLocalizedString("small",  comment: "Small painting size")
 		}
 	}
 	
