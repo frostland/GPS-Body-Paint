@@ -21,7 +21,7 @@ protocol GameControllerDelegate : class {
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?)
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?)
 	
-	func gameController(_ gameController: GameController, didChangeProgress progress: GameProgress)
+	func gameController(_ gameController: GameController, didVisitCoordinate coordinate: Grid.Coordinate)
 	
 }
 
@@ -35,7 +35,7 @@ class GameController : NSObject, CLLocationManagerDelegate {
 		
 		case idle
 		case trackingUserPosition
-		case playing(gameProgress: GameProgress)
+		case playing(gameProgress: GameProgress, shapeView: UIView, mapView: MKMapView)
 		
 		var isIdle: Bool {
 			switch self {
@@ -44,10 +44,10 @@ class GameController : NSObject, CLLocationManagerDelegate {
 			}
 		}
 		
-		var gameProgress: GameProgress? {
+		var gameInfo: (gameProgress: GameProgress, shapeView: UIView, mapView: MKMapView)? {
 			switch self {
-			case .playing(gameProgress: let gp): return gp
-			default:                             return nil
+			case .playing(let gi): return gi
+			default:               return nil
 			}
 		}
 		
@@ -63,7 +63,7 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	}
 	
 	var gameProgress: GameProgress? {
-		return status.gameProgress
+		return status.gameInfo?.gameProgress
 	}
 	
 	var isPlaying: Bool {
@@ -79,6 +79,31 @@ class GameController : NSObject, CLLocationManagerDelegate {
 		didSet {
 			assert(Thread.isMainThread)
 			delegate?.gameController(self, didGetNewLocation: currentLocation)
+			
+			if let (gameProgress, shapeView, mapView) = status.gameInfo, let newLocation = currentLocation {
+				/* Let’s compute the quadrilaterals to add in the grid. */
+				let oldLocation = oldValue ?? newLocation
+				let newPixelLocation = mapView.convert(newLocation.coordinate, toPointTo: shapeView)
+				let oldPixelLocation = mapView.convert(oldLocation.coordinate, toPointTo: shapeView)
+				
+				/* We consider the paint brush size in pixel is the same for the old
+				 * and the new location, and on the x and y axis. Technically it is
+				 * usually not true, but the difference should never be significant.*/
+				let brushRadius = mapView.convert(MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: gameSettings.paintingDiameter/2, longitudinalMeters: gameSettings.paintingDiameter/2), toRectTo: shapeView).width
+				
+				let coordinatesToFill = gameProgress.grid.coordinatesIntersectingSurfaceBetweenCircles(
+					Circle(center: newPixelLocation, radius: brushRadius),
+					Circle(center: oldPixelLocation, radius: brushRadius),
+					blacklisted: gameProgress.filledCoordinates
+				)
+				
+				for c in coordinatesToFill {
+					/* The test below should always be true */
+					if gameProgress.fillCoordinate(c) {
+						delegate?.gameController(self, didVisitCoordinate: c)
+					}
+				}
+			}
 		}
 	}
 	private(set) var currentHeading: CLHeading? {
@@ -119,14 +144,16 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	func startPlaying(in shapeView: UIView, with mapView: MKMapView) -> Bool {
 		guard canStartPlaying, let loc = currentLocation else {return false}
 		
-		status = .playing(gameProgress:
-			GameProgress(
+		status = .playing(
+			gameProgress: GameProgress(
 				center: loc.coordinate,
 				gameShape: gameSettings.gameShape,
 				gridSizeInMeters: gameSettings.gridSize,
 				gridView: shapeView,
 				mapView: mapView
-			)
+			),
+			shapeView: shapeView,
+			mapView: mapView
 		)
 		return true
 	}

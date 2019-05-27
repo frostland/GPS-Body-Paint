@@ -14,11 +14,23 @@ import Foundation
 struct Quadrilateral {
 	
 	var p0, p1, p2, p3: CGPoint
+	var points: [CGPoint] {
+		return [p0, p1, p2, p3]
+	}
 	
-	var l0: CGPath {let p = CGMutablePath(); p.addLines(between: [p0, p1]); return p}
-	var l1: CGPath {let p = CGMutablePath(); p.addLines(between: [p1, p2]); return p}
-	var l2: CGPath {let p = CGMutablePath(); p.addLines(between: [p2, p3]); return p}
-	var l3: CGPath {let p = CGMutablePath(); p.addLines(between: [p3, p0]); return p}
+	var l0: Segment {return Segment(p0: p0, p1: p1)}
+	var l1: Segment {return Segment(p0: p1, p1: p2)}
+	var l2: Segment {return Segment(p0: p2, p1: p3)}
+	var l3: Segment {return Segment(p0: p3, p1: p0)}
+	
+	var enclosingRect: CGRect {
+		let pts = points
+		let minX = pts.reduce( CGFloat.greatestFiniteMagnitude, { min($0, $1.x) })
+		let minY = pts.reduce( CGFloat.greatestFiniteMagnitude, { min($0, $1.y) })
+		let maxX = pts.reduce(-CGFloat.greatestFiniteMagnitude, { max($0, $1.x) })
+		let maxY = pts.reduce(-CGFloat.greatestFiniteMagnitude, { max($0, $1.y) })
+		return CGRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+	}
 	
 	func area() -> CGFloat {
 		return (

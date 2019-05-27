@@ -16,7 +16,7 @@ struct GameSettings {
 	init(from appSettings: AppSettings) {
 		playgroundSize = appSettings.levelSize
 		gridSize = 3
-		userLocationDiameter = 10 - CLLocationDistance(appSettings.paintingSize.rawValue)*1.9
+		paintingDiameter = 10 - CLLocationDistance(appSettings.paintingSize.rawValue)*1.9
 		
 		gameShape = appSettings.gameShape
 		playingMode = appSettings.playingMode
@@ -28,7 +28,8 @@ struct GameSettings {
 	var playgroundSize: CLLocationDistance
 	/** The size in meters of a cell of the playing grid. */
 	var gridSize: CLLocationDistance
-	var userLocationDiameter: CLLocationDistance
+	/** The diameter of the user location brush in meters. */
+	var paintingDiameter: CLLocationDistance
 	
 	var gameShape: GameShape
 	var playingMode: PlayingMode

@@ -245,7 +245,7 @@ extension PlayViewController : GameControllerDelegate {
 			
 			gridView.grid = nil
 			
-		case .playing(let gp):
+		case .playing(gameProgress: let gp, shapeView: _, mapView: _):
 			mapView.addAnnotation(self)
 			mapView.isScrollEnabled = false
 			mapView.showsUserLocation = false
@@ -286,8 +286,8 @@ extension PlayViewController : GameControllerDelegate {
 		locationBrushView?.heading = newHeading?.trueHeading
 	}
 	
-	func gameController(_ gameController: GameController, didChangeProgress progress: GameProgress) {
-		
+	func gameController(_ gameController: GameController, didVisitCoordinate coordinate: Grid.Coordinate) {
+		gridView.addFilledSquare(at: coordinate)
 	}
 	
 }

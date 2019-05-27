@@ -137,28 +137,55 @@ struct Grid {
 		/* *** TESTING THE intersectionPoint METHOD *** */
 //		/* (x: 0.5, y: 0.5) */
 //		print(Grid.intersectionPoint(
-//			between: Segment(p1: CGPoint(x: 0, y: 0), p2: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p1: CGPoint(x: 0, y: 1), p2: CGPoint(x: 1, y: 0))
+//			between: Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p0: CGPoint(x: 0, y: 1), p1: CGPoint(x: 1, y: 0))
 //		))
 //		/* nil */
 //		print(Grid.intersectionPoint(
-//			between: Segment(p1: CGPoint(x: 0, y: 0), p2: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p1: CGPoint(x: 0, y: 0), p2: CGPoint(x: 1, y: 1))
+//			between: Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1))
 //		))
 //		/* nil */
 //		print(Grid.intersectionPoint(
-//			between: Segment(p1: CGPoint(x: 0,   y: 0),   p2: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p1: CGPoint(x: 0.6, y: 0.4), p2: CGPoint(x: 1, y: 0))
+//			between: Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p0: CGPoint(x: 0.6, y: 0.4), p1: CGPoint(x: 1, y: 0))
 //		))
 //		/* (x: 0.5, y: 0.5) */
 //		print(Grid.intersectionPoint(
-//			between: Segment(p1: CGPoint(x: 0,     y: 0),     p2: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p1: CGPoint(x: 0.499, y: 0.501), p2: CGPoint(x: 1, y: 0))
+//			between: Segment(p0: CGPoint(x: 0,     y: 0),     p1: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p0: CGPoint(x: 0.499, y: 0.501), p1: CGPoint(x: 1, y: 0))
 //		))
 //		/* (x: 0.5, y: 0.5) */
 //		print(Grid.intersectionPoint(
-//			between: Segment(p1: CGPoint(x: 0,   y: 0),   p2: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p1: CGPoint(x: 0.5, y: 0.5), p2: CGPoint(x: 1, y: 0))
+//			between: Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p0: CGPoint(x: 0.5, y: 0.5), p1: CGPoint(x: 1, y: 0))
+//		))
+//		/* nil */
+//		print(Grid.intersectionPoint(
+//			between: Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
+//			and:     Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 0, y: 0))
+//		))
+//		/* nil */
+//		print(Grid.intersectionPoint(
+//			between: Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 0, y: 0)),
+//			and:     Segment(p0: CGPoint(x: 0.2, y: 0.1), p1: CGPoint(x: 1, y: 0))
+//		))
+		
+		/* *** TESTING THE projectedPoint METHOD *** */
+//		/* (x: 0.5, y: 0.5) */
+//		print(Grid.projectedPoint(
+//			CGPoint(x: 1, y: 0),
+//			on: (CGPoint(x: 0, y: 0), CGPoint(x: 1, y: 1))
+//		))
+//		/* (x: 0.5, y: 0.5) */
+//		print(Grid.projectedPoint(
+//			CGPoint(x: 0, y: 1),
+//			on: (CGPoint(x: 0, y: 0), CGPoint(x: 1, y: 1))
+//		))
+//		/* (x: 1, y: 1) */
+//		print(Grid.projectedPoint(
+//			CGPoint(x: 1, y: 1),
+//			on: (CGPoint(x: 0, y: 0), CGPoint(x: 1, y: 1))
 //		))
 	}
 	
@@ -170,6 +197,50 @@ struct Grid {
 		assert(row >= 0 && row < nRows)
 		assert(col >= 0 && col < nCols)
 		return cells[col + row*nCols]
+	}
+	
+	func coordinatesIntersectingSurfaceBetweenCircles(_ c1: Circle, _ c2: Circle, blacklisted: Set<Coordinate> = []) -> Set<Coordinate> {
+		var result = Set<Coordinate>()
+		
+		let maxRadius = max(c1.radius, c2.radius)
+		let minReachablePoint = CGPoint(x: min(c1.center.x, c2.center.x) - maxRadius, y: min(c1.center.y, c2.center.y) - maxRadius)
+		let maxReachablePoint = CGPoint(x: max(c1.center.x, c2.center.x) + maxRadius, y: max(c1.center.y, c2.center.y) + maxRadius)
+		
+		for col in 0..<nCols {
+			for row in 0..<nRows {
+				let c = Grid.Coordinate(col: col, row: row)
+				guard let q = self[c] else {continue}
+				guard !blacklisted.contains(c) else {continue}
+				
+				let enclosingRect = square(at: c)
+				/* Basic detection of unreachable quadrilaterals. */
+				guard enclosingRect.minX <= maxReachablePoint.x else {continue}
+				guard enclosingRect.minY <= maxReachablePoint.y else {continue}
+				guard enclosingRect.maxX >= minReachablePoint.x else {continue}
+				guard enclosingRect.maxY >= minReachablePoint.y else {continue}
+				
+				if q.points.contains(where: { $0.distance(from: c1.center) <= c1.radius || $0.distance(from: c2.center) <= c2.radius }) {
+					/* The quadrilateral has at least one point inside at least one
+					 * of the circles (easiest case). */
+					result.insert(c)
+					continue
+				}
+				
+				/* Basic detection did not see a hit. Let’s dig deeper. */
+				
+				// TODO: Dig deeper
+				//          1) Do any of the segments of the quadrilateral intersect
+				//             with either of the circles
+				//          2) Do any of the segments of the quadrilateral intersect
+				//             with the segment from the center of c1 to the center
+				//             of c2?
+				//          3) Do any of the segments of the quadrilateral intersect
+				//             with the segments parallels to the previous segment,
+				//             until the border of the circle?
+			}
+		}
+		
+		return result
 	}
 	
 	func square(at coordinates: Coordinate) -> CGRect {
@@ -189,25 +260,18 @@ struct Grid {
 	private let xStart, yStart: CGFloat
 	private let cells: [Quadrilateral?]
 	
-	private struct Segment {
-		
-		var p1: CGPoint
-		var p2: CGPoint
-		
-	}
-	
-	/* Basically from FLGraphicsUtils.m in the Logiblocs project. I don’t really
-	 * understand it anymore… */
+	/* Converted straight from Objective-C from FLGraphicsUtils.m in the
+	 * Logiblocs project. I don’t really understand the method anymore… */
 	private static func intersectionPoint(between s1: Segment, and s2: Segment) -> CGPoint? {
 		var currentDenomin = (
-			(s1.p1.y - s1.p2.y) * (s2.p2.x - s2.p1.x) -
-			(s2.p2.y - s2.p1.y) * (s1.p1.x - s1.p2.x)
+			(s1.p0.y - s1.p1.y) * (s2.p1.x - s2.p0.x) -
+			(s2.p1.y - s2.p0.y) * (s1.p0.x - s1.p1.x)
 		)
 		guard abs(currentDenomin) > 0.000001 else {return nil}
 		
 		let coeffForIsInLine = (
-			((s2.p1.y - s1.p2.y) * (s1.p1.x - s1.p2.x) -
-			 (s1.p1.y - s1.p2.y) * (s2.p1.x - s1.p2.x)) /
+			((s2.p0.y - s1.p1.y) * (s1.p0.x - s1.p1.x) -
+			 (s1.p0.y - s1.p1.y) * (s2.p0.x - s1.p1.x)) /
 			currentDenomin
 		)
 		
@@ -215,22 +279,41 @@ struct Grid {
 		guard linesIntersect else {return nil}
 		
 		let coeffForResize: CGFloat
-		currentDenomin = s1.p1.x - s1.p2.x
+		currentDenomin = s1.p0.x - s1.p1.x
 		if abs(currentDenomin) > 0.000001 {
-			coeffForResize = (coeffForIsInLine * (s2.p2.x - s2.p1.x) + s2.p1.x - s1.p2.x) / currentDenomin
+			coeffForResize = (coeffForIsInLine * (s2.p1.x - s2.p0.x) + s2.p0.x - s1.p1.x) / currentDenomin
 		} else {
-			currentDenomin = s1.p1.y - s1.p2.y
+			currentDenomin = s1.p0.y - s1.p1.y
 			if abs(currentDenomin) > 0.000001 {
-				coeffForResize = (coeffForIsInLine * (s2.p2.y - s2.p1.y) + s2.p1.y - s1.p2.y) / currentDenomin
+				coeffForResize = (coeffForIsInLine * (s2.p1.y - s2.p0.y) + s2.p0.y - s1.p1.y) / currentDenomin
 			} else {
 				return nil
 			}
 		}
 		
 		return CGPoint(
-			x: s1.p2.x + (s1.p1.x - s1.p2.x) * coeffForResize,
-			y: s1.p2.y + (s1.p1.y - s1.p2.y) * coeffForResize
+			x: s1.p1.x + (s1.p0.x - s1.p1.x) * coeffForResize,
+			y: s1.p1.y + (s1.p0.y - s1.p1.y) * coeffForResize
 		)
+	}
+	
+	private static func projectedPoint(_ p: CGPoint, on line: (CGPoint, CGPoint)) -> CGPoint? {
+		let dx = line.1.x - line.0.x
+		let dy = line.1.y - line.0.y
+		
+		let denomin = dx * dx + dy * dy
+		guard denomin > 0.000001 else {
+			/* The points of the line are too close, or even equal. */
+			return nil
+		}
+		
+		let coeffForIntersectPoint = (
+			((line.1.x - line.0.x) * (p.x - line.0.x) +
+			 (line.1.y - line.0.y) * (p.y - line.0.y)) /
+			denomin
+		)
+		return CGPoint(x: line.0.x + coeffForIntersectPoint*(line.1.x - line.0.x),
+							y: line.0.y + coeffForIntersectPoint*(line.1.y - line.0.y))
 	}
 	
 	/* We assume points are correct (p not in path and d in path).
