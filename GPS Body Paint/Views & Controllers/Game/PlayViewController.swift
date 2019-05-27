@@ -30,20 +30,23 @@ protocol PlayViewControllerDelegate : class {
  * We could probably split this controller in at least two, if not three parts.
  * But it is not done… */
 
-class PlayViewController : UIViewController, MKAnnotation {
+class PlayViewController : UIViewController {
 	
 	weak var delegate: PlayViewControllerDelegate?
 	var gameController: GameController! {
 		willSet {
 			/* We allow the game controller to be set once only */
 			assert(gameController == nil)
-			newValue.delegate = self
+			newValue?.delegate = self
 		}
 	}
 	
 	@IBOutlet var mapView: VSOMapView!
+	@IBOutlet var viewMapOverlay: UIView!
 	@IBOutlet var shapeView: ShapeView!
 	@IBOutlet var gridView: GridView!
+	@IBOutlet var locationBrushView: LocationBrushView!
+	@IBOutlet var contraintShapeViewSize: NSLayoutConstraint!
 	
 	@IBOutlet var buttonStartStopPlay: UIButton!
 	
@@ -68,8 +71,6 @@ class PlayViewController : UIViewController, MKAnnotation {
 	@IBOutlet var wonLabelFilledPercent: UILabel!
 	@IBOutlet var wonLabelFilledSquareMeters: UILabel!
 	
-	@objc dynamic var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-	
 	/* ****************************
 	   MARK: - Controller Lifecycle
 	   **************************** */
@@ -77,11 +78,9 @@ class PlayViewController : UIViewController, MKAnnotation {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		if #available(iOS 11.0, *) {
-			mapView.register(LocationBrushView.self, forAnnotationViewWithReuseIdentifier: locationBrushReuseIdentifier)
-		}
-		
 		viewLoadingMap.alpha = 0
+		viewMapOverlay.isHidden = true
+		locationBrushView.isHidden = true
 		shapeView.gameShape = gameController.gameSettings.gameShape
 	}
 	
@@ -142,11 +141,11 @@ class PlayViewController : UIViewController, MKAnnotation {
 	private var mapMoving = false
 	private var timerShowLoadingMap: Timer?
 	
-	private let locationBrushReuseIdentifier = "LocationBrushView"
-	private var locationBrushView: LocationBrushView? {
-		didSet {
-			locationBrushView?.brushSizeInPixels = 42
-		}
+	private func updateLocationBrushFrame() {
+		guard let loc = gameController.currentLocation else {return}
+		
+		let locationBrushRegion = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: gameController.gameSettings.paintingDiameter, longitudinalMeters: gameController.gameSettings.paintingDiameter)
+		locationBrushView.frame = mapView.convert(locationBrushRegion, toRectTo: locationBrushView.superview!)
 	}
 	
 }
@@ -156,25 +155,6 @@ class PlayViewController : UIViewController, MKAnnotation {
    ************************* */
 
 extension PlayViewController : VSOMapViewDelegate {
-	
-	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-		guard annotation === self else {return nil}
-		
-		let ret: LocationBrushView
-		
-		/* Try to dequeue an existing grid view first */
-		if #available(iOS 11.0, *) {
-			ret = (mapView.dequeueReusableAnnotationView(withIdentifier: locationBrushReuseIdentifier, for: annotation) as! LocationBrushView)
-		} else if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: locationBrushReuseIdentifier) as? LocationBrushView {
-			ret = annotationView
-		} else {
-			ret = LocationBrushView(annotation: annotation, reuseIdentifier: locationBrushReuseIdentifier)
-		}
-		
-		ret.heading = gameController.currentHeading?.trueHeading
-		locationBrushView = ret
-		return ret
-	}
 	
 	func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
 //		NSLog("mapViewWillStartLoadingMap")
@@ -227,6 +207,19 @@ extension PlayViewController : VSOMapViewDelegate {
 		present(alertController, animated: true, completion: nil)
 	}
 	
+	func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+		guard !gameController.isPlaying else {return}
+		
+		/* Let’s update the shape view size (see the didGetNewLocation method). */
+		let regionWeWant = MKCoordinateRegion(center: mapView.centerCoordinate, latitudinalMeters: gameController.gameSettings.playgroundSize, longitudinalMeters: gameController.gameSettings.playgroundSize)
+		let pixelWidth = mapView.convert(regionWeWant, toRectTo: viewMapOverlay).width
+		contraintShapeViewSize.constant = pixelWidth
+		viewMapOverlay.isHidden = false
+		
+		/* Also let’s update the position of the location brush view. */
+		updateLocationBrushFrame()
+	}
+	
 }
 
 /* ********************************
@@ -239,16 +232,16 @@ extension PlayViewController : GameControllerDelegate {
 		switch newStatus {
 		case .idle: (/*nop*/)
 		case .trackingUserPosition:
-			mapView.removeAnnotation(self)
 			mapView.isScrollEnabled = true
 			mapView.showsUserLocation = true
+			locationBrushView.isHidden = true
 			
 			gridView.grid = nil
 			
 		case .playing(gameProgress: let gp, shapeView: _, mapView: _):
-			mapView.addAnnotation(self)
 			mapView.isScrollEnabled = false
 			mapView.showsUserLocation = false
+			locationBrushView.isHidden = false
 			buttonStartStopPlay.setTitle(NSLocalizedString("stop playing", comment: "Stop playing button title"), for: .normal)
 			
 			gridView.grid = gp.grid
@@ -270,16 +263,34 @@ extension PlayViewController : GameControllerDelegate {
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?) {
-		coordinate = newLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
-		
 		if !gameController.isPlaying {
 			guard let loc = newLocation else {return}
 			
-			/* TODO: Delta is a bit more than this, we must calculate how much. */
-			let region = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: gameController.gameSettings.gridSize, longitudinalMeters: gameController.gameSettings.gridSize)
-			mapView.setRegion(region, animated: true)
+			let mapToOverlayRatio: CGFloat
+			if viewMapOverlay.frame.width > viewMapOverlay.frame.height {
+				mapToOverlayRatio = mapView.frame.height / viewMapOverlay.frame.height
+			} else {
+				mapToOverlayRatio = mapView.frame.width / viewMapOverlay.frame.width
+			}
+			
+			/* The overlay view is smaller than the map (by design) */
+			let extendedPlaygroundSize = gameController.gameSettings.playgroundSize * CLLocationDistance(mapToOverlayRatio)
+			
+			let regionWeWant = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: extendedPlaygroundSize, longitudinalMeters: extendedPlaygroundSize)
+//			let regionWeGet = mapView.regionThatFits(regionWeWant)
+			mapView.setRegion(regionWeWant, animated: false)
+			
+			/* The map view has a maximum zoom. It’s Whoozer all over again! (Well
+			 * not exactly, but we do end up with a different region than what we
+			 * asked…). Note: The region we get is (almost exactly, minus rounding
+			 * errors) “mapView.regionThatFits(regionWeWant)”.
+			 * To workaround this, we change the size of the shape view so the
+			 * shape has the user’s defined span on the map. This is done in the
+			 * mapView delegate method mapViewDidChangeVisibleRegion. */
 		} else {
 		}
+		
+		updateLocationBrushFrame()
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?) {

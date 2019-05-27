@@ -9,12 +9,11 @@
 import CoreGraphics
 import CoreLocation
 import Foundation
-import MapKit
 import UIKit
 
 
 
-class LocationBrushView : MKAnnotationView {
+class LocationBrushView : UIView {
 	
 	var brushSizeInPixels: CGFloat {
 		get {return frame.width}
@@ -26,16 +25,16 @@ class LocationBrushView : MKAnnotationView {
 		didSet {setNeedsDisplay()}
 	}
 	
-	override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-		super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+	override init(frame: CGRect) {
+		fatalError("Unsupported init method")
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 		
 		isOpaque = false
 		contentMode = .redraw
 		backgroundColor = .clear
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("Unsupported init method")
 	}
 	
 	override func draw(_ rect: CGRect) {

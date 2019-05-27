@@ -133,6 +133,7 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	@discardableResult
 	func startTrackingPhonePosition() -> Bool {
 		guard status.isIdle else {return false}
+		status = .trackingUserPosition
 		
 		locationManager.requestWhenInUseAuthorization()
 		locationManager.startUpdatingLocation()

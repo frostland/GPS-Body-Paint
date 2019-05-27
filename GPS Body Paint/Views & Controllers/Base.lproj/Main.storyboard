@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bi0-gX-X1x">
-                            <rect key="frame" x="0.0" y="249" width="150" height="55"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bi0-gX-X1x">
+                            <rect key="frame" x="0.0" y="249.33333333333337" width="375" height="55"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                             <state key="normal" title="Play!"/>
@@ -237,31 +237,31 @@
                                         <rect key="frame" x="34" y="86" width="307" height="518"/>
                                         <subviews>
                                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcL-06-cec" customClass="ShapeView" customModule="GPS_Body_Paint" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="105.66666666666663" width="307" height="307"/>
+                                                <rect key="frame" x="78.666666666666686" y="184" width="150" height="150"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="OcL-06-cec" secondAttribute="height" multiplier="1:1" id="L3k-96-Ntj"/>
+                                                    <constraint firstAttribute="width" constant="150" id="sMH-4d-8vD"/>
                                                 </constraints>
                                             </view>
                                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cla-n1-o4P" customClass="GridView" customModule="GPS_Body_Paint" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="105.66666666666663" width="307" height="307"/>
+                                                <rect key="frame" x="78.666666666666686" y="184" width="150" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBK-12-RMD" customClass="LocationBrushView" customModule="GPS_Body_Paint" customModuleProvider="target">
+                                                <rect key="frame" x="131" y="49" width="45" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="OcL-06-cec" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9vS-2w-z7w" secondAttribute="top" id="1hS-Lc-gHu"/>
                                             <constraint firstItem="OcL-06-cec" firstAttribute="centerY" secondItem="9vS-2w-z7w" secondAttribute="centerY" id="9MX-BV-2Z2"/>
                                             <constraint firstItem="Cla-n1-o4P" firstAttribute="bottom" secondItem="OcL-06-cec" secondAttribute="bottom" id="BOf-fg-CyP"/>
-                                            <constraint firstItem="OcL-06-cec" firstAttribute="top" secondItem="9vS-2w-z7w" secondAttribute="top" priority="750" id="GsK-I3-oCi"/>
-                                            <constraint firstItem="OcL-06-cec" firstAttribute="left" relation="greaterThanOrEqual" secondItem="9vS-2w-z7w" secondAttribute="left" id="RFW-Qu-8wS"/>
-                                            <constraint firstItem="OcL-06-cec" firstAttribute="left" secondItem="9vS-2w-z7w" secondAttribute="left" priority="750" id="Uio-Ik-x1S"/>
                                             <constraint firstItem="Cla-n1-o4P" firstAttribute="top" secondItem="OcL-06-cec" secondAttribute="top" id="XgR-K0-eBo"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OcL-06-cec" secondAttribute="bottom" id="axH-i2-gRQ"/>
-                                            <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="OcL-06-cec" secondAttribute="right" id="gdC-7z-H5G"/>
                                             <constraint firstItem="OcL-06-cec" firstAttribute="centerX" secondItem="9vS-2w-z7w" secondAttribute="centerX" id="iwU-qA-H9R"/>
-                                            <constraint firstItem="Cla-n1-o4P" firstAttribute="trailing" secondItem="OcL-06-cec" secondAttribute="trailing" id="obN-Ka-tb8"/>
-                                            <constraint firstItem="Cla-n1-o4P" firstAttribute="leading" secondItem="OcL-06-cec" secondAttribute="leading" id="xSO-yz-Z5a"/>
+                                            <constraint firstItem="Cla-n1-o4P" firstAttribute="right" secondItem="OcL-06-cec" secondAttribute="right" id="obN-Ka-tb8"/>
+                                            <constraint firstItem="Cla-n1-o4P" firstAttribute="left" secondItem="OcL-06-cec" secondAttribute="left" id="xSO-yz-Z5a"/>
                                         </constraints>
                                     </view>
                                     <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Red Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="vbo-DW-XzL">
@@ -504,6 +504,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonStartStopPlay" destination="40Z-RJ-3CX" id="fcl-zO-H0b"/>
+                        <outlet property="contraintShapeViewSize" destination="sMH-4d-8vD" id="4n3-Zg-5kO"/>
                         <outlet property="gridView" destination="Cla-n1-o4P" id="vDe-6L-Jmz"/>
                         <outlet property="imageArrowDown" destination="Wq8-0F-4d7" id="DN0-lq-LpR"/>
                         <outlet property="imageArrowLeft" destination="G62-z5-d8Y" id="Dhr-Gt-BMf"/>
@@ -515,11 +516,13 @@
                         <outlet property="labelPercentFilled" destination="rib-e1-SK4" id="sPL-fy-7up"/>
                         <outlet property="labelPlayingTime" destination="CHX-JS-0ip" id="zpJ-2U-b0d"/>
                         <outlet property="labelPlayingTimeTitle" destination="HKY-iD-uj0" id="BX8-hP-IV3"/>
+                        <outlet property="locationBrushView" destination="pBK-12-RMD" id="5rN-jC-8Xd"/>
                         <outlet property="mapView" destination="xE6-gm-fUk" id="g6b-Nu-gCc"/>
                         <outlet property="shapeView" destination="OcL-06-cec" id="NGf-I5-lva"/>
                         <outlet property="viewGameOver" destination="HB2-SD-K7A" id="9OX-rh-uPO"/>
                         <outlet property="viewGettingLocation" destination="fkO-Mu-Bqg" id="cRC-AX-eCi"/>
                         <outlet property="viewLoadingMap" destination="4s8-38-F5t" id="Aco-Y3-KC0"/>
+                        <outlet property="viewMapOverlay" destination="9vS-2w-z7w" id="3md-Cg-yWu"/>
                         <outlet property="wonLabelFilledPercent" destination="uhS-O2-yVp" id="eRr-o5-0yu"/>
                         <outlet property="wonLabelFilledSquareMeters" destination="tmZ-6F-jWr" id="55X-aV-sRa"/>
                         <outlet property="wonLabelPlayingTime" destination="L7L-0o-GVU" id="VVf-BJ-Jic"/>
@@ -682,7 +685,7 @@
                     <viewLayoutGuide key="safeArea" id="Jac-jC-TBY"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2342" y="573"/>
+            <point key="canvasLocation" x="2341.5999999999999" y="572.66009852216746"/>
         </scene>
         <!--Playing Mode-->
         <scene sceneID="fBG-Qx-X1p">
@@ -696,7 +699,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="508"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayingModeCell" textLabel="9Uh-hw-tpd" style="IBUITableViewCellStyleDefault" id="RJi-P6-1v9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayingModeCell" textLabel="9Uh-hw-tpd" style="IBUITableViewCellStyleDefault" id="RJi-P6-1v9">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RJi-P6-1v9" id="0nr-m1-aAo">
