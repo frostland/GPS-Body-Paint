@@ -134,41 +134,46 @@ struct Grid {
 		assert(CGFloat(nRows)*gridSize - rect.height < gridSize*2)
 //		print("Computation time: \(-computationStartDate.timeIntervalSinceNow)")
 		
-		/* *** TESTING THE intersectionPoint METHOD *** */
-//		/* (x: 0.5, y: 0.5) */
-//		print(Grid.intersectionPoint(
-//			between: Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p0: CGPoint(x: 0, y: 1), p1: CGPoint(x: 1, y: 0))
+		/* *** TESTING THE doSegmentsIntersect METHOD *** */
+//		/* true */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
+//			Segment(p0: CGPoint(x: 0, y: 1), p1: CGPoint(x: 1, y: 0))
 //		))
-//		/* nil */
-//		print(Grid.intersectionPoint(
-//			between: Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1))
+//		/* true */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
+//			Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1))
 //		))
-//		/* nil */
-//		print(Grid.intersectionPoint(
-//			between: Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p0: CGPoint(x: 0.6, y: 0.4), p1: CGPoint(x: 1, y: 0))
+//		/* false */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 1, y: 1)),
+//			Segment(p0: CGPoint(x: 0.6, y: 0.4), p1: CGPoint(x: 1, y: 0))
 //		))
-//		/* (x: 0.5, y: 0.5) */
-//		print(Grid.intersectionPoint(
-//			between: Segment(p0: CGPoint(x: 0,     y: 0),     p1: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p0: CGPoint(x: 0.499, y: 0.501), p1: CGPoint(x: 1, y: 0))
+//		/* true */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0,     y: 0),     p1: CGPoint(x: 1, y: 1)),
+//			Segment(p0: CGPoint(x: 0.499, y: 0.501), p1: CGPoint(x: 1, y: 0))
 //		))
-//		/* (x: 0.5, y: 0.5) */
-//		print(Grid.intersectionPoint(
-//			between: Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p0: CGPoint(x: 0.5, y: 0.5), p1: CGPoint(x: 1, y: 0))
+//		/* true */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 1, y: 1)),
+//			Segment(p0: CGPoint(x: 0.5, y: 0.5), p1: CGPoint(x: 1, y: 0))
 //		))
-//		/* nil */
-//		print(Grid.intersectionPoint(
-//			between: Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
-//			and:     Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 0, y: 0))
+//		/* true */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 1, y: 1)),
+//			Segment(p0: CGPoint(x: 0, y: 0), p1: CGPoint(x: 0, y: 0))
 //		))
-//		/* nil */
-//		print(Grid.intersectionPoint(
-//			between: Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 0, y: 0)),
-//			and:     Segment(p0: CGPoint(x: 0.2, y: 0.1), p1: CGPoint(x: 1, y: 0))
+//		/* false */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0,   y: 0),   p1: CGPoint(x: 0, y: 0)),
+//			Segment(p0: CGPoint(x: 0.2, y: 0.1), p1: CGPoint(x: 1, y: 0))
+//		))
+//		/* false */
+//		print(Grid.doSegmentsIntersect(
+//			Segment(p0: CGPoint(x: 0,  y: 0), p1: CGPoint(x: 0, y: 1)),
+//			Segment(p0: CGPoint(x: -1, y: 2), p1: CGPoint(x: 1, y: 2))
 //		))
 		
 		/* *** TESTING THE projectedPoint METHOD *** */
@@ -235,7 +240,7 @@ struct Grid {
 					 * in the “perpendicular vector” if because there is no need to
 					 * check this if we can’t get the perpendicular vector (segment
 					 * is empty). */
-					if q.segments.contains(where: { Grid.intersectionPoint(between: $0, and: segmentBetweenC0AndC1Centers) != nil }) {
+					if q.segments.contains(where: { Grid.doSegmentsIntersect($0, segmentBetweenC0AndC1Centers) }) {
 						result.insert(c)
 						continue
 					}
@@ -260,7 +265,7 @@ struct Grid {
 							p0: c0.center.pointMoving(along: perpendicularNormalizedVector, distance: -c0Distance),
 							p1: c1.center.pointMoving(along: perpendicularNormalizedVector, distance: -c1Distance)
 						)
-						if q.segments.contains(where: { Grid.intersectionPoint(between: $0, and: segment1) != nil || Grid.intersectionPoint(between: $0, and: segment2) != nil }) {
+						if q.segments.contains(where: { Grid.doSegmentsIntersect($0, segment1) || Grid.doSegmentsIntersect($0, segment2) }) {
 							result.insert(c)
 							continue
 						}
@@ -293,41 +298,70 @@ struct Grid {
 	private let xStart, yStart: CGFloat
 	private let cells: [Quadrilateral?]
 	
-	/* Converted straight from Objective-C from FLGraphicsUtils.m in the
-	 * Logiblocs project. I don’t really understand the method anymore… */
-	private static func intersectionPoint(between s1: Segment, and s2: Segment) -> CGPoint? {
-		var currentDenomin = (
-			(s1.p0.y - s1.p1.y) * (s2.p1.x - s2.p0.x) -
-			(s2.p1.y - s2.p0.y) * (s1.p0.x - s1.p1.x)
-		)
-		guard abs(currentDenomin) > 0.000001 else {return nil}
+	/** Returns true if both segments intersect.
+	
+	From https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
+	Other links of interest:
+	  - https://martin-thoma.com/how-to-check-if-two-line-segments-intersect/
+	  - https://stackoverflow.com/a/3838357 */
+	private static func doSegmentsIntersect(_ s0: Segment, _ s1: Segment) -> Bool {
+		/* Given three colinear points p, q, r, the function checks if point q
+		 * lies on line segment 'pr' */
+		func isPointOnSegment(_ s: Segment, _ p: CGPoint) -> Bool {
+			/* We assume the three points are colinear */
+			return (
+				p.x <= max(s.p0.x, s.p1.x) && p.x >= min(s.p0.x, s.p1.x) &&
+				p.y <= max(s.p0.y, s.p1.y) && p.y >= min(s.p0.y, s.p1.y)
+			)
+		}
 		
-		let coeffForIsInLine = (
-			((s2.p0.y - s1.p1.y) * (s1.p0.x - s1.p1.x) -
-			 (s1.p0.y - s1.p1.y) * (s2.p0.x - s1.p1.x)) /
-			currentDenomin
-		)
-		
-		let linesIntersect = (coeffForIsInLine >= 0 && coeffForIsInLine <= 1)
-		guard linesIntersect else {return nil}
-		
-		let coeffForResize: CGFloat
-		currentDenomin = s1.p0.x - s1.p1.x
-		if abs(currentDenomin) > 0.000001 {
-			coeffForResize = (coeffForIsInLine * (s2.p1.x - s2.p0.x) + s2.p0.x - s1.p1.x) / currentDenomin
-		} else {
-			currentDenomin = s1.p0.y - s1.p1.y
-			if abs(currentDenomin) > 0.000001 {
-				coeffForResize = (coeffForIsInLine * (s2.p1.y - s2.p0.y) + s2.p0.y - s1.p1.y) / currentDenomin
-			} else {
-				return nil
+		enum Orientation : Equatable {
+			
+			case colinear
+			case clockwise
+			case counterclockwise
+			
+			init(_ p0: CGPoint, _ p1: CGPoint, _ p2: CGPoint) {
+				/* See https://www.geeksforgeeks.org/orientation-3-ordered-points/
+				 * for details of below formula. */
+				let v = (
+					(p1.y - p0.y) * (p2.x - p1.x) -
+					(p1.x - p0.x) * (p2.y - p1.y)
+				)
+				
+				guard abs(v) > 0.000001 else {
+					self = .colinear
+					return
+				}
+				
+				self = (v > 0 ? .clockwise : .counterclockwise)
 			}
 		}
 		
-		return CGPoint(
-			x: s1.p1.x + (s1.p0.x - s1.p1.x) * coeffForResize,
-			y: s1.p1.y + (s1.p0.y - s1.p1.y) * coeffForResize
-		)
+		/* Find the four orientations needed for general and special cases. */
+		let o0 = Orientation(s0.p0, s0.p1, s1.p0)
+		let o1 = Orientation(s0.p0, s0.p1, s1.p1)
+		let o2 = Orientation(s1.p0, s1.p1, s0.p0)
+		let o3 = Orientation(s1.p0, s1.p1, s0.p1)
+		
+		/* General case */
+		if o0 != o1 && o2 != o3 {return true}
+		
+		/* *** Special Cases *** */
+		
+		/* s0.p0, s0.p1 and s1.p0 are colinear and s1.p0 lies on segment s0 */
+		if o0 == .colinear && isPointOnSegment(s0, s1.p0) {return true}
+		
+		/* s0.p0, s0.p1 and s1.p1 are colinear and s1.p1 lies on segment s0 */
+		if o1 == .colinear && isPointOnSegment(s0, s1.p1) {return true}
+		
+		/* s1.p0, s1.p1 and s0.p0 are colinear and s0.p0 lies on segment s1 */
+		if o2 == .colinear && isPointOnSegment(s1, s0.p0) {return true}
+		
+		/* s1.p0, s1.p1 and s0.p1 are colinear and s0.p1 lies on segment s1 */
+		if o3 == .colinear && isPointOnSegment(s1, s0.p1) {return true}
+		
+		return false
 	}
 	
 	private static func projectedPoint(_ p: CGPoint, on line: (CGPoint, CGPoint)) -> CGPoint? {
@@ -353,8 +387,7 @@ struct Grid {
 	 * Note this method uses a terrible algorithm. We should use maths to find
 	 * the value we want instead of iterating points on the lines until I we
 	 * reach what we search for…
-	 * Actually the method above (intersectionPoint) could probably do this job
-	 * for us. */
+	 * See https://martin-thoma.com/how-to-check-if-two-line-segments-intersect/ */
 	private static func nearestPoint(in path: CGPath, from p: CGPoint, direction d: CGPoint) -> CGPoint {
 		let precision = CGFloat(0.001)
 		
