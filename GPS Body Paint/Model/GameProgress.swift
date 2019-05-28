@@ -21,11 +21,19 @@ class GameProgress {
 	/** The full area possible to fill. */
 	let fullArea: CLLocationDistance /* Actual unit is a CLLocationDistance^2 */
 	private(set) var filledArea = CLLocationDistance(0) /* Actual unit is a CLLocationDistance^2 */
+	var filledPercent: Int {
+		return Int((100 * filledArea/fullArea).rounded())
+	}
+	
+	let startTime: Date
+	var timePlaying: TimeInterval {
+		return -startTime.timeIntervalSinceNow
+	}
 	
 	let grid: Grid
 	private(set) var filledCoordinates = Set<Grid.Coordinate>()
 	
-	init(center c: CLLocationCoordinate2D, gameShape: GameShape, gridSizeInMeters: CLLocationDistance, gridView: UIView, mapView: MKMapView) {
+	init(center c: CLLocationCoordinate2D, gameShape: GameShape, gridSizeInMeters: CLLocationDistance, gridView: UIView, mapView: MKMapView, startTime t: Date = Date()) {
 		center = c
 		
 		let bounds = gridView.bounds
@@ -37,6 +45,8 @@ class GameProgress {
 		let gridViewMapArea = region.area
 		let gridViewPixelArea = gridView.bounds.width * gridView.bounds.height
 		fullArea = CLLocationDistance(grid.area / gridViewPixelArea) * gridViewMapArea
+		
+		startTime = t
 	}
 	
 	/** Returns true if the fill actually did something. Crashes for out of

@@ -135,9 +135,9 @@ class PlayViewController : UIViewController {
 //		mapView.setRegion(r, animated: true)
 	}
 	
-	@IBAction func stopPlaying(_ sender: AnyObject) {
+	@IBAction func quitPlayView(_ sender: AnyObject) {
 		gameController.stopPlaying()
-//		delegate?.playViewControllerDidFinish(self)
+		delegate?.playViewControllerDidFinish(self)
 	}
 	
 	/* ***************
@@ -211,7 +211,7 @@ extension PlayViewController : VSOMapViewDelegate {
 		)
 		alertController.addAction(UIAlertAction(title: NSLocalizedString("play anyway", comment: "Play anyway button on the cannot load map popup"), style: .default, handler: nil))
 		alertController.addAction(UIAlertAction(title: NSLocalizedString("stop playing", comment: "Stop playing button on the cannot load map popup"), style: .cancel, handler: { _ in
-			self.stopPlaying(self)
+			self.quitPlayView(self)
 		}))
 		present(alertController, animated: true, completion: nil)
 	}
@@ -240,20 +240,28 @@ extension PlayViewController : GameControllerDelegate {
 	func gameController(_ gameController: GameController, didChangeStatus newStatus: GameController.Status) {
 		switch newStatus {
 		case .idle: (/*nop*/)
-		case .trackingUserPosition:
-			mapView.isScrollEnabled = true
-			mapView.showsUserLocation = true
-			locationBrushView.isHidden = true
-			
-			gridView.grid = nil
+		case .trackingUserPosition: (/*nop*/)
 			
 		case .playing(gameProgress: let gp, shapeView: _, mapView: _):
+			UIApplication.shared.isIdleTimerDisabled = true
+			
 			mapView.isScrollEnabled = false
 			mapView.showsUserLocation = false
 			locationBrushView.isHidden = false
 			buttonStartStopPlay.setTitle(NSLocalizedString("stop playing", comment: "Stop playing button title"), for: .normal)
 			
 			gridView.grid = gp.grid
+			
+		case .gameOver:
+			UIApplication.shared.isIdleTimerDisabled = false
+			
+			/* Let’s show the game over view */
+			viewGameOver.alpha = 0
+			viewGameOver.frame = view.bounds
+			view.addSubview(viewGameOver)
+			UIView.animate(withDuration: c.animTimeShowGameOver, animations: {
+				self.viewGameOver.alpha = 1
+			})
 		}
 	}
 	
@@ -266,7 +274,7 @@ extension PlayViewController : GameControllerDelegate {
 			preferredStyle: .alert
 		)
 		alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: { _ in
-			self.stopPlaying(self)
+			self.quitPlayView(self)
 		}))
 		present(alertController, animated: true, completion: nil)
 	}
@@ -300,7 +308,6 @@ extension PlayViewController : GameControllerDelegate {
 			 * zoom ourselves), but 1/ the solution is complex to implement (too
 			 * complex for this project anyway) and 2/ I’m not sure it is allowed
 			 * per Apple’s guidelines. */
-		} else {
 		}
 		
 		updateLocationBrushFrame()
@@ -310,8 +317,12 @@ extension PlayViewController : GameControllerDelegate {
 		locationBrushView?.heading = newHeading?.trueHeading
 	}
 	
-	func gameController(_ gameController: GameController, didVisitCoordinate coordinate: Grid.Coordinate) {
+	func gameController(_ gameController: GameController, didVisitCoordinate coordinate: Grid.Coordinate, newProgress: GameProgress) {
 		gridView.addFilledSquare(at: coordinate)
+		
+		let percentCompleteStr = String(format: NSLocalizedString("percent complete format from float", comment: "Here, there is only a %.0f with the percent sign (%% for %) following"), 100 * newProgress.filledArea/newProgress.fullArea)
+		labelPercentFilled.text = percentCompleteStr
+		wonLabelFilledPercent.text = percentCompleteStr
 	}
 	
 }

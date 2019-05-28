@@ -548,7 +548,7 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="stopPlaying:" destination="3rQ-ob-Jtt" eventType="touchUpInside" id="Eed-3R-3HE"/>
+                                <action selector="quitPlayView:" destination="3rQ-ob-Jtt" eventType="touchUpInside" id="Eed-3R-3HE"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Playing Time:" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIr-54-JUq">
@@ -656,7 +656,7 @@
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="stopPlaying:" destination="3rQ-ob-Jtt" eventType="touchUpInside" id="MUj-Fk-Vdi"/>
+                                        <action selector="quitPlayView:" destination="3rQ-ob-Jtt" eventType="touchUpInside" id="MUj-Fk-Vdi"/>
                                     </connections>
                                 </button>
                             </subviews>

@@ -21,7 +21,7 @@ protocol GameControllerDelegate : class {
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?)
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?)
 	
-	func gameController(_ gameController: GameController, didVisitCoordinate coordinate: Grid.Coordinate)
+	func gameController(_ gameController: GameController, didVisitCoordinate coordinate: Grid.Coordinate, newProgress: GameProgress)
 	
 }
 
@@ -31,11 +31,14 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	/** If precision is not better than 25 meters, we cannot start playing */
 	static let minHorizontalPrecisionToStartPlaying = CLLocationAccuracy(25)
 	
+	/** The status can only go “up.” Once you’ve reached gameOver, there’s no
+	turning back. */
 	enum Status {
 		
 		case idle
 		case trackingUserPosition
 		case playing(gameProgress: GameProgress, shapeView: UIView, mapView: MKMapView)
+		case gameOver(gameProgress: GameProgress)
 		
 		var isIdle: Bool {
 			switch self {
@@ -44,10 +47,27 @@ class GameController : NSObject, CLLocationManagerDelegate {
 			}
 		}
 		
+		var isTrackingUserPosition: Bool {
+			switch self {
+			case .trackingUserPosition, .playing: return true
+			case .idle, .gameOver:                return false
+			}
+		}
+		
+		var gameProgress: GameProgress? {
+			switch self {
+			case .playing(gameProgress: let gp, shapeView: _, mapView: _), .gameOver(gameProgress: let gp):
+				return gp
+				
+			case .idle, .trackingUserPosition:
+				return nil
+			}
+		}
+		
 		var gameInfo: (gameProgress: GameProgress, shapeView: UIView, mapView: MKMapView)? {
 			switch self {
-			case .playing(let gi): return gi
-			default:               return nil
+			case .playing(let gi):                        return gi
+			case .idle, .trackingUserPosition, .gameOver: return nil
 			}
 		}
 		
@@ -100,7 +120,15 @@ class GameController : NSObject, CLLocationManagerDelegate {
 				for c in coordinatesToFill {
 					/* The test below should always be true */
 					if gameProgress.fillCoordinate(c) {
-						delegate?.gameController(self, didVisitCoordinate: c)
+						delegate?.gameController(self, didVisitCoordinate: c, newProgress: gameProgress)
+					}
+				}
+				
+				switch gameSettings.playingMode {
+				case .timeLimit: (/*nop*/)
+				case .fillIn(percentGoal: let goal):
+					if gameProgress.filledPercent >= goal {
+						status = .gameOver(gameProgress: gameProgress)
 					}
 				}
 			}
@@ -161,8 +189,14 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	
 	@discardableResult
 	func stopPlaying() -> Bool {
-		guard isPlaying else {return false}
-		return true
+		switch status {
+		case .playing(gameProgress: let gp, shapeView: _, mapView: _):
+			status = .gameOver(gameProgress: gp)
+			return true
+			
+		default:
+			return false
+		}
 	}
 	
 	/* *********************************
