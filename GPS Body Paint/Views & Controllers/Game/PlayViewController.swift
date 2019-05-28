@@ -421,9 +421,11 @@ extension PlayViewController : GameControllerDelegate {
 	func gameController(_ gameController: GameController, didVisitCoordinate coordinate: Grid.Coordinate, newProgress: GameProgress) {
 		gridView.addFilledSquare(at: coordinate)
 		
-		let percentCompleteStr = String(format: NSLocalizedString("percent complete format from float", comment: "Here, there is only a %.0f with the percent sign (%% for %) following"), 100 * newProgress.filledArea/newProgress.fullArea)
+		let percentCompleteStr = String(format: NSLocalizedString("percent complete format", comment: "Here, there is only a %d with the percent sign (%% for %) following"), newProgress.filledPercent)
 		labelPercentFilled.text = percentCompleteStr
 		wonLabelFilledPercent.text = percentCompleteStr
+		
+		wonLabelFilledSquareMeters.text = String(format: NSLocalizedString("n square meters format", comment: "Format for \"10 square meters\""), Int(newProgress.filledArea.rounded()))
 	}
 	
 }
