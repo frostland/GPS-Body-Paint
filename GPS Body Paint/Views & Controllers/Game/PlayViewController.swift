@@ -75,6 +75,14 @@ class PlayViewController : UIViewController {
 	   MARK: - Controller Lifecycle
 	   **************************** */
 	
+	deinit {
+		timerUpdateTimeLabels?.invalidate()
+		timerUpdateTimeLabels = nil
+		
+		timerShowLoadingMap?.invalidate()
+		timerShowLoadingMap = nil
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -91,6 +99,30 @@ class PlayViewController : UIViewController {
 		imageArrowDown.alpha = 0
 		imageArrowLeft.alpha = 0
 		imageArrowRight.alpha = 0
+		
+		let font: UIFont
+		let playingOrRemainingTitle: String
+		switch gameController.gameSettings.playingMode {
+		case .fillIn(let goal):
+			font = labelPlayingTimeTitle.font
+			playingOrRemainingTitle = NSLocalizedString("playing time", comment: "Playing time label title in the game view")
+			
+			labelGoal.isHidden = false
+			labelGoalPercentage.isHidden = false
+			labelGoalPercentage.text = String(format: NSLocalizedString("percent complete format", comment: "Here, there is only a %d with the percent sign (%% for %) following"), goal)
+			
+		case .timeLimit:
+			font = labelGoal.font
+			playingOrRemainingTitle = NSLocalizedString("remaining time", comment: "Remaining time label title in the game view")
+			
+			labelGoal.isHidden = true
+			labelGoalPercentage.isHidden = true
+		}
+		labelPlayingTime.font = font
+		labelPlayingTimeTitle.font = font
+		labelPlayingTimeTitle.text = playingOrRemainingTitle
+		
+		updateTimeLabels(nil)
 		
 		viewLoadingMap.alpha = 0
 		viewMapOverlay.isHidden = true
@@ -159,6 +191,8 @@ class PlayViewController : UIViewController {
 	private var mapMoving = false
 	private var timerShowLoadingMap: Timer?
 	
+	private var timerUpdateTimeLabels: Timer?
+	
 	private func updateLocationBrushFrame() {
 		guard let loc = gameController.currentLocation else {return}
 		
@@ -212,6 +246,30 @@ class PlayViewController : UIViewController {
 			if coord.longitude > r.center.longitude+r.span.longitudeDelta/2 {self.imageArrowRight.alpha = 1}
 			else                                                            {self.imageArrowRight.alpha = 0}
 		})
+	}
+	
+	@objc
+	private func updateTimeLabels(_ timer: Timer?) {
+		guard let timePlaying = gameController.gameProgress?.timePlaying else {
+			labelPercentFilled.text = NSLocalizedString("NA", comment: "")
+			labelPlayingTime.text = NSLocalizedString("NA", comment: "")
+			labelGPSAccuracy.text = NSLocalizedString("NA", comment: "")
+			return
+		}
+		
+		let dateFormatter = DateComponentsFormatter()
+		dateFormatter.unitsStyle = .positional
+		dateFormatter.allowedUnits = [.hour, .minute, .second]
+		dateFormatter.zeroFormattingBehavior = DateComponentsFormatter.ZeroFormattingBehavior()
+		
+		wonLabelPlayingTime.text = dateFormatter.string(from: timePlaying)
+		
+		let time2: TimeInterval
+		switch gameController.gameSettings.playingMode {
+		case .fillIn:              time2 = timePlaying
+		case .timeLimit(let time): time2 = max(TimeInterval(0), time - timePlaying)
+		}
+		labelPlayingTime.text = dateFormatter.string(from: time2)
 	}
 	
 }
@@ -316,8 +374,13 @@ extension PlayViewController : GameControllerDelegate {
 			
 			gridView.grid = gp.grid
 			
+			timerUpdateTimeLabels = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateTimeLabels(_:)), userInfo: nil, repeats: true)
+			
 		case .gameOver:
 			UIApplication.shared.isIdleTimerDisabled = false
+			
+			timerUpdateTimeLabels?.invalidate()
+			timerUpdateTimeLabels = nil
 			
 			/* Let’s show the game over view */
 			viewGameOver.alpha = 0
