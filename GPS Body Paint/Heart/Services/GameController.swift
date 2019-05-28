@@ -47,6 +47,13 @@ class GameController : NSObject, CLLocationManagerDelegate {
 			}
 		}
 		
+		var isPlaying: Bool {
+			switch self {
+			case .playing: return true
+			default:       return false
+			}
+		}
+		
 		var isTrackingUserPosition: Bool {
 			switch self {
 			case .trackingUserPosition, .playing: return true
@@ -77,6 +84,21 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	weak var delegate: GameControllerDelegate?
 	
 	var status = Status.idle {
+		willSet {
+			if newValue.isTrackingUserPosition && !status.isTrackingUserPosition {
+				locationManager.requestWhenInUseAuthorization()
+				locationManager.startUpdatingLocation()
+				locationManager.startUpdatingHeading()
+			} else if !newValue.isTrackingUserPosition && status.isTrackingUserPosition {
+				locationManager.stopUpdatingHeading()
+				locationManager.stopUpdatingLocation()
+			}
+			
+			if !newValue.isPlaying {
+				timerEndOfGame?.invalidate()
+				timerEndOfGame = nil
+			}
+		}
 		didSet {
 			delegate?.gameController(self, didChangeStatus: status)
 		}
@@ -156,16 +178,15 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	deinit {
 		locationManager.stopUpdatingHeading()
 		locationManager.stopUpdatingLocation()
+		
+		timerEndOfGame?.invalidate()
+		timerEndOfGame = nil
 	}
 	
 	@discardableResult
 	func startTrackingPhonePosition() -> Bool {
 		guard status.isIdle else {return false}
-		status = .trackingUserPosition
-		
-		locationManager.requestWhenInUseAuthorization()
-		locationManager.startUpdatingLocation()
-		locationManager.startUpdatingHeading()
+		status = .trackingUserPosition /* willSet starts the tracking */
 		return true
 	}
 	
@@ -184,6 +205,10 @@ class GameController : NSObject, CLLocationManagerDelegate {
 			shapeView: shapeView,
 			mapView: mapView
 		)
+		
+		if case .timeLimit(let duration) = gameSettings.playingMode {
+			timerEndOfGame = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(stopPlayingFromTimer(_:)), userInfo: nil, repeats: false)
+		}
 		
 		/* Add visited quadrilaterals for current location */
 		currentLocation = loc
@@ -231,5 +256,15 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	
 	/* Dependencies */
 	private let locationManager: CLLocationManager
+	
+	private var timerEndOfGame: Timer?
+	
+	@objc
+	func stopPlayingFromTimer(_ timer: Timer) {
+		timerEndOfGame?.invalidate()
+		timerEndOfGame = nil
+		
+		stopPlaying()
+	}
 	
 }
