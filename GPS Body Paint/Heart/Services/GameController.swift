@@ -184,6 +184,10 @@ class GameController : NSObject, CLLocationManagerDelegate {
 			shapeView: shapeView,
 			mapView: mapView
 		)
+		
+		/* Add visited quadrilaterals for current location */
+		currentLocation = loc
+		
 		return true
 	}
 	
