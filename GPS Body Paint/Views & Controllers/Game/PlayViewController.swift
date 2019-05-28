@@ -129,10 +129,12 @@ class PlayViewController : UIViewController {
 		}
 	}
 	
+	/* Note: This method is currently inaccessible through theh UI… */
 	@IBAction func centerMapToCurrentUserLocation(_ sender: AnyObject) {
-		/* TODO */
-//		let r = MKCoordinateRegion(center: coordinateForAnnotation, latitudinalMeters: gameProgress.settings.playgroundSize, longitudinalMeters: gameProgress.settings.playgroundSize)
-//		mapView.setRegion(r, animated: true)
+		guard let loc = gameController.currentLocation else {return}
+		
+		userHasMovedMap = false
+		centerMap(location: loc)
 	}
 	
 	@IBAction func quitPlayView(_ sender: AnyObject) {
@@ -147,6 +149,8 @@ class PlayViewController : UIViewController {
 	private let c = S.sp.constants
 	private let s = S.sp.appSettings
 	
+	private var userHasMovedMap = false
+	
 	private var mapMoving = false
 	private var timerShowLoadingMap: Timer?
 	
@@ -157,6 +161,34 @@ class PlayViewController : UIViewController {
 		locationBrushView.frame = mapView.convert(locationBrushRegion, toRectTo: locationBrushView.superview!)
 	}
 	
+	private func centerMap(location loc: CLLocation) {
+		let mapToOverlayRatio: CGFloat
+		if viewMapOverlay.frame.width > viewMapOverlay.frame.height {
+			mapToOverlayRatio = mapView.frame.height / viewMapOverlay.frame.height
+		} else {
+			mapToOverlayRatio = mapView.frame.width / viewMapOverlay.frame.width
+		}
+	
+		/* The overlay view is smaller than the map (by design) */
+		let extendedPlaygroundSize = gameController.gameSettings.playgroundSize * CLLocationDistance(mapToOverlayRatio)
+	
+		let regionWeWant = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: extendedPlaygroundSize, longitudinalMeters: extendedPlaygroundSize)
+//		let regionWeGet = mapView.regionThatFits(regionWeWant)
+		mapView.setRegion(regionWeWant, animated: false)
+	
+		/* The map view has a maximum zoom. It’s Whoozer all over again! (Well
+		 * not exactly, but we do end up with a different region than what we
+		 * asked…). Note: The region we get is (almost exactly, minus rounding
+		 * errors) “mapView.regionThatFits(regionWeWant)”.
+		 * To workaround this, we change the size of the shape view so the
+		 * shape has the user’s defined span on the map. This is done in the
+		 * mapView delegate method mapViewDidChangeVisibleRegion. Note we could
+		 * whoozer’ize the map (apply an affine transform on the map to do the
+		 * zoom ourselves), but 1/ the solution is complex to implement (too
+		 * complex for this project anyway) and 2/ I’m not sure it is allowed
+		 * per Apple’s guidelines. */
+	}
+	
 }
 
 /* *************************
@@ -164,6 +196,11 @@ class PlayViewController : UIViewController {
    ************************* */
 
 extension PlayViewController : VSOMapViewDelegate {
+	
+	/* VSO Map view delegate specific */
+	func mapView(didReceiveTouch mapView: MKMapView) {
+		userHasMovedMap = true
+	}
 	
 	func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
 //		NSLog("mapViewWillStartLoadingMap")
@@ -280,34 +317,8 @@ extension PlayViewController : GameControllerDelegate {
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?) {
-		if !gameController.isPlaying {
-			guard let loc = newLocation else {return}
-			
-			let mapToOverlayRatio: CGFloat
-			if viewMapOverlay.frame.width > viewMapOverlay.frame.height {
-				mapToOverlayRatio = mapView.frame.height / viewMapOverlay.frame.height
-			} else {
-				mapToOverlayRatio = mapView.frame.width / viewMapOverlay.frame.width
-			}
-			
-			/* The overlay view is smaller than the map (by design) */
-			let extendedPlaygroundSize = gameController.gameSettings.playgroundSize * CLLocationDistance(mapToOverlayRatio)
-			
-			let regionWeWant = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: extendedPlaygroundSize, longitudinalMeters: extendedPlaygroundSize)
-//			let regionWeGet = mapView.regionThatFits(regionWeWant)
-			mapView.setRegion(regionWeWant, animated: false)
-			
-			/* The map view has a maximum zoom. It’s Whoozer all over again! (Well
-			 * not exactly, but we do end up with a different region than what we
-			 * asked…). Note: The region we get is (almost exactly, minus rounding
-			 * errors) “mapView.regionThatFits(regionWeWant)”.
-			 * To workaround this, we change the size of the shape view so the
-			 * shape has the user’s defined span on the map. This is done in the
-			 * mapView delegate method mapViewDidChangeVisibleRegion. Note we could
-			 * whoozer’ize the map (apply an affine transform on the map to do the
-			 * zoom ourselves), but 1/ the solution is complex to implement (too
-			 * complex for this project anyway) and 2/ I’m not sure it is allowed
-			 * per Apple’s guidelines. */
+		if !gameController.isPlaying, !userHasMovedMap, let loc = newLocation {
+			centerMap(location: loc)
 		}
 		
 		updateLocationBrushFrame()
