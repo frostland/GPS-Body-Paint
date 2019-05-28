@@ -87,6 +87,11 @@ class PlayViewController : UIViewController {
 			mapView.mapType = .mutedStandard
 		}
 		
+		imageArrowTop.alpha = 0
+		imageArrowDown.alpha = 0
+		imageArrowLeft.alpha = 0
+		imageArrowRight.alpha = 0
+		
 		viewLoadingMap.alpha = 0
 		viewMapOverlay.isHidden = true
 		locationBrushView.isHidden = true
@@ -187,6 +192,26 @@ class PlayViewController : UIViewController {
 		 * zoom ourselves), but 1/ the solution is complex to implement (too
 		 * complex for this project anyway) and 2/ I’m not sure it is allowed
 		 * per Apple’s guidelines. */
+		
+		/* Let’s show/hide the out of map arrows if needed */
+		showOutOfMapArrows()
+	}
+	
+	private func showOutOfMapArrows() {
+		guard let coord = gameController.currentLocation?.coordinate else {return}
+		
+		/* Showing arrows if user outside of map */
+		let r = mapView.region
+		UIView.animate(withDuration: c.animTimeShowArrows, animations: {
+			if coord.latitude < r.center.latitude-r.span.latitudeDelta/2 {self.imageArrowDown.alpha = 1}
+			else                                                         {self.imageArrowDown.alpha = 0}
+			if coord.latitude > r.center.latitude+r.span.latitudeDelta/2 {self.imageArrowTop.alpha = 1}
+			else                                                         {self.imageArrowTop.alpha = 0}
+			if coord.longitude < r.center.longitude-r.span.longitudeDelta/2 {self.imageArrowLeft.alpha = 1}
+			else                                                            {self.imageArrowLeft.alpha = 0}
+			if coord.longitude > r.center.longitude+r.span.longitudeDelta/2 {self.imageArrowRight.alpha = 1}
+			else                                                            {self.imageArrowRight.alpha = 0}
+		})
 	}
 	
 }
@@ -264,6 +289,8 @@ extension PlayViewController : VSOMapViewDelegate {
 		
 		/* Also let’s update the position of the location brush view. */
 		updateLocationBrushFrame()
+		/* And show/hide the out of map arrows if needed */
+		showOutOfMapArrows()
 	}
 	
 }
