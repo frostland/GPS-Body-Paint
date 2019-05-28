@@ -65,7 +65,6 @@
 		7B042088218F3221003B7E3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B04208A218F36C0003B7E3B /* LocationBrushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBrushView.swift; sourceTree = "<group>"; };
 		7B04208C218F5813003B7E3B /* VSOMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSOMapView.swift; sourceTree = "<group>"; };
-		7B1BF61E21A76B6B00E84910 /* OBS_GameProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBS_GameProgressController.swift; sourceTree = "<group>"; };
 		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B395E5F1D856A4500941445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B3ECD4D1D84DFAB00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -139,7 +138,6 @@
 			children = (
 				7B04208A218F36C0003B7E3B /* LocationBrushView.swift */,
 				7B5B75AF21AAFDC4002B8509 /* OBS_PlayViewController.swift */,
-				7B1BF61E21A76B6B00E84910 /* OBS_GameProgressController.swift */,
 				7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */,
 			);
 			path = Game;

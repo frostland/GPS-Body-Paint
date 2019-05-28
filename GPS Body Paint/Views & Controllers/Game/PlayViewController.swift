@@ -393,6 +393,8 @@ extension PlayViewController : GameControllerDelegate {
 	}
 	
 	func gameController(_ gameController: GameController, failedToRetrieveLocation error: Error) {
+		labelGPSAccuracy.text = NSLocalizedString("NA", comment: "")
+		
 		/* If there is an error retrieving the location of the user, there’s
 		 * nothing more we can do, it is not possible to play! So we stop. */
 		let alertController = UIAlertController(
@@ -412,6 +414,22 @@ extension PlayViewController : GameControllerDelegate {
 		}
 		
 		updateLocationBrushFrame()
+		
+		labelGPSAccuracy.text =
+			newLocation.map{ String(format: NSLocalizedString("n m format", comment: "Format for \"10 m\""), Int($0.horizontalAccuracy.rounded())) } ??
+			NSLocalizedString("NA", comment: "")
+		
+		if s.firstLaunch {
+			s.firstLaunch = false
+			
+			let alertController = UIAlertController(
+				title: NSLocalizedString("play info", comment: "Pop-up title when playing for the first time"),
+				message: NSLocalizedString("lock map when ready msg", comment: "Pop-up title when playing for the first time"),
+				preferredStyle: .alert
+			)
+			alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: nil))
+			present(alertController, animated: true, completion: nil)
+		}
 	}
 	
 	func gameController(_ gameController: GameController, didGetNewHeading newHeading: CLHeading?) {
