@@ -1,4 +1,4 @@
-﻿/* No comment provided by engineer. */
+/* No comment provided by engineer. */
 "play info" = "Instruction de jeu";
 
 /* No comment provided by engineer. */
@@ -13,9 +13,6 @@
 
 /* Here, there is only a %d with the percent sign (%% for %) following */
 "percent complete format" = "%d %%";
-
-/* Here, there is only a %.0f with the percent sign (%% for %) following */
-"percent complete format from float" = "%.0f %%";
 
 /* Format for "10 square meters" */
 "n square meters format" = "%d mètre carré";
@@ -68,6 +65,7 @@
 "square" = "Carré";
 "hexagon" = "Hexagone";
 "triangle" = "Triangle";
+"custom" = "Personnalisé";
 
 /* Level difficulties */
 "big" = "Gros";

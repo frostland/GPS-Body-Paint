@@ -7,89 +7,94 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F7BBE94101EEC5A00F4EF59 /* VSOMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */; };
-		0F7E117610185013000D35AF /* VSOShapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7E117510185013000D35AF /* VSOShapeView.m */; };
-		0F9495621014716E00717D5A /* VSOGameShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9495611014716E00717D5A /* VSOGameShape.m */; };
 		0FC06FB5100E33F700B0D157 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC06FB4100E33F700B0D157 /* QuartzCore.framework */; };
 		0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF47581019E2D0005E5F41 /* Settings.bundle */; };
 		0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD076D6101F19C900D9AF11 /* Localizable.strings */; };
-		0FD1BB0E100F2C7900000185 /* VSOSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BB0D100F2C7900000185 /* VSOSettings.m */; };
-		0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BB32100F31FB00000185 /* VSOGameProgress.m */; };
-		0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FD1BBCF100F374800000185 /* VSOUtils.c */; };
 		0FD8DB94100DCCC800C076DB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD8DB93100DCCC800C076DB /* MapKit.framework */; };
-		0FD8DBD9100DD06E00C076DB /* VSOGridAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8DBD8100DD06E00C076DB /* VSOGridAnnotationView.m */; };
 		0FD8DC83100DDB0300C076DB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD8DC82100DDB0300C076DB /* CoreLocation.framework */; };
-		1D3623260D0F684500981E51 /* GPSBodyPaintAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */; };
-		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
-		289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */; };
-		289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */; };
+		7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042082218F0852003B7E3B /* CGRect+Hashable.swift */; };
+		7B042085218F2792003B7E3B /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042084218F2792003B7E3B /* ShapeView.swift */; };
+		7B042087218F2CE1003B7E3B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042086218F2CE1003B7E3B /* AppSettings.swift */; };
+		7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B042088218F3221003B7E3B /* AppDelegate.swift */; };
+		7B04208D218F5813003B7E3B /* VSOMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B04208C218F5813003B7E3B /* VSOMapView.swift */; };
 		7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */; };
 		7B395E5E1D856A4500941445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B395E601D856A4500941445 /* Main.storyboard */; };
 		7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B3ECD4E1D84DFAB00DFEB0D /* InfoPlist.strings */; };
-		7B9912FE1D8DB0FF00AA2C1A /* VSOCurLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */; };
+		7B5B75A621AAE5DD002B8509 /* LevelSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75A521AAE5DD002B8509 /* LevelSizeViewController.swift */; };
+		7B5B75A821AAEA0E002B8509 /* LevelDifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75A721AAEA0E002B8509 /* LevelDifficultyViewController.swift */; };
+		7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */; };
+		7B5B75AC21AAF354002B8509 /* PlayingModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75AB21AAF354002B8509 /* PlayingModeViewController.swift */; };
+		7B5B75AE21AAF85F002B8509 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B75AD21AAF85F002B8509 /* SettingsViewController.swift */; };
+		7B5B75B121AB5080002B8509 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F73F3F71010C4290004C707 /* Constants.swift */; };
+		7B732DF021F4DC60004EEB01 /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B732DEF21F4DC60004EEB01 /* ServicesProvider.swift */; };
+		7B7A26C8218098D20051D470 /* GameShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A26C7218098D20051D470 /* GameShape.swift */; };
+		7B80538E220F854C009DE2C4 /* PlayingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80538D220F854C009DE2C4 /* PlayingMode.swift */; };
+		7B805390220F8599009DE2C4 /* PaintingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80538F220F8599009DE2C4 /* PaintingSize.swift */; };
+		7B80539222102F7F009DE2C4 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B80539122102F7F009DE2C4 /* GameSettings.swift */; };
+		7B84A56522934C5F00A2E68C /* MapUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84A56422934C5F00A2E68C /* MapUtils.swift */; };
+		7B8BEEAE229BC9DF007309A6 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BEEAD229BC9DF007309A6 /* Segment.swift */; };
+		7B8BEEB0229BD5D3007309A6 /* CGPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BEEAF229BD5D3007309A6 /* CGPoint+Utils.swift */; };
+		7B8BEEB2229C2C19007309A6 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BEEB1229C2C19007309A6 /* Circle.swift */; };
+		7BA2FEF722886E5C00F6EBB9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */; };
 		7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0EA611D856B110057BFA2 /* Assets.xcassets */; };
-		7BB0EA651D858CAC0057BFA2 /* VSOLevelSizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */; };
-		7BB0EA681D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA671D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m */; };
-		7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */; };
-		7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */; };
+		7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC1ACA2218B61D00BCBC63 /* GameController.swift */; };
+		7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC1ACC2218C57500BCBC63 /* Grid.swift */; };
+		7BC852DE221A10BD0029358D /* Quadrilateral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC852DD221A10BD0029358D /* Quadrilateral.swift */; };
+		7BD401122299830000A9DEE0 /* LocationBrushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B04208A218F36C0003B7E3B /* LocationBrushView.swift */; };
+		7BF4C2D8229046FC00A09929 /* GameProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4C2D7229046FC00A09929 /* GameProgress.swift */; };
+		7BF4C2DA2290982800A09929 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4C2D92290982800A09929 /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F73F3F71010C4290004C707 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		0F7BBE92101EEC5A00F4EF59 /* VSOMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOMapView.h; sourceTree = "<group>"; };
-		0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOMapView.m; sourceTree = "<group>"; };
-		0F7E117410185013000D35AF /* VSOShapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOShapeView.h; sourceTree = "<group>"; };
-		0F7E117510185013000D35AF /* VSOShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOShapeView.m; sourceTree = "<group>"; };
-		0F9495601014716E00717D5A /* VSOGameShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOGameShape.h; sourceTree = "<group>"; };
-		0F9495611014716E00717D5A /* VSOGameShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGameShape.m; sourceTree = "<group>"; };
+		0F73F3F71010C4290004C707 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0FC06FB4100E33F700B0D157 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0FCDE41110160CD7001D5E65 /* Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Notes.rtf; sourceTree = "<group>"; };
 		0FCF47581019E2D0005E5F41 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0FD076D8101F19EB00D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0FD1BB0C100F2C7900000185 /* VSOSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOSettings.h; sourceTree = "<group>"; };
-		0FD1BB0D100F2C7900000185 /* VSOSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOSettings.m; sourceTree = "<group>"; };
-		0FD1BB31100F31FB00000185 /* VSOGameProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOGameProgress.h; sourceTree = "<group>"; };
-		0FD1BB32100F31FB00000185 /* VSOGameProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGameProgress.m; sourceTree = "<group>"; };
-		0FD1BBCE100F374800000185 /* VSOUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOUtils.h; sourceTree = "<group>"; };
-		0FD1BBCF100F374800000185 /* VSOUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = VSOUtils.c; sourceTree = "<group>"; };
 		0FD8DB93100DCCC800C076DB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0FD8DBD7100DD06E00C076DB /* VSOGridAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOGridAnnotationView.h; sourceTree = "<group>"; };
-		0FD8DBD8100DD06E00C076DB /* VSOGridAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOGridAnnotationView.m; sourceTree = "<group>"; };
 		0FD8DC82100DDB0300C076DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* GPSBodyPaintAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSBodyPaintAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSBodyPaintAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* GPS Body Paint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS Body Paint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		289233A80DB2D0DB0083E9F9 /* VSOPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOPlayViewController.h; sourceTree = "<group>"; };
-		289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOPlayViewController.m; sourceTree = "<group>"; };
-		289233AC0DB2D0DB0083E9F9 /* VSOSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOSettingsViewController.h; sourceTree = "<group>"; };
-		289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOSettingsViewController.m; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPS_Body_Paint_Prefix.pch; sourceTree = "<group>"; };
+		7B042082218F0852003B7E3B /* CGRect+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Hashable.swift"; sourceTree = "<group>"; };
+		7B042084218F2792003B7E3B /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		7B042086218F2CE1003B7E3B /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		7B042088218F3221003B7E3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B04208A218F36C0003B7E3B /* LocationBrushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBrushView.swift; sourceTree = "<group>"; };
+		7B04208C218F5813003B7E3B /* VSOMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSOMapView.swift; sourceTree = "<group>"; };
 		7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B395E5F1D856A4500941445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B3ECD4D1D84DFAB00DFEB0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B3ECD4F1D84DFAC00DFEB0D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7B5B75A521AAE5DD002B8509 /* LevelSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSizeViewController.swift; sourceTree = "<group>"; };
+		7B5B75A721AAEA0E002B8509 /* LevelDifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDifficultyViewController.swift; sourceTree = "<group>"; };
+		7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeShapeViewController.swift; sourceTree = "<group>"; };
+		7B5B75AB21AAF354002B8509 /* PlayingModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingModeViewController.swift; sourceTree = "<group>"; };
+		7B5B75AD21AAF85F002B8509 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7B732DEF21F4DC60004EEB01 /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
+		7B7A26C7218098D20051D470 /* GameShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameShape.swift; sourceTree = "<group>"; };
+		7B80538D220F854C009DE2C4 /* PlayingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingMode.swift; sourceTree = "<group>"; };
+		7B80538F220F8599009DE2C4 /* PaintingSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingSize.swift; sourceTree = "<group>"; };
+		7B80539122102F7F009DE2C4 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		7B84A56422934C5F00A2E68C /* MapUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUtils.swift; sourceTree = "<group>"; };
+		7B8BEEAD229BC9DF007309A6 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		7B8BEEAF229BD5D3007309A6 /* CGPoint+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Utils.swift"; sourceTree = "<group>"; };
+		7B8BEEB1229C2C19007309A6 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		7B8F8FFC1D84DA1200B03DC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7B9912FC1D8DB0FF00AA2C1A /* VSOCurLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOCurLocationView.h; sourceTree = "<group>"; };
-		7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOCurLocationView.m; sourceTree = "<group>"; };
 		7BA248211DCF818C007F5B2E /* Soccer Field.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; lineEnding = 0; path = "Soccer Field.gpx"; sourceTree = "<group>"; };
 		7BA248281DCF8E7F007F5B2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7BA2482A1DCF9566007F5B2E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7BB0EA611D856B110057BFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOLevelSizeViewController.h; sourceTree = "<group>"; };
-		7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOLevelSizeViewController.m; sourceTree = "<group>"; };
-		7BB0EA661D8590AA0057BFA2 /* VSOLevelDifficultyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOLevelDifficultyViewController.h; sourceTree = "<group>"; };
-		7BB0EA671D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOLevelDifficultyViewController.m; sourceTree = "<group>"; };
-		7BB0EA691D8593E80057BFA2 /* VSOChallengeShapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOChallengeShapeViewController.h; sourceTree = "<group>"; };
-		7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOChallengeShapeViewController.m; sourceTree = "<group>"; };
-		7BB0EA6C1D8596190057BFA2 /* VSOPlayingModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSOPlayingModeViewController.h; sourceTree = "<group>"; };
-		7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSOPlayingModeViewController.m; sourceTree = "<group>"; };
+		7BB7C73922872D060037D089 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		7BBC1ACA2218B61D00BCBC63 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		7BBC1ACC2218C57500BCBC63 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		7BC852DD221A10BD0029358D /* Quadrilateral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadrilateral.swift; sourceTree = "<group>"; };
+		7BF4C2D7229046FC00A09929 /* GameProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgress.swift; sourceTree = "<group>"; };
+		7BF4C2D92290982800A09929 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GPS_Body_Paint-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GPS_Body_Paint-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,50 +123,28 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		281C6CD70DB2D82200F60ACC /* Settings View */ = {
+		281C6CD70DB2D82200F60ACC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0F7E117410185013000D35AF /* VSOShapeView.h */,
-				0F7E117510185013000D35AF /* VSOShapeView.m */,
-				0FD1BB0C100F2C7900000185 /* VSOSettings.h */,
-				0FD1BB0D100F2C7900000185 /* VSOSettings.m */,
-				7BB0EA631D858CAC0057BFA2 /* VSOLevelSizeViewController.h */,
-				7BB0EA641D858CAC0057BFA2 /* VSOLevelSizeViewController.m */,
-				7BB0EA661D8590AA0057BFA2 /* VSOLevelDifficultyViewController.h */,
-				7BB0EA671D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m */,
-				7BB0EA691D8593E80057BFA2 /* VSOChallengeShapeViewController.h */,
-				7BB0EA6A1D8593E80057BFA2 /* VSOChallengeShapeViewController.m */,
-				7BB0EA6C1D8596190057BFA2 /* VSOPlayingModeViewController.h */,
-				7BB0EA6D1D8596190057BFA2 /* VSOPlayingModeViewController.m */,
-				289233AC0DB2D0DB0083E9F9 /* VSOSettingsViewController.h */,
-				289233AD0DB2D0DB0083E9F9 /* VSOSettingsViewController.m */,
+				7B5B75AD21AAF85F002B8509 /* SettingsViewController.swift */,
+				7B80539322103A11009DE2C4 /* Details */,
 			);
-			path = "Settings View";
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		289233A00DB2D0730083E9F9 /* Play View */ = {
+		289233A00DB2D0730083E9F9 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				0F7BBE92101EEC5A00F4EF59 /* VSOMapView.h */,
-				0F7BBE93101EEC5A00F4EF59 /* VSOMapView.m */,
-				0F9495601014716E00717D5A /* VSOGameShape.h */,
-				0F9495611014716E00717D5A /* VSOGameShape.m */,
-				7B9912FC1D8DB0FF00AA2C1A /* VSOCurLocationView.h */,
-				7B9912FD1D8DB0FF00AA2C1A /* VSOCurLocationView.m */,
-				0FD8DBD7100DD06E00C076DB /* VSOGridAnnotationView.h */,
-				0FD8DBD8100DD06E00C076DB /* VSOGridAnnotationView.m */,
-				0FD1BB31100F31FB00000185 /* VSOGameProgress.h */,
-				0FD1BB32100F31FB00000185 /* VSOGameProgress.m */,
-				289233A80DB2D0DB0083E9F9 /* VSOPlayViewController.h */,
-				289233A90DB2D0DB0083E9F9 /* VSOPlayViewController.m */,
+				7B04208A218F36C0003B7E3B /* LocationBrushView.swift */,
+				7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */,
 			);
-			path = "Play View";
+			path = Game;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				0FCDE41110160CD7001D5E65 /* Notes.rtf */,
+				7BB7C73922872D060037D089 /* Readme.md */,
 				7B27B92A1DCF374D006F44B7 /* GPS Body Paint */,
 				7BA248221DCF8193007F5B2E /* Fake Locations */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -188,6 +171,7 @@
 			children = (
 				7B27B9301DCF3BED006F44B7 /* Utilities */,
 				7B27B92C1DCF378A006F44B7 /* Heart */,
+				7B80538C220F8519009DE2C4 /* Model */,
 				7B27B92B1DCF3755006F44B7 /* Views & Controllers */,
 				7B27B92D1DCF37A0006F44B7 /* Supporting Files */,
 			);
@@ -199,8 +183,9 @@
 			children = (
 				7B395E5C1D856A2800941445 /* LaunchScreen.storyboard */,
 				7B395E601D856A4500941445 /* Main.storyboard */,
-				281C6CD70DB2D82200F60ACC /* Settings View */,
-				289233A00DB2D0730083E9F9 /* Play View */,
+				7B80538B220F8456009DE2C4 /* Common */,
+				281C6CD70DB2D82200F60ACC /* Settings */,
+				289233A00DB2D0730083E9F9 /* Game */,
 			);
 			path = "Views & Controllers";
 			sourceTree = "<group>";
@@ -208,8 +193,8 @@
 		7B27B92C1DCF378A006F44B7 /* Heart */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* GPSBodyPaintAppDelegate.h */,
-				1D3623250D0F684500981E51 /* GPSBodyPaintAppDelegate.m */,
+				7BDCA025220F1A0400B98786 /* Application Lifecycle */,
+				7B805360220F2C56009DE2C4 /* Services */,
 			);
 			path = Heart;
 			sourceTree = "<group>";
@@ -219,9 +204,6 @@
 			children = (
 				7B27B92F1DCF37E4006F44B7 /* Localizables */,
 				7BB0EA611D856B110057BFA2 /* Assets.xcassets */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-				0F73F3F71010C4290004C707 /* Constants.h */,
-				32CA4F630368D1EE00C91783 /* GPS_Body_Paint_Prefix.pch */,
 				8D1107310486CEB800E47090 /* GPS_Body_Paint-Info.plist */,
 				0FCF47581019E2D0005E5F41 /* Settings.bundle */,
 			);
@@ -240,10 +222,59 @@
 		7B27B9301DCF3BED006F44B7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0FD1BBCE100F374800000185 /* VSOUtils.h */,
-				0FD1BBCF100F374800000185 /* VSOUtils.c */,
+				7B84A56422934C5F00A2E68C /* MapUtils.swift */,
+				7B04208C218F5813003B7E3B /* VSOMapView.swift */,
+				7B8BEEAF229BD5D3007309A6 /* CGPoint+Utils.swift */,
+				7B042082218F0852003B7E3B /* CGRect+Hashable.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7B805360220F2C56009DE2C4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7B732DEF21F4DC60004EEB01 /* ServicesProvider.swift */,
+				0F73F3F71010C4290004C707 /* Constants.swift */,
+				7B042086218F2CE1003B7E3B /* AppSettings.swift */,
+				7BBC1ACA2218B61D00BCBC63 /* GameController.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7B80538B220F8456009DE2C4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7BF4C2D92290982800A09929 /* GridView.swift */,
+				7B042084218F2792003B7E3B /* ShapeView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7B80538C220F8519009DE2C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B8BEEB1229C2C19007309A6 /* Circle.swift */,
+				7B8BEEAD229BC9DF007309A6 /* Segment.swift */,
+				7BC852DD221A10BD0029358D /* Quadrilateral.swift */,
+				7BBC1ACC2218C57500BCBC63 /* Grid.swift */,
+				7BF4C2D7229046FC00A09929 /* GameProgress.swift */,
+				7B7A26C7218098D20051D470 /* GameShape.swift */,
+				7B80538F220F8599009DE2C4 /* PaintingSize.swift */,
+				7B80538D220F854C009DE2C4 /* PlayingMode.swift */,
+				7B80539122102F7F009DE2C4 /* GameSettings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B80539322103A11009DE2C4 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				7B5B75A521AAE5DD002B8509 /* LevelSizeViewController.swift */,
+				7B5B75A721AAEA0E002B8509 /* LevelDifficultyViewController.swift */,
+				7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */,
+				7B5B75AB21AAF354002B8509 /* PlayingModeViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		7BA248221DCF8193007F5B2E /* Fake Locations */ = {
@@ -252,6 +283,14 @@
 				7BA248211DCF818C007F5B2E /* Soccer Field.gpx */,
 			);
 			path = "Fake Locations";
+			sourceTree = "<group>";
+		};
+		7BDCA025220F1A0400B98786 /* Application Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				7B042088218F3221003B7E3B /* AppDelegate.swift */,
+			);
+			path = "Application Lifecycle";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,18 +319,19 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Frost Land";
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = DVL8GW97S8;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "GPS Body Paint" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				Base,
@@ -328,22 +368,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* GPSBodyPaintAppDelegate.m in Sources */,
-				7BB0EA651D858CAC0057BFA2 /* VSOLevelSizeViewController.m in Sources */,
-				289233AE0DB2D0DB0083E9F9 /* VSOPlayViewController.m in Sources */,
-				7BB0EA6B1D8593E80057BFA2 /* VSOChallengeShapeViewController.m in Sources */,
-				289233B00DB2D0DB0083E9F9 /* VSOSettingsViewController.m in Sources */,
-				0FD8DBD9100DD06E00C076DB /* VSOGridAnnotationView.m in Sources */,
-				0FD1BB0E100F2C7900000185 /* VSOSettings.m in Sources */,
-				0FD1BB33100F31FB00000185 /* VSOGameProgress.m in Sources */,
-				0FD1BBD0100F374800000185 /* VSOUtils.c in Sources */,
-				7B9912FE1D8DB0FF00AA2C1A /* VSOCurLocationView.m in Sources */,
-				7BB0EA6E1D8596190057BFA2 /* VSOPlayingModeViewController.m in Sources */,
-				0F9495621014716E00717D5A /* VSOGameShape.m in Sources */,
-				7BB0EA681D8590AA0057BFA2 /* VSOLevelDifficultyViewController.m in Sources */,
-				0F7E117610185013000D35AF /* VSOShapeView.m in Sources */,
-				0F7BBE94101EEC5A00F4EF59 /* VSOMapView.m in Sources */,
+				7BF4C2D8229046FC00A09929 /* GameProgress.swift in Sources */,
+				7B8BEEAE229BC9DF007309A6 /* Segment.swift in Sources */,
+				7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */,
+				7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */,
+				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
+				7B042087218F2CE1003B7E3B /* AppSettings.swift in Sources */,
+				7B04208D218F5813003B7E3B /* VSOMapView.swift in Sources */,
+				7B5B75B121AB5080002B8509 /* Constants.swift in Sources */,
+				7B5B75AE21AAF85F002B8509 /* SettingsViewController.swift in Sources */,
+				7BC852DE221A10BD0029358D /* Quadrilateral.swift in Sources */,
+				7B5B75AC21AAF354002B8509 /* PlayingModeViewController.swift in Sources */,
+				7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */,
+				7B80539222102F7F009DE2C4 /* GameSettings.swift in Sources */,
+				7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */,
+				7B732DF021F4DC60004EEB01 /* ServicesProvider.swift in Sources */,
+				7BF4C2DA2290982800A09929 /* GridView.swift in Sources */,
+				7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */,
+				7BA2FEF722886E5C00F6EBB9 /* PlayViewController.swift in Sources */,
+				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
+				7B84A56522934C5F00A2E68C /* MapUtils.swift in Sources */,
+				7B8BEEB2229C2C19007309A6 /* Circle.swift in Sources */,
+				7B5B75A621AAE5DD002B8509 /* LevelSizeViewController.swift in Sources */,
+				7B80538E220F854C009DE2C4 /* PlayingMode.swift in Sources */,
+				7B805390220F8599009DE2C4 /* PaintingSize.swift in Sources */,
+				7BD401122299830000A9DEE0 /* LocationBrushView.swift in Sources */,
+				7B8BEEB0229BD5D3007309A6 /* CGPoint+Utils.swift in Sources */,
+				7B5B75A821AAEA0E002B8509 /* LevelDifficultyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,15 +436,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = DVL8GW97S8;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GPS Body Paint/Supporting Files/GPS_Body_Paint_Prefix.pch";
 				INFOPLIST_FILE = "GPS Body Paint/Supporting Files/GPS_Body_Paint-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.vso-software.GPSBodyPaint";
 				PRODUCT_NAME = "GPS Body Paint";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -401,13 +455,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = DVL8GW97S8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GPS Body Paint/Supporting Files/GPS_Body_Paint_Prefix.pch";
 				INFOPLIST_FILE = "GPS Body Paint/Supporting Files/GPS_Body_Paint-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.vso-software.GPSBodyPaint";
 				PRODUCT_NAME = "GPS Body Paint";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -421,11 +477,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -443,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -459,11 +517,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -481,8 +541,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
