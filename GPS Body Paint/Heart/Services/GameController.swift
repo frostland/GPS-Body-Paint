@@ -28,9 +28,6 @@ protocol GameControllerDelegate : class {
 
 class GameController : NSObject, CLLocationManagerDelegate {
 	
-	/** If precision is not better than 25 meters, we cannot start playing */
-	static let minHorizontalPrecisionToStartPlaying = CLLocationAccuracy(25)
-	
 	/** The status can only go “up.” Once you’ve reached gameOver, there’s no
 	turning back. */
 	enum Status {
@@ -113,8 +110,7 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	}
 	
 	var canStartPlaying: Bool {
-		guard let loc = currentLocation else {return false}
-		return !isPlaying && loc.horizontalAccuracy < GameController.minHorizontalPrecisionToStartPlaying
+		return !isPlaying
 	}
 	
 	private(set) var currentLocation: CLLocation? {
