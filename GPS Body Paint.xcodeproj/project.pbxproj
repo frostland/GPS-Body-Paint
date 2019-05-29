@@ -74,7 +74,6 @@
 		7B5B75A921AAEFDE002B8509 /* ChallengeShapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeShapeViewController.swift; sourceTree = "<group>"; };
 		7B5B75AB21AAF354002B8509 /* PlayingModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingModeViewController.swift; sourceTree = "<group>"; };
 		7B5B75AD21AAF85F002B8509 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		7B5B75AF21AAFDC4002B8509 /* OBS_PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBS_PlayViewController.swift; sourceTree = "<group>"; };
 		7B732DEF21F4DC60004EEB01 /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
 		7B7A26C7218098D20051D470 /* GameShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameShape.swift; sourceTree = "<group>"; };
 		7B80538D220F854C009DE2C4 /* PlayingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingMode.swift; sourceTree = "<group>"; };
@@ -137,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				7B04208A218F36C0003B7E3B /* LocationBrushView.swift */,
-				7B5B75AF21AAFDC4002B8509 /* OBS_PlayViewController.swift */,
 				7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */,
 			);
 			path = Game;
