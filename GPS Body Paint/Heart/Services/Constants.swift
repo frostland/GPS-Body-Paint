@@ -22,7 +22,7 @@ class Constants {
 	
 	let animTimeShowViewLoadingMap = TimeInterval(0.3)
 	let animTimeShowArrows         = TimeInterval(0.5)
-	let animTimeHideGettingLocMsg  = TimeInterval(0.65) /* More or less (more less than more) the animation time of the map animation */
+	let animTimeHideGettingLocMsg  = TimeInterval(0.65)
 	let animTimeShowGameOver       = TimeInterval(0.75)
 	
 }

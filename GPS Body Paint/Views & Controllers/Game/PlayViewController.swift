@@ -94,6 +94,9 @@ class PlayViewController : UIViewController {
 		if #available(iOS 11.0, *) {
 			mapView.mapType = .mutedStandard
 		}
+		centerMap(locationCoordinate: mapView.centerCoordinate)
+		
+		buttonStartStopPlay.isEnabled = false
 		
 		imageArrowTop.alpha = 0
 		imageArrowDown.alpha = 0
@@ -128,6 +131,10 @@ class PlayViewController : UIViewController {
 		viewMapOverlay.isHidden = true
 		locationBrushView.isHidden = true
 		shapeView.gameShape = gameController.gameSettings.gameShape
+		
+		viewGettingLocation.alpha = 0
+		viewGettingLocation.frame = view.bounds
+		view.addSubview(viewGettingLocation)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -171,7 +178,7 @@ class PlayViewController : UIViewController {
 		guard let loc = gameController.currentLocation else {return}
 		
 		userHasMovedMap = false
-		centerMap(location: loc)
+		centerMap(locationCoordinate: loc.coordinate)
 	}
 	
 	@IBAction func quitPlayView(_ sender: AnyObject) {
@@ -190,6 +197,7 @@ class PlayViewController : UIViewController {
 	
 	private var mapMoving = false
 	private var timerShowLoadingMap: Timer?
+	private var timerShowGettingLocation: Timer?
 	
 	private var timerUpdateTimeLabels: Timer?
 	
@@ -200,7 +208,7 @@ class PlayViewController : UIViewController {
 		locationBrushView.frame = mapView.convert(locationBrushRegion, toRectTo: locationBrushView.superview!)
 	}
 	
-	private func centerMap(location loc: CLLocation) {
+	private func centerMap(locationCoordinate coord: CLLocationCoordinate2D) {
 		let mapToOverlayRatio: CGFloat
 		if viewMapOverlay.frame.width > viewMapOverlay.frame.height {
 			mapToOverlayRatio = mapView.frame.height / viewMapOverlay.frame.height
@@ -211,7 +219,7 @@ class PlayViewController : UIViewController {
 		/* The overlay view is smaller than the map (by design) */
 		let extendedPlaygroundSize = gameController.gameSettings.playgroundSize * CLLocationDistance(mapToOverlayRatio)
 	
-		let regionWeWant = MKCoordinateRegion(center: loc.coordinate, latitudinalMeters: extendedPlaygroundSize, longitudinalMeters: extendedPlaygroundSize)
+		let regionWeWant = MKCoordinateRegion(center: coord, latitudinalMeters: extendedPlaygroundSize, longitudinalMeters: extendedPlaygroundSize)
 //		let regionWeGet = mapView.regionThatFits(regionWeWant)
 		mapView.setRegion(regionWeWant, animated: false)
 	
@@ -270,6 +278,34 @@ class PlayViewController : UIViewController {
 		case .timeLimit(let time): time2 = max(TimeInterval(0), time - timePlaying)
 		}
 		labelPlayingTime.text = dateFormatter.string(from: time2)
+	}
+	
+	private func refreshGettingLocationTimerAndView() {
+		hideGettingLocationView()
+		
+		if gameController.isPlaying {
+			timerShowGettingLocation?.invalidate()
+			timerShowGettingLocation = Timer.scheduledTimer(timeInterval: c.timeBeforeShowingGettingLocMsg, target: self, selector: #selector(showGettingLocationView(_:)), userInfo: nil, repeats: false)
+		} else {
+			timerShowGettingLocation?.invalidate()
+			timerShowGettingLocation = nil
+		}
+	}
+	
+	@objc
+	private func showGettingLocationView(_ timer: Timer?) {
+		timerShowGettingLocation?.invalidate()
+		timerShowGettingLocation = nil
+		
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
+			self.viewGettingLocation.alpha = 1
+		})
+	}
+	
+	private func hideGettingLocationView() {
+		UIView.animate(withDuration: c.animTimeShowViewLoadingMap, animations: {
+			self.viewGettingLocation.alpha = 0
+		})
 	}
 	
 }
@@ -374,6 +410,7 @@ extension PlayViewController : GameControllerDelegate {
 			
 			gridView.grid = gp.grid
 			
+			refreshGettingLocationTimerAndView()
 			timerUpdateTimeLabels = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateTimeLabels(_:)), userInfo: nil, repeats: true)
 			
 		case .gameOver:
@@ -410,10 +447,13 @@ extension PlayViewController : GameControllerDelegate {
 	
 	func gameController(_ gameController: GameController, didGetNewLocation newLocation: CLLocation?) {
 		if !gameController.isPlaying, !userHasMovedMap, let loc = newLocation {
-			centerMap(location: loc)
+			centerMap(locationCoordinate: loc.coordinate)
 		}
 		
+		buttonStartStopPlay.isEnabled = true
+		
 		updateLocationBrushFrame()
+		refreshGettingLocationTimerAndView()
 		
 		labelGPSAccuracy.text =
 			newLocation.map{ String(format: NSLocalizedString("n m format", comment: "Format for \"10 m\""), Int($0.horizontalAccuracy.rounded())) } ??
