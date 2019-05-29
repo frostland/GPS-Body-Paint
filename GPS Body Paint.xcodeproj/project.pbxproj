@@ -10,7 +10,6 @@
 		0FC06FB5100E33F700B0D157 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC06FB4100E33F700B0D157 /* QuartzCore.framework */; };
 		0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FCF47581019E2D0005E5F41 /* Settings.bundle */; };
 		0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD076D6101F19C900D9AF11 /* Localizable.strings */; };
-		0FD8DB94100DCCC800C076DB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD8DB93100DCCC800C076DB /* MapKit.framework */; };
 		0FD8DC83100DDB0300C076DB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD8DC82100DDB0300C076DB /* CoreLocation.framework */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -53,7 +52,6 @@
 		0FC06FB4100E33F700B0D157 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0FCF47581019E2D0005E5F41 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0FD076D8101F19EB00D9AF11 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0FD8DB93100DCCC800C076DB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0FD8DC82100DDB0300C076DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* GPS Body Paint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS Body Paint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +87,7 @@
 		7BA2482A1DCF9566007F5B2E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7BB0EA611D856B110057BFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7BB32FF9229EDD2D004D4976 /* GPS Body Paint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GPS Body Paint.entitlements"; sourceTree = "<group>"; };
 		7BB7C73922872D060037D089 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		7BBC1ACA2218B61D00BCBC63 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		7BBC1ACC2218C57500BCBC63 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
@@ -106,7 +105,6 @@
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				0FD8DC83100DDB0300C076DB /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				0FD8DB94100DCCC800C076DB /* MapKit.framework in Frameworks */,
 				0FC06FB5100E33F700B0D157 /* QuartzCore.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 			);
@@ -159,7 +157,6 @@
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 				0FD8DC82100DDB0300C076DB /* CoreLocation.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				0FD8DB93100DCCC800C076DB /* MapKit.framework */,
 				0FC06FB4100E33F700B0D157 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 			);
@@ -169,6 +166,7 @@
 		7B27B92A1DCF374D006F44B7 /* GPS Body Paint */ = {
 			isa = PBXGroup;
 			children = (
+				7BB32FF9229EDD2D004D4976 /* GPS Body Paint.entitlements */,
 				7B27B9301DCF3BED006F44B7 /* Utilities */,
 				7B27B92C1DCF378A006F44B7 /* Heart */,
 				7B80538C220F8519009DE2C4 /* Model */,
@@ -326,6 +324,14 @@
 						DevelopmentTeam = DVL8GW97S8;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
