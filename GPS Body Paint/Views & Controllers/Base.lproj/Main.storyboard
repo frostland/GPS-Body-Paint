@@ -618,13 +618,13 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaj-9S-cMv">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="533.66666666666663"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="517.66666666666663"/>
                             <subviews>
                                 <activityIndicatorView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZZD-B1-wVw">
-                                    <rect key="frame" x="169" y="248.33333333333337" width="37" height="37"/>
+                                    <rect key="frame" x="169" y="240.33333333333337" width="37" height="37"/>
                                 </activityIndicatorView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Getting your current location… Please make sure you’re outdoor." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5j-PH-qo0">
-                                    <rect key="frame" x="55" y="185" width="265" height="42.333333333333343"/>
+                                    <rect key="frame" x="55" y="177" width="265" height="42.333333333333343"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                     <color key="textColor" red="0.996350348" green="0.996350348" blue="0.996350348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -639,10 +639,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-kG-TgY">
-                            <rect key="frame" x="0.0" y="533.66666666666663" width="375" height="133.33333333333337"/>
+                            <rect key="frame" x="0.0" y="517.66666666666663" width="375" height="149.33333333333337"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Note: Due to GPS delay, getting your location may take some time." textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9J-6D-Ddb">
-                                    <rect key="frame" x="187.66666666666663" y="102" width="182.33333333333337" height="26.333333333333343"/>
+                                    <rect key="frame" x="177.66666666666663" y="102" width="182.33333333333337" height="26.333333333333343"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" red="0.996350348" green="0.996350348" blue="0.996350348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -667,8 +667,8 @@
                                 <constraint firstItem="y9J-6D-Ddb" firstAttribute="width" secondItem="hdf-kG-TgY" secondAttribute="width" multiplier="0.5" constant="-5" id="THi-n8-suY"/>
                                 <constraint firstItem="y9J-6D-Ddb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hdf-kG-TgY" secondAttribute="leading" constant="5" id="Wr5-1m-hcf"/>
                                 <constraint firstItem="tMo-eZ-nF0" firstAttribute="leading" secondItem="hdf-kG-TgY" secondAttribute="leading" constant="20" id="Yxx-Ng-Aht"/>
-                                <constraint firstAttribute="trailing" secondItem="y9J-6D-Ddb" secondAttribute="trailing" constant="5" id="l8B-cJ-9CY"/>
-                                <constraint firstAttribute="bottom" secondItem="y9J-6D-Ddb" secondAttribute="bottom" constant="5" id="mnf-GM-APp"/>
+                                <constraint firstAttribute="trailing" secondItem="y9J-6D-Ddb" secondAttribute="trailing" constant="15" id="l8B-cJ-9CY"/>
+                                <constraint firstAttribute="bottom" secondItem="y9J-6D-Ddb" secondAttribute="bottom" constant="21" id="mnf-GM-APp"/>
                                 <constraint firstAttribute="trailing" secondItem="tMo-eZ-nF0" secondAttribute="trailing" constant="20" id="sHL-iT-r6i"/>
                             </constraints>
                         </view>
