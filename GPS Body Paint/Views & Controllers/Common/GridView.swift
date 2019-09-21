@@ -36,7 +36,7 @@ class GridView : UIView {
 		
 		c.saveGState()
 		
-		c.setStrokeColor(UIColor.black.withAlphaComponent(0.5).cgColor)
+		c.setStrokeColor(lineColor.cgColor)
 		c.addPath(grid.lines)
 		c.strokePath()
 		
@@ -49,7 +49,7 @@ class GridView : UIView {
 		
 		let frame = grid.square(at: coordinate)
 		let v = UIView(frame: frame)
-		v.backgroundColor = UIColor(red: 0.7, green: 0.8, blue: 1, alpha: 0.7)
+		v.backgroundColor = squareBgColor
 		v.alpha = 0
 		addSubview(v)
 		
@@ -59,7 +59,21 @@ class GridView : UIView {
 		
 		filledSquareViews[coordinate] = v
 	}
-
+	
+	private var lineColor: UIColor {
+		if #available(iOS 12.0, *), traitCollection.userInterfaceStyle == .dark {
+			return UIColor.white.withAlphaComponent(0.25)
+		} else {
+			return UIColor.black.withAlphaComponent(0.5)
+		}
+	}
+	private var squareBgColor: UIColor {
+		if #available(iOS 12.0, *), traitCollection.userInterfaceStyle == .dark {
+			return UIColor(red: 0.4, green: 0.5, blue: 0.7, alpha: 0.5)
+		} else {
+			return UIColor(red: 0.7, green: 0.8, blue: 1, alpha: 0.7)
+		}
+	}
 	private var filledSquareViews = [Grid.Coordinate: UIView]()
 	
 }
