@@ -22,7 +22,7 @@
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                             <state key="normal" title="Play!"/>
                             <connections>
-                                <segue destination="3rQ-ob-Jtt" kind="presentation" identifier="Play" modalTransitionStyle="crossDissolve" id="Cpa-S6-gNz"/>
+                                <segue destination="3rQ-ob-Jtt" kind="presentation" identifier="Play" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Cpa-S6-gNz"/>
                             </connections>
                         </button>
                         <sections>
@@ -219,23 +219,23 @@
             <objects>
                 <viewController id="3rQ-ob-Jtt" customClass="PlayViewController" customModule="GPS_Body_Paint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QmO-lX-3hm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkK-9v-ug2" userLabel="View With Map">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="638"/>
                                 <subviews>
                                     <mapView opaque="NO" multipleTouchEnabled="YES" contentMode="center" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xE6-gm-fUk" customClass="VSOMapView" customModule="GPS_Body_Paint" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="638"/>
                                         <connections>
                                             <outlet property="delegate" destination="3rQ-ob-Jtt" id="YF3-iP-fU8"/>
                                         </connections>
                                     </mapView>
                                     <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vS-2w-z7w" userLabel="Layout View">
-                                        <rect key="frame" x="34" y="42" width="307" height="508"/>
+                                        <rect key="frame" x="34" y="86" width="307" height="518"/>
                                         <subviews>
                                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcL-06-cec" customClass="ShapeView" customModule="GPS_Body_Paint" customModuleProvider="target">
-                                                <rect key="frame" x="78.666666666666686" y="179" width="150" height="150"/>
+                                                <rect key="frame" x="78.666666666666686" y="184" width="150" height="150"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="OcL-06-cec" secondAttribute="height" multiplier="1:1" id="L3k-96-Ntj"/>
@@ -243,7 +243,7 @@
                                                 </constraints>
                                             </view>
                                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cla-n1-o4P" customClass="GridView" customModule="GPS_Body_Paint" customModuleProvider="target">
-                                                <rect key="frame" x="78.666666666666686" y="179" width="150" height="150"/>
+                                                <rect key="frame" x="78.666666666666686" y="184" width="150" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBK-12-RMD" customClass="LocationBrushView" customModule="GPS_Body_Paint" customModuleProvider="target">
@@ -263,28 +263,28 @@
                                         </constraints>
                                     </view>
                                     <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Red Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="vbo-DW-XzL">
-                                        <rect key="frame" x="163.66666666666666" y="8" width="48" height="13"/>
+                                        <rect key="frame" x="163.66666666666666" y="52" width="48" height="13"/>
                                     </imageView>
                                     <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Red Arrow Down" translatesAutoresizingMaskIntoConstraints="NO" id="Wq8-0F-4d7">
-                                        <rect key="frame" x="163.66666666666666" y="571" width="48" height="13"/>
+                                        <rect key="frame" x="163.66666666666666" y="625" width="48" height="13"/>
                                     </imageView>
                                     <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Red Arrow Right" translatesAutoresizingMaskIntoConstraints="NO" id="l5I-wB-Xhk">
-                                        <rect key="frame" x="362" y="268" width="13" height="48"/>
+                                        <rect key="frame" x="362" y="295" width="13" height="48"/>
                                     </imageView>
                                     <imageView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Red Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="G62-z5-d8Y">
-                                        <rect key="frame" x="0.0" y="268" width="13" height="48"/>
+                                        <rect key="frame" x="0.0" y="295" width="13" height="48"/>
                                     </imageView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVp-7a-HrQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iy1-9o-Ax5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZR-dY-oB3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="7v4-Xr-Cbz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
                                                     <vibrancyEffect>
@@ -296,7 +296,7 @@
                                         <blurEffect style="dark"/>
                                     </visualEffectView>
                                     <view hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPM-9L-12C">
-                                        <rect key="frame" x="257" y="533" width="110" height="43"/>
+                                        <rect key="frame" x="257" y="587" width="110" height="43"/>
                                         <subviews>
                                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgq-Nb-PlH">
                                                 <rect key="frame" x="14" y="14" width="80" height="2"/>
@@ -344,16 +344,16 @@
                                         </constraints>
                                     </view>
                                     <view clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s8-38-F5t" userLabel="Loading Map">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="638"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Loading Map…" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5e-T2-wzK">
-                                                <rect key="frame" x="128.66666666666666" y="231.66666666666666" width="118" height="21"/>
+                                                <rect key="frame" x="128.66666666666666" y="258.66666666666669" width="118" height="21"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" red="0.996350348" green="0.996350348" blue="0.996350348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dfz-E4-V0b">
-                                                <rect key="frame" x="169" y="273.66666666666669" width="37" height="37"/>
+                                                <rect key="frame" x="169" y="300.66666666666669" width="37" height="37"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.64999998000000003" colorSpace="custom" customColorSpace="sRGB"/>
@@ -396,14 +396,14 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwv-SR-WbS" userLabel="Layout (Hidden) View">
-                                <rect key="frame" x="0.0" y="584" width="187.66666666666666" height="1"/>
+                                <rect key="frame" x="0.0" y="638" width="187.66666666666666" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ggt-hk-TFE"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40Z-RJ-3CX">
-                                <rect key="frame" x="16" y="678" width="343" height="30"/>
+                                <rect key="frame" x="16" y="732" width="343" height="30"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Start Playing">
@@ -417,49 +417,49 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Current GPS Accuracy:" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltn-gm-KJc">
-                                <rect key="frame" x="185" y="656" width="125" height="14"/>
+                                <rect key="frame" x="185" y="710" width="125" height="14"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="1000 m" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeb-EC-rxh">
-                                <rect key="frame" x="318" y="656" width="41" height="14"/>
+                                <rect key="frame" x="318" y="710" width="41" height="14"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Goal:" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-ug-7Va">
-                                <rect key="frame" x="195.66666666666666" y="601" width="44" height="20"/>
+                                <rect key="frame" x="195.66666666666666" y="655" width="44" height="20"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Playing Time:" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKY-iD-uj0">
-                                <rect key="frame" x="16" y="629" width="102" height="21"/>
+                                <rect key="frame" x="16" y="683" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="00:00:00" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHX-JS-0ip">
-                                <rect key="frame" x="126" y="629" width="72" height="21"/>
+                                <rect key="frame" x="126" y="683" width="72" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Filled:" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BV-zg-i8T">
-                                <rect key="frame" x="16" y="600" width="45" height="21"/>
+                                <rect key="frame" x="16" y="654" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="100%" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MW-56-tYM">
-                                <rect key="frame" x="247.66666666666663" y="601" width="44" height="20"/>
+                                <rect key="frame" x="247.66666666666663" y="655" width="44" height="20"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="100%" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rib-e1-SK4">
-                                <rect key="frame" x="69" y="600" width="43" height="21"/>
+                                <rect key="frame" x="69" y="654" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

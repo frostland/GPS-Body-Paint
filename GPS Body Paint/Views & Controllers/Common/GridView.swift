@@ -68,11 +68,10 @@ class GridView : UIView {
 		}
 	}
 	private var squareBgColor: UIColor {
-		if #available(iOS 12.0, *), traitCollection.userInterfaceStyle == .dark {
-			return UIColor(red: 0.4, green: 0.5, blue: 0.7, alpha: 0.5)
-		} else {
+		guard #available(iOS 11.0, *) else {
 			return UIColor(red: 0.7, green: 0.8, blue: 1, alpha: 0.7)
 		}
+		return UIColor(named: "Filled Square Color")!
 	}
 	private var filledSquareViews = [Grid.Coordinate: UIView]()
 	
