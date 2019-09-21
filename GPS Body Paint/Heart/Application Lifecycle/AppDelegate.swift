@@ -28,7 +28,7 @@ class AppDelegate : NSObject, UIApplicationDelegate {
 	}
 	
 	/* ***************
-      MARK: - Private
+	   MARK: - Private
 	   *************** */
 	
 	/* Dependencies */

@@ -45,7 +45,7 @@ class ChallengeShapeViewController : UIViewController {
 	}
 	
 	/* ***************
-      MARK: - Private
+	   MARK: - Private
 	   *************** */
 	
 	/* Dependencies */

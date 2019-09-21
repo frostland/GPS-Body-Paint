@@ -67,7 +67,7 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 	}
 	
 	/* ******************************************
-      MARK: - Picker View Data Source & Delegate
+	   MARK: - Picker View Data Source & Delegate
 	   ****************************************** */
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -87,7 +87,7 @@ class PlayingModeViewController : UIViewController, UIPickerViewDataSource, UIPi
 	}
 	
 	/* ***************
-      MARK: - Private
+	   MARK: - Private
 	   *************** */
 	
 	private static func playingMode(from playingModeId: Int) -> String {

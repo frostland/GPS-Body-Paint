@@ -58,7 +58,7 @@ class SettingsViewController : UITableViewController, UINavigationControllerDele
 	}
 	
 	/* ***************
-      MARK: - Private
+	   MARK: - Private
 	   *************** */
 	
 	/* Dependencies */

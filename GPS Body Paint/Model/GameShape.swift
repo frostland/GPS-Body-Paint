@@ -94,7 +94,7 @@ class GameShape {
 	}
 	
 	/* ***************
-      MARK: - Private
+	   MARK: - Private
 	   *************** */
 	
 	private var shapePathCache = [CGRect: CGPath]()

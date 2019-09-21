@@ -49,7 +49,7 @@ class LevelSizeViewController : UIViewController, UIPickerViewDataSource, UIPick
 	}
 	
 	/* ***************
-      MARK: - Private
+	   MARK: - Private
 	   *************** */
 	
 	private static func localizedString(from distance: CLLocationDistance) -> String {
