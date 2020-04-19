@@ -70,7 +70,7 @@ class GameController : NSObject, CLLocationManagerDelegate {
 		
 		var gameInfo: (gameProgress: GameProgress, shapeView: UIView, mapView: MKMapView)? {
 			switch self {
-			case .playing(let gi):                        return gi
+			case .playing(let gp, let sv, let mv):        return (gameProgress: gp, shapeView: sv, mapView: mv)
 			case .idle, .trackingUserPosition, .gameOver: return nil
 			}
 		}
