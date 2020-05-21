@@ -68,7 +68,7 @@ class GameShape {
 		polygon = shapeId.polygon
 	}
 	
-	/** The path for the shape in the given rect. The path will be not have any
+	/** The path for the shape in the given rect. The path will not have any
 	padding or magins from the rect. */
 	func pathForDrawing(in drawingRect: CGRect) -> CGPath {
 		if let path = shapePathCache[drawingRect] {return path}
