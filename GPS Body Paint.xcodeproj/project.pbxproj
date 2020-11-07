@@ -88,7 +88,7 @@
 		7BA2FEF622886E5C00F6EBB9 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		7BB0EA611D856B110057BFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB32FF9229EDD2D004D4976 /* GPS Body Paint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GPS Body Paint.entitlements"; sourceTree = "<group>"; };
-		7BB7C73922872D060037D089 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		7BB7C73922872D060037D089 /* Readme.adoc */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.adoc; sourceTree = "<group>"; };
 		7BBC1ACA2218B61D00BCBC63 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		7BBC1ACC2218C57500BCBC63 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		7BC852DD221A10BD0029358D /* Quadrilateral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadrilateral.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				7BB7C73922872D060037D089 /* Readme.md */,
+				7BB7C73922872D060037D089 /* Readme.adoc */,
 				7B27B92A1DCF374D006F44B7 /* GPS Body Paint */,
 				7BA248221DCF8193007F5B2E /* Fake Locations */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
