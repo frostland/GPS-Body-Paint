@@ -357,12 +357,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B395E5E1D856A4500941445 /* Main.storyboard in Resources */,
 				7BB0EA621D856B110057BFA2 /* Assets.xcassets in Resources */,
-				0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */,
 				7B3ECD4C1D84DFAB00DFEB0D /* InfoPlist.strings in Resources */,
-				0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */,
 				7B395E5D1D856A2800941445 /* LaunchScreen.storyboard in Resources */,
+				0FD076D7101F19C900D9AF11 /* Localizable.strings in Resources */,
+				7B395E5E1D856A4500941445 /* Main.storyboard in Resources */,
+				0FCF47591019E2D0005E5F41 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,33 +373,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BF4C2D8229046FC00A09929 /* GameProgress.swift in Sources */,
-				7B8BEEAE229BC9DF007309A6 /* Segment.swift in Sources */,
-				7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */,
-				7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */,
-				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
-				7B042087218F2CE1003B7E3B /* AppSettings.swift in Sources */,
-				7B04208D218F5813003B7E3B /* VSOMapView.swift in Sources */,
-				7B5B75B121AB5080002B8509 /* Constants.swift in Sources */,
-				7B5B75AE21AAF85F002B8509 /* SettingsViewController.swift in Sources */,
-				7BC852DE221A10BD0029358D /* Quadrilateral.swift in Sources */,
-				7B5B75AC21AAF354002B8509 /* PlayingModeViewController.swift in Sources */,
 				7B042089218F3221003B7E3B /* AppDelegate.swift in Sources */,
-				7B80539222102F7F009DE2C4 /* GameSettings.swift in Sources */,
-				7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */,
-				7B732DF021F4DC60004EEB01 /* ServicesProvider.swift in Sources */,
-				7BF4C2DA2290982800A09929 /* GridView.swift in Sources */,
-				7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */,
-				7BA2FEF722886E5C00F6EBB9 /* PlayViewController.swift in Sources */,
-				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
-				7B84A56522934C5F00A2E68C /* MapUtils.swift in Sources */,
-				7B8BEEB2229C2C19007309A6 /* Circle.swift in Sources */,
-				7B5B75A621AAE5DD002B8509 /* LevelSizeViewController.swift in Sources */,
-				7B80538E220F854C009DE2C4 /* PlayingMode.swift in Sources */,
-				7B805390220F8599009DE2C4 /* PaintingSize.swift in Sources */,
-				7BD401122299830000A9DEE0 /* LocationBrushView.swift in Sources */,
+				7B042087218F2CE1003B7E3B /* AppSettings.swift in Sources */,
 				7B8BEEB0229BD5D3007309A6 /* CGPoint+Utils.swift in Sources */,
+				7B042083218F0852003B7E3B /* CGRect+Hashable.swift in Sources */,
+				7B5B75AA21AAEFDE002B8509 /* ChallengeShapeViewController.swift in Sources */,
+				7B8BEEB2229C2C19007309A6 /* Circle.swift in Sources */,
+				7B5B75B121AB5080002B8509 /* Constants.swift in Sources */,
+				7BBC1ACB2218B61D00BCBC63 /* GameController.swift in Sources */,
+				7BF4C2D8229046FC00A09929 /* GameProgress.swift in Sources */,
+				7B80539222102F7F009DE2C4 /* GameSettings.swift in Sources */,
+				7B7A26C8218098D20051D470 /* GameShape.swift in Sources */,
+				7BBC1ACD2218C57500BCBC63 /* Grid.swift in Sources */,
+				7BF4C2DA2290982800A09929 /* GridView.swift in Sources */,
 				7B5B75A821AAEA0E002B8509 /* LevelDifficultyViewController.swift in Sources */,
+				7B5B75A621AAE5DD002B8509 /* LevelSizeViewController.swift in Sources */,
+				7BD401122299830000A9DEE0 /* LocationBrushView.swift in Sources */,
+				7B84A56522934C5F00A2E68C /* MapUtils.swift in Sources */,
+				7B805390220F8599009DE2C4 /* PaintingSize.swift in Sources */,
+				7B80538E220F854C009DE2C4 /* PlayingMode.swift in Sources */,
+				7B5B75AC21AAF354002B8509 /* PlayingModeViewController.swift in Sources */,
+				7BA2FEF722886E5C00F6EBB9 /* PlayViewController.swift in Sources */,
+				7BC852DE221A10BD0029358D /* Quadrilateral.swift in Sources */,
+				7B8BEEAE229BC9DF007309A6 /* Segment.swift in Sources */,
+				7B732DF021F4DC60004EEB01 /* ServicesProvider.swift in Sources */,
+				7B5B75AE21AAF85F002B8509 /* SettingsViewController.swift in Sources */,
+				7B042085218F2792003B7E3B /* ShapeView.swift in Sources */,
+				7B04208D218F5813003B7E3B /* VSOMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
