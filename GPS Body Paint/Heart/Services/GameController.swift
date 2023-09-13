@@ -230,6 +230,12 @@ class GameController : NSObject, CLLocationManagerDelegate {
 	
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 		assert(Thread.isMainThread)
+		let error = error as NSError
+		guard error.domain != kCLErrorDomain || error.code != CLError.Code.locationUnknown.rawValue else {
+			/* Doc says we can ignore CLError.Code.locationUnknown errors. */
+			return
+		}
+		
 		delegate?.gameController(self, failedToRetrieveLocation: error)
 	}
 	
