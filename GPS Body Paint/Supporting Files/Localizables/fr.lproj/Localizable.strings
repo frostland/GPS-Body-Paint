@@ -32,29 +32,11 @@
 /* Stop playing button title */
 "stop playing" = "Arrêter de jouer";
 
-/* Label on top of the game settings */
-"game settings" = "Préférences";
-
-/* challenge shape setting title */
-"challenge shape" = "Forme du challenge";
-
-/* Painting size setting title */
-"painting size" = "Taille du pinceau";
-
-/* Level size setting title */
-"level size" = "Terrain de jeu";
-
-/* Playing mode setting title */
-"playing mode" = "Mode de jeu";
-
 /* Fill in play mode setting label */
 "fill in" = "Remplissage";
 
 /* Time limit play mode setting label */
 "time limit" = "Temps limité";
-
-/* Application title */
-"GPS Body Paint" = "GPS Body Paint";
 
 /* Not applicable */
 "NA" = "N/A";
@@ -71,6 +53,3 @@
 "big" = "Gros";
 "medium" = "Moyen";
 "small" = "Petit";
-
-"submitting score" = "Soumission des scores";
-"cannot contact high score server" = "Impossible de contacter le serveur de soumission de scores.";
