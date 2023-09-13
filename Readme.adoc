@@ -1,1 +1,3 @@
 = GPS Body Paint
+
+A stupid game I wrote when I was young.
