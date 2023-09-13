@@ -13,7 +13,7 @@ import UIKit
 
 
 
-protocol PlayViewControllerDelegate : class {
+protocol PlayViewControllerDelegate : AnyObject {
 	
 	func playViewControllerDidFinish(_ controller: PlayViewController)
 	

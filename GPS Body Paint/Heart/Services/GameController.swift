@@ -13,7 +13,7 @@ import MapKit
 
 
 /* All methods are called on the main thread. */
-protocol GameControllerDelegate : class {
+protocol GameControllerDelegate : AnyObject {
 	
 	func gameController(_ gameController: GameController, didChangeStatus newStatus: GameController.Status)
 	
